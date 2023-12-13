@@ -48,17 +48,19 @@ function getDefaultFilter() {
     return { txt: '', price: '' }
 }
 
-function getEmptyNote(title = '') {
+function getEmptyNote() {
     return {
-        id: utilService.makeId(5),
-        createdAt: Date.now(),
+        id:'',
+        createdAt:'',
         type: 'NoteTxt',
-        isPinned: Math.random() > 0.7,
+        isPinned: false,
+        
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: 'var(--clrBase)'
         },
         info: {
-            txt: utilService.makeLorem(4)
+            txt: '',
+            title:''
         }
 
     }
@@ -78,6 +80,7 @@ function _createNotes() {
                     backgroundColor: `var(--clrSecondery2)`
                 },
                 info: {
+                    title: 'Bobi and Me',
                     txt: utilService.makeLorem(4)
                 }
             },
@@ -98,6 +101,7 @@ function _createNotes() {
                 id: utilService.makeId(5),
                 createdAt: Date.now(),
                 type: 'NoteTodos',
+                
                 isPinned: Math.random() > 0.7,
                 style: {
                     backgroundColor: `var(--clrSecondery3)`

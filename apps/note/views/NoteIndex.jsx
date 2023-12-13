@@ -1,3 +1,5 @@
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+import { NoteAdd } from "../cmps/NoteAdd.jsx"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
 
@@ -13,7 +15,7 @@ export function NoteIndex() {
         return () => {
 
         }
-    }, [filterBy])
+    }, [filterBy, notes])
 
 
     function loadNotes() {
@@ -29,19 +31,27 @@ export function NoteIndex() {
                 setNotes(prevNotes => {
                     return prevNotes.filter(note => note.id !== noteId)
                 })
-                // showSuccessMsg(`Note successfully removed!`)
+                showSuccessMsg(`Note successfully removed!`)
             })
             .catch(err => {
             console.log('err:', err)
-            // showErrorMsg(`Houston we have a problem!`)
+            showErrorMsg(`Houston we have a problem!`)
         })
     }
 
+    function onSaveNote(newNote) {
+        noteService.save(newNote)
+            .then(newNote)
+            .catch(err => console.log('err:', err))
+    }
+
+
     if (!notes) return <div>Loading...</div>
     return (
+
         <section className="note-index">
         
-        <div>note app</div>
+        <NoteAdd onSaveNote={onSaveNote}/>        
 
         <NoteList notes={notes} onRemoveNote={onRemoveNote} />
 
