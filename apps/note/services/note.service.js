@@ -75,7 +75,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: Math.random() > 0.7,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: `var(--clrSecondery2)`
                 },
                 info: {
                     txt: utilService.makeLorem(4)
@@ -87,7 +87,7 @@ function _createNotes() {
                 type: 'NoteImg',
                 isPinned: Math.random() > 0.7,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: `var(--clrSecondery1)`
                 },
                 info: {
                     url: 'http://some-img/me',
@@ -100,7 +100,7 @@ function _createNotes() {
                 type: 'NoteTodos',
                 isPinned: Math.random() > 0.7,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: `var(--clrSecondery3)`
                 },
                 info: {
                     title: 'Get my stuff together',
