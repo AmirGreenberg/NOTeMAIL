@@ -1,8 +1,9 @@
 export function NotePreview({ note }) {
     return (
         <article className="note-preview">
-            <h2>Note title: {note.info.title || note.info.txt}</h2>    
-            <button onClick={()=>{}}>Delete</button> 
+            <h2>{note.info.title || note.info.txt}</h2> 
+            <h4>{note.info.txt}</h4>   
+            
         </article>
     )
 }
