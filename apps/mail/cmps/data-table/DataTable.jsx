@@ -5,8 +5,9 @@ export function DataTable({ mails }) {
         <table border="1">
             <thead>
                 <tr>
-                    <th>Vendor</th>
-                    <th>Speed</th>
+                    <th>From</th>
+                    <th>Subject</th>
+                    <th>Body</th>
                     <th>Actions</th>
                 </tr>
             </thead>

@@ -2,7 +2,7 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
-_createMails()
+_initMails()
 
 export const mailService = {
     query,
@@ -11,21 +11,20 @@ export const mailService = {
     save,
     getEmptyMail,
     getDefaultFilter,
-    getFilterFromQueryString
+    getFilterFromQueryString,
 }
 
 function query(filterBy) {
-    return storageService.query(MAIL_KEY)
-        .then(mails => {
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                mails = mails.filter(mail => regExp.test(mail.vendor))
-            }
-            if (filterBy.minSpeed) {
-                mails = mails.filter(mail => mail.maxSpeed >= filterBy.minSpeed)
-            }
-            return mails
-        })
+    return storageService.query(MAIL_KEY).then((mails) => {
+        if (filterBy.txt) {
+            const regExp = new RegExp(filterBy.txt, 'i')
+            mails = mails.filter((mail) => regExp.test(mail.from))
+        }
+        if (filterBy.body) {
+            mails = mails.filter((mail) => mail.body >= filterBy.body)
+        }
+        return mails
+    })
 }
 
 function get(mailId) {
@@ -44,39 +43,413 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(vendor = '', maxSpeed = '') {
-    return { vendor, maxSpeed }
+function getEmptyMail(from = '', body = '') {
+    return { from, body }
 }
 
 function getDefaultFilter() {
-    return { txt: '', minSpeed: '', maxPrice: '' }
+    return { txt: '', body: '', maxPrice: '' }
 }
 
 function getFilterFromQueryString(searchParams) {
     const txt = searchParams.get('txt') || ''
-    const minSpeed = searchParams.get('minSpeed') || ''
+    const body = searchParams.get('body') || ''
     const maxPrice = searchParams.get('maxPrice') || ''
     return {
         txt,
-        minSpeed,
-        maxPrice
+        body,
+        maxPrice,
     }
 }
 
 function _createMails() {
-    let mails = utilService.loadFromStorage(MAIL_KEY)
-    if (!mails || !mails.length) {
-        mails = []
-        mails.push(_createMail('audu', 300))
-        mails.push(_createMail('fiak', 120))
-        mails.push(_createMail('subali', 50))
-        mails.push(_createMail('mitsu', 150))
-        utilService.saveToStorage(MAIL_KEY, mails)
-    }
+    return [
+        {
+            id: 'OXeMG8wNskc1',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc2',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc3',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc4',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc5',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc6',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc7',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc8',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc9',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc10',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc11',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc12',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc13',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc14',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc15',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc16',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc17',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc18',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc19',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+        {
+            id: 'OXeMG8wNskc20',
+            subject: utilService.makeLorem(
+                utilService.getRandomIntInclusive(2, 20)
+            ),
+            body: utilService.makeLorem(
+                utilService.getRandomIntInclusive(0, 200)
+            ),
+            isRead: false,
+            sentAt: 1551133930594,
+            removedAt: null,
+            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
+                .makeLorem(1)
+                .trimEnd()}.com`,
+        },
+    ]
 }
 
-function _createMail(vendor, maxSpeed = 250) {
-    const mail = getEmptyMail(vendor, maxSpeed)
-    mail.id = utilService.makeId()
-    return mail
+function _initMails() {
+    let mails = utilService.loadFromStorage(MAIL_KEY)
+    if (!mails || !mails.length) {
+        utilService.saveToStorage(MAIL_KEY, _createMails())
+    }
 }
