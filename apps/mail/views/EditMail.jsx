@@ -49,11 +49,6 @@ export function EditMail() {
                 break
         }
 
-        // if (field === 'to' || field === 'isOnSale') {
-        //     handleToChange(field, value)
-        //     return
-        // }
-
         setMailToEdit((prevMailProps) => {
             return {
                 ...prevMailProps,
@@ -66,14 +61,6 @@ export function EditMail() {
             }
         })
     }
-
-    // function handleToChange(field, value) {
-    //     if (field === 'to') field = 'amount'
-    //     setMailToEdit((prevMailProps) => {
-    //         const newListTo = { ...prevMailProps.listTo, [field]: value }
-    //         return { ...prevMailProps, listTo: newListTo }
-    //     })
-    // }
 
     const { from, to, body, subject } = mailToEdit
     const inputs = [
