@@ -12,10 +12,8 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
-        return () => {
 
-        }
-    }, [filterBy, notes])
+    }, [filterBy])
 
 
     function loadNotes() {
@@ -41,7 +39,9 @@ export function NoteIndex() {
 
     function onSaveNote(newNote) {
         noteService.save(newNote)
-            .then(newNote)
+            .then(newNote => {
+                setNotes ((prevNotes) => [...prevNotes, newNote]) 
+            })
             .catch(err => console.log('err:', err))
     }
 

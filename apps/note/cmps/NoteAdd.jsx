@@ -6,9 +6,9 @@ export function NoteAdd({onSaveNote}) {
 
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
 
-    useEffect(() => { 
+    // useEffect(() => { 
         
-    }, [])
+    // }, [])
 
 
     function handleChange({ target }) {
@@ -36,10 +36,12 @@ export function NoteAdd({onSaveNote}) {
 
         setNewNote(prevNote => ({ ...prevNote, info:{...prevNote.info,[field]: value }, createdAt: Date.now()}))
     }
-
+console.log('render')
     function onSubmit(ev) {
         ev.preventDefault()
         onSaveNote(newNote)
+        setNewNote(noteService.getEmptyNote())
+        
 
     }
  
