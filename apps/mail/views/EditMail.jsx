@@ -17,19 +17,15 @@ export function EditMail() {
     }, [])
 
     function loadMail() {
-        mailService
-            .get(params.mailId)
-            .then(setMailToEdit)
+        mailService.get(params.mailId).then(setMailToEdit)
     }
 
     function onSaveMail(ev) {
         ev.preventDefault()
-        mailService
-            .save(mailToEdit)
-            .then((mail) => {
-                onBack()
-                showSuccessMsg(`Mail successfully saved! ${mail.id}`)
-            })
+        mailService.save(mailToEdit).then((mail) => {
+            onBack()
+            showSuccessMsg(`Mail successfully saved! ${mail.id}`)
+        })
     }
 
     function onBack() {
@@ -38,7 +34,9 @@ export function EditMail() {
 
     function handleInputChange({ target }) {
         var field = target.name
+        console.log('🚀  field:', field)
         let value = target.value
+        console.log('🚀  value:', value)
 
         switch (target.type) {
             case 'number':
@@ -51,23 +49,31 @@ export function EditMail() {
                 break
         }
 
-        if (field === 'to' || field === 'isOnSale') {
-            handleToChange(field, value)
-            return
-        }
+        // if (field === 'to' || field === 'isOnSale') {
+        //     handleToChange(field, value)
+        //     return
+        // }
 
         setMailToEdit((prevMailProps) => {
-            return { ...prevMailProps, [field]: value }
+            return {
+                ...prevMailProps,
+                [field]: value,
+                isRead: true,
+                sentAt: Date.now(),
+                removedAt: null,
+                fromName: 'test',
+
+            }
         })
     }
 
-    function handleToChange(field, value) {
-        if (field === 'to') field = 'amount'
-        setMailToEdit((prevMailProps) => {
-            const newListTo = { ...prevMailProps.listTo, [field]: value }
-            return { ...prevMailProps, listTo: newListTo }
-        })
-    }
+    // function handleToChange(field, value) {
+    //     if (field === 'to') field = 'amount'
+    //     setMailToEdit((prevMailProps) => {
+    //         const newListTo = { ...prevMailProps.listTo, [field]: value }
+    //         return { ...prevMailProps, listTo: newListTo }
+    //     })
+    // }
 
     const { from, to, body, subject } = mailToEdit
     const inputs = [
@@ -103,6 +109,7 @@ export function EditMail() {
             id: 'body',
             value: body,
         },
+       
     ]
 
     return (
