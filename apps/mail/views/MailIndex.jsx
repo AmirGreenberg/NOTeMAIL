@@ -4,7 +4,7 @@ import { MailFilter } from '../cmps/MailFilter.jsx'
 import { MailList } from '../cmps/MailList.jsx'
 import { DataTable } from '../cmps/data-table/DataTable.jsx'
 import { mailService } from '../services/mail.service.js'
-import { showSuccessMsg } from '../../../services/event-bus.service.js'
+import { busService } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 
@@ -37,7 +37,7 @@ export function MailIndex() {
                 setMails((prevMails) => {
                     return prevMails.filter((mail) => mail.id !== mailId)
                 })
-                showSuccessMsg(`Mail successfully removed! ${mailId}`)
+                busService.showSuccessMsg(`Mail successfully removed! ${mailId}`)
             })
             .catch((err) => console.log('err:', err))
     }
@@ -53,8 +53,9 @@ export function MailIndex() {
                 filterBy={filterBy}
                 onSetFilter={onSetFilter}
             />
+            <Link className="add-mail-btn" to="/mail/edit">Compose</Link>
             {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
-            <DataTable mails={mails} />
+            <DataTable mails={mails} onRemoveMail={onRemoveMail} />
         </section>
     )
 }

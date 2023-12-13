@@ -1,31 +1,54 @@
 const { Fragment, useState } = React
 const { Link } = ReactRouterDOM
 
-export function DataTableRow({ mail }) {
+import { LongTxt } from '../LongText.jsx'
+
+export function DataTableRow({ mail, onRemoveMail }) {
     const [isExpanded, setIsExpanded] = useState(false)
 
     return (
         <Fragment>
-            <tr onClick={() => setIsExpanded(prevIsExpanded => !prevIsExpanded)}>
-                <td>{mail.fromName}</td>
-                <td>{mail.subject}</td>
-                <td>{mail.body}</td>
+            <tr>
+                <td  onClick={() =>
+                    setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+                }>
+                    <LongTxt txt={mail.fromName} length={15} />
+                </td>
+                <td  onClick={() =>
+                    setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+                }>
+                    <LongTxt txt={mail.subject} length={30} />
+                </td>
+                <td  onClick={() =>
+                    setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+                }>
+                    <LongTxt txt={mail.body} length={50} />
+                </td>
                 <td>
-                    <Link to={`/mail/${mail.id}`}>Details</Link> |
-                    <Link to={`/mail/edit/${mail.id}`}>Edit</Link>
+                    <button>
+                        <Link to={`/mail/${mail.id}`}>Details</Link>
+                    </button>
+                    <button>
+                        <Link to={`/mail/edit/${mail.id}`}>Edit</Link>
+                    </button>
+                    <button onClick={() => onRemoveMail(mail.id)}>Delete</button>
                 </td>
             </tr>
-            {
-                isExpanded && (
-                    <tr>
-                        <td colSpan="3">
-                            <img src={`../assets/img/${mail.from}.png`} style={{ maxWidth: '100px' }} />
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe aliquid, voluptate odio eius quam sapiente. Odit quibusdam soluta ducimus doloribus fuga? Dolores magnam nulla placeat libero exercitationem quisquam unde suscipit?</p>
-                        </td>
-                    </tr>
-                )
-            }
-        </Fragment >
+            {isExpanded && (
+                <tr>
+                    <td colSpan={4}>
+                        <h1>From: {mail.fromName}</h1>
+                        <h2>Subject: {mail.subject}</h2>
+                        <p>{mail.body}</p>
+                        <button>
+                            <Link to={`/mail/${mail.id}`}>Details</Link>
+                        </button>
+                        <button>
+                            <Link to={`/mail/edit/${mail.id}`}>Edit</Link>
+                        </button>
+                    </td>
+                </tr>
+            )}
+        </Fragment>
     )
-
 }

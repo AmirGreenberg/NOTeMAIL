@@ -1,18 +1,31 @@
+export const busService = {
+    createEventEmitter,
+    showUserMsg,
+    showSuccessMsg,
+    showErrorMsg,
+}
+
 function createEventEmitter() {
     const listenersMap = {}
     // Trick for DEBUG
-    window.map = listenersMap
+    window.mapmap = listenersMap
     return {
+        // Use this function to subscribe to an event
         on(evName, listener) {
-            listenersMap[evName] = (listenersMap[evName]) ? [...listenersMap[evName], listener] : [listener]
+            listenersMap[evName] = listenersMap[evName]
+                ? [...listenersMap[evName], listener]
+                : [listener]
             return () => {
-                listenersMap[evName] = listenersMap[evName].filter(func => func !== listener)
+                listenersMap[evName] = listenersMap[evName].filter(
+                    (func) => func !== listener
+                )
             }
         },
+        // Use this function to emit an event
         emit(evName, data) {
             if (!listenersMap[evName]) return
-            listenersMap[evName].forEach(listener => listener(data))
-        }
+            listenersMap[evName].forEach((listener) => listener(data))
+        },
     }
 }
 
@@ -23,12 +36,12 @@ export function showUserMsg(msg) {
 }
 
 export function showSuccessMsg(txt) {
+    console.log('success msg')
     showUserMsg({ txt, type: 'success' })
 }
 export function showErrorMsg(txt) {
     showUserMsg({ txt, type: 'error' })
 }
-
 
 // Service Testing:
 // eventBus.on('muk', (data)=>{
@@ -45,7 +58,6 @@ export function showErrorMsg(txt) {
 // setTimeout(()=>{
 //     unsubscribe()
 // }, 2000)
-
 
 // eventBus.emit('puk', 100)
 
