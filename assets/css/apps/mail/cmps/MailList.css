@@ -1,1 +1,29 @@
- /* mail list */
+table,
+td
+ {
+    border: 0px solid #31304d;
+    border-collapse: collapse;
+    padding: 0.25em;
+    text-transform: capitalize;
+}
+
+tr {
+    display: flex;
+    width: 100%;
+    border: 1px solid #31304d;
+    border-collapse: collapse;
+    padding: 0.25em;
+    text-transform: capitalize;
+    justify-content: space-between;
+    text-align: start;
+}
+
+td{
+    text-align: start;
+}
+
+span{
+    padding: 7px;
+    text-align: start;
+
+}
