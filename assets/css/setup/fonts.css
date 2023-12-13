@@ -3,6 +3,11 @@
     src: url(../../fonts/Roboto/Roboto-Regular.ttf);
   }
 
+@font-face {
+    font-family: Google;
+    src: url(../../fonts/Google/ProductSans-Regular.ttf);
+  }
+
 
 
   

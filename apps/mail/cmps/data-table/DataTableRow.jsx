@@ -9,28 +9,28 @@ export function DataTableRow({ mail, onRemoveMail }) {
     return (
         <Fragment>
             <tr>
-                <span
+                <span className='fromName'
                     onClick={() =>
                         setIsExpanded((prevIsExpanded) => !prevIsExpanded)
                     }
                 >
                     <LongTxt txt={mail.fromName} length={15} />
                 </span>
-                <span
+                <span className='subject'
                     onClick={() =>
                         setIsExpanded((prevIsExpanded) => !prevIsExpanded)
                     }
                 >
                     <LongTxt txt={mail.subject} length={30} />
                 </span>
-                <span
+                <span className='body'
                     onClick={() =>
                         setIsExpanded((prevIsExpanded) => !prevIsExpanded)
                     }
                 >
                     <LongTxt txt={mail.body} length={50} />
                 </span>
-                <span>
+                <span className='buttons'>
                     <button>
                         <Link to={`/mail/${mail.id}`}>Details</Link>
                     </button>

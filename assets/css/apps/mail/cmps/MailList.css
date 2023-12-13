@@ -1,29 +1,60 @@
-table,
-td
- {
+table {
+    font-family: Google;
     border: 0px solid #31304d;
-    border-collapse: collapse;
-    padding: 0.25em;
-    text-transform: capitalize;
+    color: var(--clrGrey5);
+}
+
+td {
+    display: grid;
+    border: 0px solid #31304d;
+    text-align: start;
 }
 
 tr {
-    display: flex;
-    width: 100%;
-    border: 1px solid #31304d;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: start;
+    width: 100vw;
+    border-block: 1px solid var(--clrMail3);
     border-collapse: collapse;
-    padding: 0.25em;
+    padding-block: 0.25em;
+    gap: 1em;
+}
+
+p {
+    margin-inline-start: 0em;
+    margin-block: 0.5em;
+}
+
+span {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.fromName {
     text-transform: capitalize;
-    justify-content: space-between;
-    text-align: start;
+    min-width: 10vw;
+    text-wrap: wrap;
 }
 
-td{
-    text-align: start;
+.subject {
+    text-transform: capitalize;
+    min-width: 15vw;
+    text-wrap: wrap;
 }
 
-span{
-    padding: 7px;
-    text-align: start;
+.body {
+    text-transform: capitalize;
+    width: 50vw;
+    text-wrap: wrap;
+}
 
+span {
+    display: grid;
+}
+
+.buttons{
+    display: flex;
+    margin-block-end: 10px;
 }
