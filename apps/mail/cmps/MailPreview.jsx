@@ -3,9 +3,9 @@
 export function MailPreview({ mail }) {
     return (
         <article className="mail-preview">
-            <h2>Mail Vendor: {mail.vendor}</h2>
-            <h4>Mail Speed {mail.maxSpeed}</h4>
-            <img src={`../assets/img/${mail.vendor}.png`} alt="" />
+            <h2>Mail From: {mail.from}</h2>
+            <h4>Mail Body {mail.body}</h4>
+            <img src={`../assets/img/${mail.from}.png`} alt="" />
         </article>
     )
 }

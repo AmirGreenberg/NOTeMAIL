@@ -44,21 +44,21 @@ export function MailFilter({ filterBy, onSetFilter }) {
     //     // })
     // }
 
-    // function handleMinSpeedChange({ target }) {
+    // function handleMinBodyChange({ target }) {
     //     const value = target.value
-    //     setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, minSpeed: value }))
+    //     setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, body: value }))
     // }
 
-    const { txt, minSpeed } = filterByToEdit
+    const { txt, body } = filterByToEdit
     return (
         <section className="mail-filter main-layout full">
             <h2>Filter Our Mails</h2>
             <form onSubmit={onSetFilterBy} >
-                <label htmlFor="txt">Vendor: </label>
+                <label htmlFor="txt">From: </label>
                 <input value={txt} onChange={handleChange} type="text" id="txt" name="txt" />
 
-                <label htmlFor="minSpeed">minSpeed: </label>
-                <input value={minSpeed || ''} onChange={handleChange} type="number" id="minSpeed" name="minSpeed" />
+                <label htmlFor="body">body: </label>
+                <input value={body || ''} onChange={handleChange} type="number" id="body" name="body" />
 
                 <button>Submit</button>
             </form>
