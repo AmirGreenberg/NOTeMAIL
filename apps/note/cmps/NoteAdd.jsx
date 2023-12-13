@@ -2,12 +2,12 @@ import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
 
-export function NoteAdd({onSaveNote}) {
+export function NoteAdd({ onSaveNote }) {
 
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
 
     // useEffect(() => { 
-        
+
     // }, [])
 
 
@@ -16,11 +16,11 @@ export function NoteAdd({onSaveNote}) {
         let value = target.value
 
         switch (target.type) {
-            
+
             case 'text':
                 value = value
                 break;
-            
+
             case 'number':
             case 'range':
                 value = +value
@@ -34,19 +34,18 @@ export function NoteAdd({onSaveNote}) {
                 break;
         }
 
-        setNewNote(prevNote => ({ ...prevNote, info:{...prevNote.info,[field]: value }, createdAt: Date.now()}))
+        setNewNote(prevNote => ({ ...prevNote, info: { ...prevNote.info, [field]: value }, createdAt: Date.now() }))
     }
-console.log('render')
     function onSubmit(ev) {
         ev.preventDefault()
         onSaveNote(newNote)
         setNewNote(noteService.getEmptyNote())
-        
+
 
     }
- 
-    const { title,txt } = newNote.info
-    
+
+    const { title, txt } = newNote.info
+
     return (
         <section className="note-add">
             <h1>Add Note</h1>

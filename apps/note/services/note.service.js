@@ -117,8 +117,6 @@ function _createNotes() {
         ]
     }
 
-
-    console.log('notes', notes)
     utilService.saveToStorage(NOTE_KEY, notes)
 }
 
