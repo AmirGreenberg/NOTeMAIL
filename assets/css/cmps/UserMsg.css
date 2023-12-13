@@ -1,9 +1,16 @@
 .user-msg {
     background-color: lightgray;
-    padding: 1em;
-    position: absolute;
-    top: 1em;
-    right: 1em;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: var(--off-white);
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.user-msg p {
+    margin: 0;
 }
 
 .user-msg.success {
@@ -14,8 +21,7 @@
     background-color: lightpink;
 }
 
-
-.user-msg button{
+.user-msg button {
     float: right;
     margin: 1em;
 }

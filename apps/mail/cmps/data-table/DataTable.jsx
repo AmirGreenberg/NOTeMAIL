@@ -1,4 +1,4 @@
-import { DataTableRow } from "./DataTableRow.jsx";
+import { DataTableRow } from './DataTableRow.jsx'
 
 export function DataTable({ mails, onRemoveMail }) {
     return (
@@ -12,7 +12,13 @@ export function DataTable({ mails, onRemoveMail }) {
                 </tr>
             </thead>
             <tbody>
-                {mails.map(mail => <DataTableRow key={mail.id} mail={mail} onRemoveMail={onRemoveMail} />)}
+                {mails.map((mail) => (
+                    <DataTableRow
+                        key={mail.id}
+                        mail={mail}
+                        onRemoveMail={onRemoveMail}
+                    />
+                ))}
             </tbody>
         </table>
     )

@@ -9,19 +9,25 @@ export function DataTableRow({ mail, onRemoveMail }) {
     return (
         <Fragment>
             <tr>
-                <td  onClick={() =>
-                    setIsExpanded((prevIsExpanded) => !prevIsExpanded)
-                }>
+                <td
+                    onClick={() =>
+                        setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+                    }
+                >
                     <LongTxt txt={mail.fromName} length={15} />
                 </td>
-                <td  onClick={() =>
-                    setIsExpanded((prevIsExpanded) => !prevIsExpanded)
-                }>
+                <td
+                    onClick={() =>
+                        setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+                    }
+                >
                     <LongTxt txt={mail.subject} length={30} />
                 </td>
-                <td  onClick={() =>
-                    setIsExpanded((prevIsExpanded) => !prevIsExpanded)
-                }>
+                <td
+                    onClick={() =>
+                        setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+                    }
+                >
                     <LongTxt txt={mail.body} length={50} />
                 </td>
                 <td>
@@ -31,7 +37,9 @@ export function DataTableRow({ mail, onRemoveMail }) {
                     <button>
                         <Link to={`/mail/edit/${mail.id}`}>Edit</Link>
                     </button>
-                    <button onClick={() => onRemoveMail(mail.id)}>Delete</button>
+                    <button onClick={() => onRemoveMail(mail.id)}>
+                        Delete
+                    </button>
                 </td>
             </tr>
             {isExpanded && (

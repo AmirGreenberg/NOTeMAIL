@@ -19,7 +19,6 @@ export function MailIndex() {
         loadMails()
         setSearchParams(filterBy)
         return () => {
-            console.log('Bye Bye')
         }
     }, [filterBy])
 
@@ -27,7 +26,6 @@ export function MailIndex() {
         mailService
             .query(filterBy)
             .then((mails) => setMails(mails))
-            .catch((err) => console.log('err:', err))
     }
 
     function onRemoveMail(mailId) {
@@ -37,9 +35,10 @@ export function MailIndex() {
                 setMails((prevMails) => {
                     return prevMails.filter((mail) => mail.id !== mailId)
                 })
-                busService.showSuccessMsg(`Mail successfully removed! ${mailId}`)
+                busService.showSuccessMsg(
+                    `Mail successfully removed! ${mailId}`
+                )
             })
-            .catch((err) => console.log('err:', err))
     }
 
     function onSetFilter(filterBy) {
@@ -49,11 +48,12 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index main-layout full">
-            <MailFilter
-                filterBy={filterBy}
-                onSetFilter={onSetFilter}
-            />
-            <Link className="add-mail-btn" to="/mail/edit">Compose</Link>
+            <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+            <button>
+                <Link className="add-mail-btn" to="/mail/edit">
+                    Compose
+                </Link>
+            </button>
             {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
             <DataTable mails={mails} onRemoveMail={onRemoveMail} />
         </section>

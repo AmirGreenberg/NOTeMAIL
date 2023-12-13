@@ -43,22 +43,24 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(from = '', body = '') {
-    return { from, body }
+function getEmptyMail(from = '', to = '', subject = '', body = '') {
+    return { from, to, subject, body }
 }
 
 function getDefaultFilter() {
-    return { txt: '', body: '', maxPrice: '' }
+    return { from: '', to: '', subject: '', body: '' }
 }
 
 function getFilterFromQueryString(searchParams) {
-    const txt = searchParams.get('txt') || ''
+    const from = searchParams.get('from') || ''
+    const to = searchParams.get('to') || ''
+    const subject = searchParams.get('subject') || ''
     const body = searchParams.get('body') || ''
-    const maxPrice = searchParams.get('maxPrice') || ''
     return {
-        txt,
+        from,
+        to,
+        subject,
         body,
-        maxPrice,
     }
 }
 

@@ -36,19 +36,6 @@ export function MailFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
-    // function handleTxtChange({ target }) {
-    //     const value = target.value
-    //     setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, txt: value }))
-    //     // setFilterByToEdit(prevFilterBy => {
-    //     //     return { ...prevFilterBy, txt: value }
-    //     // })
-    // }
-
-    // function handleMinBodyChange({ target }) {
-    //     const value = target.value
-    //     setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, body: value }))
-    // }
-
     const { txt, body } = filterByToEdit
     return (
         <section className="mail-filter main-layout full">
