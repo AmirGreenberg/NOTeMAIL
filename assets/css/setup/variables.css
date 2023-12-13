@@ -1,3 +1,32 @@
 :root {
     --main-bg-color: lightblue;
+
+
+
+    /*Base colors*/
+    --clrBase: #ffffff; /*background */
+   
+    
+    /*Greys and black */
+    --clrGrey1: #cfd8dc; 
+    --clrGrey2: #bdc1c6; 
+    --clrGrey3: #595959; 
+    --clrGrey4: #3c4043; 
+    --clrGrey5: #202124; 
+ 
+    /* gmail */
+    --clrMail0: #f6f8fc; /*backGround*/
+    --clrMail1: #d3e3fd;
+    --clrMail2: #eaf1fb;
+    
+    
+    /*notes colors pallet */
+    --clrSecondery1: #feefc3; 
+    --clrSecondery2: #ffccbc; 
+    --clrSecondery3: #4285f4; 
+    --clrSecondery4: #9fa8da; 
+    --clrSecondery5: #b2dfdb; 
+    --clrSecondery5: #d1c4e9; 
+
+ 
 }
