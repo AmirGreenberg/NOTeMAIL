@@ -7,7 +7,7 @@ const { useState, useEffect } = React
 
 export function EditMail() {
     const [mailToEdit, setMailToEdit] = useState(
-        mailService.getEmptyMail('user@appsus.com')
+        mailService.getEmptyMail()
     )
     const navigate = useNavigate()
     const params = useParams()

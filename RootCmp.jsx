@@ -18,7 +18,12 @@ export function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/mail" element={<MailIndex />} />
+                    <Route path="/mail" element={<MailIndex />} >
+                        <Route path="/mail/inbox" element={<MailIndex />} />
+                        <Route path="/mail/sent" element={<MailIndex />} />
+                        <Route path="/mail/trash" element={<MailIndex />} />
+                        <Route path="/mail/draft" element={<MailIndex />} />
+                    </Route>
                     <Route path="/mail/:mailId" element={<MailDetails />} />
                     <Route path="/mail/edit/:mailId" element={<EditMail />} />
                     <Route path="/mail/edit" element={<EditMail />} />

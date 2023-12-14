@@ -14,10 +14,7 @@ export function MailFilter({ filterBy, onSetFilter }) {
 
     function handleChange({ target }) {
         const field = target.name
-        console.log('🚀  field:', field)
         let value = target.value
-        console.log('🚀  value:', value)
-
         switch (target.type) {
             case 'number':
             case 'range':

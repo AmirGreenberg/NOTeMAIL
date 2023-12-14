@@ -12,6 +12,8 @@ td {
 
 tr {
     display: grid;
+    grid-template-columns: 60px 90px 1fr 90px ;
+    white-space: nowrap;
     grid-auto-flow: column;
     align-items: center;
     justify-content: start;
@@ -19,7 +21,8 @@ tr {
     border-block: 1px solid var(--clrMail3);
     border-collapse: collapse;
     padding-block: 0.25em;
-    gap: 1em;
+    gap: 7em ;
+    
 }
 
 p {
@@ -27,34 +30,39 @@ p {
     margin-block: 0.5em;
 }
 
-span {
-    display: grid;
-    grid-auto-flow: column;
-}
 
 .fromName {
     text-transform: capitalize;
-    min-width: 10vw;
-    text-wrap: wrap;
+    width: 10vw;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .subject {
     text-transform: capitalize;
-    min-width: 15vw;
-    text-wrap: wrap;
+    width: 15vw;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .body {
     text-transform: capitalize;
     width: 50vw;
-    text-wrap: wrap;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 span {
     display: grid;
 }
 
-.buttons{
+.buttons {
     display: flex;
     margin-block-end: 10px;
 }

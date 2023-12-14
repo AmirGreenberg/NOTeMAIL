@@ -2,6 +2,11 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
+export const loggedinUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus',
+}
+
 _initMails()
 
 export const mailService = {
@@ -15,7 +20,7 @@ export const mailService = {
 }
 
 function query(filterBy) {
-    console.log("🚀  filterBy:", filterBy)
+    console.log('🚀  filterBy:', filterBy)
     return storageService.query(MAIL_KEY).then((mails) => {
         if (filterBy.from) {
             const regExp = new RegExp(filterBy.from, 'i')
@@ -53,16 +58,26 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        return storageService.post(MAIL_KEY, mail)
+        return storageService.postUnshift(MAIL_KEY, mail)
     }
 }
 
-function getEmptyMail(from = '', to = '', subject = '', body = '') {
+function getEmptyMail(
+    from = loggedinUser.email,
+    to = '',
+    subject = '',
+    body = ''
+) {
     return { from, to, subject, body }
 }
 
-function getDefaultFilter() {
-    return { from: '', to: '', subject: '', body: '' }
+function getDefaultFilter(
+    from = '',
+    to = loggedinUser.email,
+    subject = '',
+    body = ''
+) {
+    return { from, to, subject, body }
 }
 
 function getFilterFromQueryString(searchParams) {
@@ -102,9 +117,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
         {
             id: 'OXeMG8wNskc2',
@@ -121,9 +135,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
         {
             id: 'OXeMG8wNskc3',
@@ -140,9 +153,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
         {
             id: 'OXeMG8wNskc4',
@@ -155,13 +167,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc5',
@@ -174,13 +185,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc6',
@@ -193,13 +203,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc7',
@@ -212,13 +221,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc8',
@@ -231,13 +239,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc9',
@@ -250,13 +257,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc10',
@@ -269,13 +275,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc11',
@@ -288,13 +293,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc12',
@@ -307,13 +311,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc13',
@@ -326,13 +329,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc14',
@@ -345,13 +347,12 @@ function _createMails() {
             isRead: false,
             sentAt: 1551133930594,
             removedAt: null,
-            from: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
-            fromName: `${utilService.makeLorem(1).trimEnd()}`,
+            from: `${loggedinUser.email}`,
+            fromName: `${loggedinUser.fullname}`,
             to: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
+            toName: `${utilService.makeLorem(1).trimEnd()}`,
         },
         {
             id: 'OXeMG8wNskc15',
@@ -368,9 +369,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
         {
             id: 'OXeMG8wNskc16',
@@ -387,9 +387,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
         {
             id: 'OXeMG8wNskc17',
@@ -406,9 +405,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
         {
             id: 'OXeMG8wNskc18',
@@ -425,9 +423,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
         {
             id: 'OXeMG8wNskc19',
@@ -444,9 +441,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
         {
             id: 'OXeMG8wNskc20',
@@ -463,9 +459,8 @@ function _createMails() {
                 .makeLorem(1)
                 .trimEnd()}.com`,
             fromName: `${utilService.makeLorem(1).trimEnd()}`,
-            to: `${utilService.makeLorem(1).trimEnd()}@${utilService
-                .makeLorem(1)
-                .trimEnd()}.com`,
+            to: `${loggedinUser.email}`,
+            toName: `${loggedinUser.fullname}`,
         },
     ]
 }
