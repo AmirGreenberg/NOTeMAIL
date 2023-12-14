@@ -1,7 +1,6 @@
 const { Link, useSearchParams } = ReactRouterDOM
 
 import { MailFilter } from '../cmps/MailFilter.jsx'
-import { MailList } from '../cmps/MailList.jsx'
 import { DataTable } from '../cmps/data-table/DataTable.jsx'
 import { mailService } from '../services/mail.service.js'
 import { busService } from '../../../services/event-bus.service.js'
@@ -29,16 +28,12 @@ export function MailIndex() {
     }
 
     function onRemoveMail(mailId) {
-        mailService
-            .remove(mailId)
-            .then(() => {
-                setMails((prevMails) => {
-                    return prevMails.filter((mail) => mail.id !== mailId)
-                })
-                busService.showSuccessMsg(
-                    `Mail successfully removed! ${mailId}`
-                )
+        mailService.remove(mailId).then(() => {
+            setMails((prevMails) => {
+                return prevMails.filter((mail) => mail.id !== mailId)
             })
+            busService.showSuccessMsg(`Mail successfully removed! ${mailId}`)
+        })
     }
 
     function onSetFilter(filterBy) {
@@ -54,7 +49,6 @@ export function MailIndex() {
                     Compose
                 </Link>
             </button>
-            {/* <MailList mails={mails} onRemoveMail={onRemoveMail} /> */}
             <DataTable mails={mails} onRemoveMail={onRemoveMail} />
         </section>
     )

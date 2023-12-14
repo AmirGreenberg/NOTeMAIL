@@ -9,28 +9,28 @@ export function DataTableRow({ mail, onRemoveMail }) {
     return (
         <Fragment>
             <tr>
-                <span className='fromName'
+                <td className='fromName'
                     onClick={() =>
                         setIsExpanded((prevIsExpanded) => !prevIsExpanded)
                     }
                 >
                     <LongTxt txt={mail.fromName} length={15} />
-                </span>
-                <span className='subject'
+                </td>
+                <td className='subject'
                     onClick={() =>
                         setIsExpanded((prevIsExpanded) => !prevIsExpanded)
                     }
                 >
                     <LongTxt txt={mail.subject} length={30} />
-                </span>
-                <span className='body'
+                </td>
+                <td className='body'
                     onClick={() =>
                         setIsExpanded((prevIsExpanded) => !prevIsExpanded)
                     }
                 >
                     <LongTxt txt={mail.body} length={50} />
-                </span>
-                <span className='buttons'>
+                </td>
+                <td className='buttons'>
                     <button>
                         <Link to={`/mail/${mail.id}`}>Details</Link>
                     </button>
@@ -40,11 +40,11 @@ export function DataTableRow({ mail, onRemoveMail }) {
                     <button onClick={() => onRemoveMail(mail.id)}>
                         Delete
                     </button>
-                </span>
+                </td>
             </tr>
             {isExpanded && (
                 <tr>
-                    <span colSpan={4}>
+                    <td colSpan={4}>
                         <h1>From: {mail.fromName}</h1>
                         <h2>Subject: {mail.subject}</h2>
                         <p>{mail.body}</p>
@@ -54,7 +54,7 @@ export function DataTableRow({ mail, onRemoveMail }) {
                         <button>
                             <Link to={`/mail/edit/${mail.id}`}>Edit</Link>
                         </button>
-                    </span>
+                    </td>
                 </tr>
             )}
         </Fragment>

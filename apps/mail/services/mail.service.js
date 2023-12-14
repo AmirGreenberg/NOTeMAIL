@@ -15,14 +15,28 @@ export const mailService = {
 }
 
 function query(filterBy) {
+    console.log("🚀  filterBy:", filterBy)
     return storageService.query(MAIL_KEY).then((mails) => {
-        if (filterBy.txt) {
-            const regExp = new RegExp(filterBy.txt, 'i')
+        if (filterBy.from) {
+            const regExp = new RegExp(filterBy.from, 'i')
             mails = mails.filter((mail) => regExp.test(mail.from))
         }
-        if (filterBy.body) {
-            mails = mails.filter((mail) => mail.body >= filterBy.body)
+
+        if (filterBy.to) {
+            const regExp = new RegExp(filterBy.to, 'i')
+            mails = mails.filter((mail) => regExp.test(mail.to))
         }
+
+        if (filterBy.subject) {
+            const regExp = new RegExp(filterBy.subject, 'i')
+            mails = mails.filter((mail) => regExp.test(mail.subject))
+        }
+
+        if (filterBy.body) {
+            const regExp = new RegExp(filterBy.body, 'i')
+            mails = mails.filter((mail) => regExp.test(mail.body))
+        }
+
         return mails
     })
 }
@@ -61,6 +75,13 @@ function getFilterFromQueryString(searchParams) {
         to,
         subject,
         body,
+    }
+}
+
+function _initMails() {
+    let mails = utilService.loadFromStorage(MAIL_KEY)
+    if (!mails || !mails.length) {
+        utilService.saveToStorage(MAIL_KEY, _createMails())
     }
 }
 
@@ -447,11 +468,4 @@ function _createMails() {
                 .trimEnd()}.com`,
         },
     ]
-}
-
-function _initMails() {
-    let mails = utilService.loadFromStorage(MAIL_KEY)
-    if (!mails || !mails.length) {
-        utilService.saveToStorage(MAIL_KEY, _createMails())
-    }
 }

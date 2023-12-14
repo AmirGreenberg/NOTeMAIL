@@ -34,10 +34,7 @@ export function EditMail() {
 
     function handleInputChange({ target }) {
         var field = target.name
-        console.log('🚀  field:', field)
         let value = target.value
-        console.log('🚀  value:', value)
-
         switch (target.type) {
             case 'number':
             case 'range':
