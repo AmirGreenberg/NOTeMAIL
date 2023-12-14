@@ -1,0 +1,25 @@
+.color-picker{
+    display: grid;
+    grid-auto-flow: column;
+    background-color: var(--clrBase);
+    padding: 1em;
+    gap: 1em;
+    width: min-content;
+    border-radius: 1em;
+    border: 2px solid var(--clrGrey2) ;
+}
+
+
+.color-circle{
+    box-sizing: border-box;
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    border: 2px solid var(--clrGrey2) ;
+}
+
+.color-circle:hover{
+    
+    border: 3px solid var(--clrGrey3) ;
+    
+}

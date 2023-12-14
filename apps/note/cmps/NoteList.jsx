@@ -1,7 +1,5 @@
 import { NotePreview } from "./NotePreview.jsx";
 
-const { Link } = ReactRouterDOM
-
 export function NoteList({ notes, onRemoveNote, onTodoInputChange, onDoneToggle, onRemoveTodo, onPinNote, onContentChange}) {
     if (!notes) return <section>Loading...</section>
     return (
@@ -11,10 +9,15 @@ export function NoteList({ notes, onRemoveNote, onTodoInputChange, onDoneToggle,
                     <div className="note"
                         style={{ backgroundColor: note.style.backgroundColor }}
                     >
-                        <NotePreview note={note} onTodoInputChange={onTodoInputChange} onDoneToggle={onDoneToggle} onRemoveTodo={onRemoveTodo} onPinNote={onPinNote} onContentChange={onContentChange}/>
-                        <section>
-                            <button onClick={() => onRemoveNote(note.id)}>Remove Note</button>
-                        </section>
+                        
+                    <NotePreview 
+                    note={note} 
+                    onRemoveNote={onRemoveNote} 
+                    onTodoInputChange={onTodoInputChange} 
+                    onDoneToggle={onDoneToggle} 
+                    onRemoveTodo={onRemoveTodo} 
+                    onPinNote={onPinNote} 
+                    onContentChange={onContentChange}/>
                     </div>
                 </li>
             )}

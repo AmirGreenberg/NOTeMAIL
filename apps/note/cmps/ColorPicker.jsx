@@ -1,4 +1,4 @@
-export function ColorPicker() {
+export function ColorPicker({noteId,SetBgColor,toggleClrPicker}) {
 
 
     const colors = [
@@ -12,9 +12,9 @@ export function ColorPicker() {
 
 function onColorSelect(selectedColor){
 
+    SetBgColor(selectedColor,noteId)
+    toggleClrPicker(noteId)
 }
-
-
 
     return (
         <div className="color-picker">

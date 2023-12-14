@@ -9,7 +9,7 @@
     
     /*Greys and black */
     --clrGrey1: #cfd8dc; 
-    --clrGrey2: #bdc1c6; 
+    --clrGrey2: #acafb3; 
     --clrGrey3: #595959; 
     --clrGrey4: #3c4043; 
     --clrGrey5: #202124; 
@@ -22,12 +22,12 @@
     
     
     /*notes colors pallet */
-    --clrSecondery1: #feefc3; 
-    --clrSecondery2: #ffccbc; 
-    --clrSecondery3: #4285f4; 
-    --clrSecondery4: #9fa8da; 
-    --clrSecondery5: #b2dfdb; 
-    --clrSecondery6: #d1c4e9; 
+    --clrSecondery1: #FAAFA8; 
+    --clrSecondery2: #F39F76; 
+    --clrSecondery3: #FFF8B8; 
+    --clrSecondery4: #B4DDD3; 
+    --clrSecondery5: #AECCDC; 
+    --clrSecondery6: #D3BFDB; 
 
  
 }

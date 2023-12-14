@@ -23,11 +23,13 @@ export function NoteIndex() {
     }
 
     function onRemoveNote(noteId) {
+     
         noteService.remove(noteId)
             .then(() => {
-                setNotes(prevNotes => {
-                    return prevNotes.filter(note => note.id !== noteId)
-                })
+                // setNotes(prevNotes => {
+                //     return prevNotes.filter(note => note.id !== noteId)
+                // })
+                loadNotes()
                 showSuccessMsg(`Note successfully removed!`)
             })
             .catch(err => {
@@ -99,14 +101,28 @@ export function NoteIndex() {
                 <section>
                     <hr />
                     <h2>Pinned</h2>
-                    < NoteList notes={notes.filter(note => note.isPinned)} onRemoveNote={onRemoveNote} onTodoInputChange={onTodoInputChange} onDoneToggle={onDoneToggle} onRemoveTodo={onRemoveTodo} onPinNote={onPinNote}  onContentChange={onContentChange} />
+                    <NoteList 
+                    notes={notes.filter(note => note.isPinned)} 
+                    onRemoveNote={onRemoveNote} 
+                    onTodoInputChange={onTodoInputChange} 
+                    onDoneToggle={onDoneToggle} 
+                    onRemoveTodo={onRemoveTodo} 
+                    onPinNote={onPinNote}  
+                    onContentChange={onContentChange} />
                 </section>
             )}
             {notes.filter(note => !note.isPinned).length && (
                 <section>
                     <hr />
                     <h2>Others</h2>
-                    <NoteList notes={notes.filter(note => !note.isPinned)} onRemoveNote={onRemoveNote} onTodoInputChange={onTodoInputChange} onDoneToggle={onDoneToggle} onRemoveTodo={onRemoveTodo} onPinNote={onPinNote}  onContentChange={onContentChange} />
+                    <NoteList 
+                    notes={notes.filter(note => !note.isPinned)} 
+                    onRemoveNote={onRemoveNote} 
+                    onTodoInputChange={onTodoInputChange} 
+                    onDoneToggle={onDoneToggle} 
+                    onRemoveTodo={onRemoveTodo} 
+                    onPinNote={onPinNote}  
+                    onContentChange={onContentChange} />
                 </section>
 
             )}
