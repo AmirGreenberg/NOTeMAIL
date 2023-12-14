@@ -6,9 +6,7 @@ import { showSuccessMsg } from '../../../services/event-bus.service.js'
 const { useState, useEffect } = React
 
 export function EditMail() {
-    const [mailToEdit, setMailToEdit] = useState(
-        mailService.getEmptyMail()
-    )
+    const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
     const navigate = useNavigate()
     const params = useParams()
 
@@ -29,7 +27,7 @@ export function EditMail() {
     }
 
     function onBack() {
-        navigate('/mail/inbox')
+        navigate('/mail/')
     }
 
     function handleInputChange({ target }) {
@@ -54,7 +52,6 @@ export function EditMail() {
                 sentAt: Date.now(),
                 removedAt: null,
                 fromName: 'test',
-
             }
         })
     }
@@ -93,7 +90,6 @@ export function EditMail() {
             id: 'body',
             value: body,
         },
-       
     ]
 
     return (

@@ -38,7 +38,7 @@ export function Sent() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index main-layout full">
-            <nav></nav>
+            <Outlet />
 
             <DataTableSent mails={mails} onRemoveMail={onRemoveMail} />
         </section>

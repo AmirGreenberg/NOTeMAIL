@@ -1,7 +1,7 @@
 const { Fragment, useState } = React
 const { Link } = ReactRouterDOM
 
-export function DataTableRow({ mail, onRemoveMail }) {
+export function DataTableRow({ mail, onRemoveMail, onStarMail }) {
 
     return (
         <Fragment>
@@ -12,6 +12,9 @@ export function DataTableRow({ mail, onRemoveMail }) {
                 <td className='buttons'>
                     <button>
                         <Link to={`/mail/edit/${mail.id}`}>Edit</Link>
+                    </button>
+                    <button onClick={() => onStarMail(mail)}>
+                        Star
                     </button>
                     <button onClick={() => onRemoveMail(mail.id)}>
                         Delete
