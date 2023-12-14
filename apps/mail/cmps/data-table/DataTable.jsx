@@ -1,6 +1,6 @@
 import { DataTableRow } from './DataTableRow.jsx'
 
-export function DataTable({ mails, onRemoveMail }) {
+export function DataTable({ mails, onRemoveMail, onStarMail }) {
     return (
         <table border="1">
             <tbody>
@@ -9,6 +9,7 @@ export function DataTable({ mails, onRemoveMail }) {
                         key={mail.id}
                         mail={mail}
                         onRemoveMail={onRemoveMail}
+                        onStarMail={onStarMail}
                     />
                 ))}
             </tbody>

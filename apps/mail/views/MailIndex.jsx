@@ -2,6 +2,8 @@ const { Outlet, Link, useSearchParams } = ReactRouterDOM
 
 import { MailFilter } from '../cmps/MailFilter.jsx'
 import { DataTable } from '../cmps/data-table/DataTable.jsx'
+import { DataTableSent } from '../cmps/data-table/DataTableSent.jsx'
+
 import { mailService } from '../services/mail.service.js'
 import { busService } from '../../../services/event-bus.service.js'
 
@@ -10,6 +12,8 @@ const { useState, useEffect } = React
 export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
+    const [mailToStar, setMailToStar] = useState(mailService.getEmptyMail())
+
     const [filterBy, setFilterBy] = useState(
         mailService.getFilterFromQueryString(searchParams)
     )
@@ -33,6 +37,21 @@ export function MailIndex() {
         })
     }
 
+    function onStarMail(mailToStar) {
+        setMailToStar((prevMailProps) => {
+            return {
+                ...prevMailProps,
+                isStar: true,
+            }
+        })
+        mailService.save(mailToStar).then(() => {
+            setMails((prevMails) => {
+                return prevMails.filter((mail) => mail.id !== mailToStar)
+            })
+            busService.showSuccessMsg(`Mail successfully starred! ${mailToStar}`)
+        })
+    }
+
     function onSetFilter(filterBy) {
         setFilterBy((prevFilter) => ({ ...prevFilter, ...filterBy }))
     }
@@ -47,13 +66,33 @@ export function MailIndex() {
                 </Link>
             </button>
             <nav>
-                <Link to="/mail/inbox"><button>Inbox</button></Link>
-                <Link to="/mail/sent"><button>Sent</button></Link>
-                {/* <Link to="/mail/trash">trash</Link> */}
-                {/* <Link to="/mail/draft">draft</Link> */}
-            </nav>
-            <Outlet />
+                <button onClick={() => {
+                     setFilterBy(mailService.getInboxFilter())
+                     return <DataTable mails={mails} onRemoveMail={onRemoveMail} onStarMail ={onStarMail} />
+                }
+            }>Inbox</button>
+                
+                <button onClick={() => {
+                     setFilterBy(mailService.getSentFilter())
+                     return <DataTable mails={mails} onRemoveMail={onRemoveMail} onStarMail ={onStarMail} />
+                }
+            }>Sent</button>
+                
+                <button onClick={() => {
+                     setFilterBy(mailService.getTrashFilter())
+                     return <DataTable mails={mails} onRemoveMail={onRemoveMail} onStarMail ={onStarMail} />
+                }
+            }>Trash</button>
+                
+                <button onClick={() => {
+                     setFilterBy(mailService.getStarFilter())
+                     return <DataTable mails={mails} onRemoveMail={onRemoveMail} onStarMail ={onStarMail} />
+                }
+            }>Starred</button>
 
+            </nav>
+            <DataTable mails={mails} onRemoveMail={onRemoveMail} onStarMail ={onStarMail} />
         </section>
     )
 }
+

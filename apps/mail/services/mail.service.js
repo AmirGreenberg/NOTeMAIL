@@ -19,6 +19,8 @@ export const mailService = {
     getFilterFromQueryString,
     getInboxFilter,
     getSentFilter,
+    getTrashFilter,
+    getStarFilter,
 }
 
 function query(filterBy) {
@@ -42,6 +44,14 @@ function query(filterBy) {
         if (filterBy.body) {
             const regExp = new RegExp(filterBy.body, 'i')
             mails = mails.filter((mail) => regExp.test(mail.body))
+        }
+
+        if (filterBy.isTrash) {
+            mails = mails.filter((mail) => mail.isTrash === filterBy.isTrash)
+        }
+        
+        if (filterBy.isStar) {
+            mails = mails.filter((mail) => mail.isStar === filterBy.isStar)
         }
 
         return mails
@@ -68,48 +78,83 @@ function getEmptyMail(
     from = loggedinUser.email,
     to = '',
     subject = '',
-    body = ''
+    body = '',
+    isTrash = '',
+    isStar = ''
 ) {
-    return { from, to, subject, body }
+    return { from, to, subject, body, isTrash, isStar }
 }
 
 function getDefaultFilter(
     from = '',
     to = loggedinUser.email,
     subject = '',
-    body = ''
+    body = '',
+    isTrash = '',
+    isStar = ''
 ) {
-    return { from, to, subject, body }
+    return { from, to, subject, body, isTrash, isStar }
 }
 
 function getInboxFilter(
     from = '',
     to = loggedinUser.email,
     subject = '',
-    body = ''
+    body = '',
+    isTrash = '',
+    isStar = ''
 ) {
-    return { from, to, subject, body }
+    return { from, to, subject, body, isTrash, isStar }
 }
 
 function getSentFilter(
     from = loggedinUser.email,
     to = '',
     subject = '',
-    body = ''
+    body = '',
+    isTrash = '',
+    isStar = ''
 ) {
-    return { from, to, subject, body }
+    return { from, to, subject, body, isTrash, isStar }
+}
+
+function getTrashFilter(
+    from = '',
+    to = '',
+    subject = '',
+    body = '',
+    isTrash = true,
+    isStar = ''
+) {
+    return { from, to, subject, body, isTrash, isStar }
+}
+
+function getStarFilter(
+    from = '',
+    to = '',
+    subject = '',
+    body = '',
+    isTrash = '',
+    isStar = true
+) {
+    return { from, to, subject, body, isTrash, isStar }
 }
 
 function getFilterFromQueryString(searchParams) {
     const from = searchParams.get('from') || ''
-    const to = searchParams.get('to') || ''
+    let to = searchParams.get('to') || ''
     const subject = searchParams.get('subject') || ''
     const body = searchParams.get('body') || ''
+    const isTrash = searchParams.get('isTrash') || false
+    const isStar = searchParams.get('isStar') || false
+    if (!from || !subject || !body || !isTrash || !isStar) to = loggedinUser.email
     return {
         from,
         to,
         subject,
         body,
+        isTrash,
+        isStar,
     }
 }
 
@@ -132,7 +177,9 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
-            removedAt: null,
+            isTrash: true,
+            isStar: false,
+            removedAt: 1551133939000,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
@@ -150,7 +197,9 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
-            removedAt: null,
+            isTrash: true,
+            isStar: false,
+            removedAt: 1551133950000,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
                 .trimEnd()}.com`,
@@ -168,6 +217,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: true,
             removedAt: null,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
@@ -186,6 +237,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: true,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -204,6 +257,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: true,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -222,6 +277,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -240,6 +297,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -258,6 +317,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -276,6 +337,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -294,6 +357,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -312,6 +377,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -330,6 +397,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -348,6 +417,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -366,6 +437,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${loggedinUser.email}`,
             fromName: `${loggedinUser.fullname}`,
@@ -384,6 +457,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
@@ -402,6 +477,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
@@ -420,6 +497,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
@@ -438,6 +517,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
@@ -456,6 +537,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
@@ -474,6 +557,8 @@ function _createMails() {
             ),
             isRead: false,
             sentAt: 1551133930594,
+            isTrash: false,
+            isStar: false,
             removedAt: null,
             from: `${utilService.makeLorem(1).trimEnd()}@${utilService
                 .makeLorem(1)
