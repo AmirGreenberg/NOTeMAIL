@@ -38,14 +38,7 @@ export function Sent() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index main-layout full">
-           
-            <nav>
-                {/* <Link to="/mail/inbox">Inbox</Link>
-                <Link to="/mail/sent">Sent</Link> */}
-                {/* <Link to="/mail/trash">trash</Link> */}
-                {/* <Link to="/mail/draft">draft</Link> */}
-            </nav>
-            <Outlet />
+            <nav></nav>
 
             <DataTableSent mails={mails} onRemoveMail={onRemoveMail} />
         </section>
