@@ -3,7 +3,7 @@ const { useState} = React
 
 
 
-export function EditorPanel({ noteId, onRemoveNote,onSetBgColor }) {
+export function EditorPanel({ noteId, onRemoveNote,onSetBgColor,onDuplicate, onTypeChange }) {
     
     const [isColorPicker, setIsColorPicker] = useState(false)
     
@@ -16,10 +16,10 @@ export function EditorPanel({ noteId, onRemoveNote,onSetBgColor }) {
         <section className="editor-panel">
             {isColorPicker &&  <ColorPicker noteId={noteId} toggleClrPicker={toggleClrPicker} onSetBgColor={onSetBgColor}/>}
             <button onClick={() => toggleClrPicker()}>color</button>
-            <button>duplicate</button>
-            <button>to image</button>
-            <button>to txt</button>
-            <button>to list</button>
+            <button onClick={() => onDuplicate(noteId)}>duplicate</button>
+            <button onClick={() => onTypeChange('NoteImg',noteId)}>to image</button>
+            <button onClick={() => onTypeChange('NoteTxt',noteId)}>to txt</button>
+            <button onClick={() => onTypeChange('NoteTodos',noteId)}>to list</button>
             <button onClick={() => onRemoveNote(noteId)}>Remove Note</button>
         </section>
 

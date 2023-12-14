@@ -23,12 +23,8 @@ export function NoteIndex() {
     }
 
     function onRemoveNote(noteId) {
-     
         noteService.remove(noteId)
             .then(() => {
-                // setNotes(prevNotes => {
-                //     return prevNotes.filter(note => note.id !== noteId)
-                // })
                 loadNotes()
                 showSuccessMsg(`Note successfully removed!`)
             })
@@ -41,7 +37,7 @@ export function NoteIndex() {
     function onSaveNote(newNote) {
         noteService.save(newNote)
             .then(newNote => {
-                setNotes((prevNotes) => [...prevNotes, newNote])
+                setNotes((prevNotes) => [newNote, ...prevNotes])
             })
             .catch(err => console.log('err:', err))
     }
@@ -49,6 +45,7 @@ export function NoteIndex() {
     function onPinNote(noteId) {
         const noteIdx = notes.findIndex(note => note.id === noteId)
         notes[noteIdx].isPinned = !notes[noteIdx].isPinned
+
         _updateNote(noteIdx)
     }
 
@@ -73,10 +70,10 @@ export function NoteIndex() {
         const noteIdx = notes.findIndex(note => note.id === noteId)
         const newTodo = { id: utilService.makeId(), txt: newTodoTxt, isDone: false }
         notes[noteIdx].info.todos.push(newTodo)
-        noteService.save(notes[noteIdx])
-            .then(() => loadNotes())
+
+        _updateNote(noteIdx)
     }
-    
+
     function onContentChange(ev, noteId) {
         const field = ev.target.id
         const value = ev.target.innerText
@@ -86,16 +83,32 @@ export function NoteIndex() {
         _updateNote(noteIdx)
     }
 
-    function onSetBgColor(selectedColor,noteId){
-        console.log('noteId', noteId)
+    function onSetBgColor(selectedColor, noteId) {
         const noteIdx = notes.findIndex(note => note.id === noteId)
         notes[noteIdx].style.backgroundColor = selectedColor
 
         _updateNote(noteIdx)
     }
+
+    function onDuplicate(noteId) {
+        const noteIdx = notes.findIndex(note => note.id === noteId)
+        const duplicateNote = { ...notes[noteIdx] }
+        duplicateNote.id = ''
+
+        onSaveNote(duplicateNote)
+    }
+
+    function onTypeChange(type, noteId) {
+        const noteIdx = notes.findIndex(note => note.id === noteId)
+        notes[noteIdx].type = type
+        
+        _updateNote(noteIdx)
+    }
+
     function _updateNote(noteIdx) {
         noteService.save(notes[noteIdx])
             .then(() => loadNotes())
+            .catch(err => console.error(err))
     }
 
     if (!notes) return <div>Loading...</div>
@@ -103,35 +116,40 @@ export function NoteIndex() {
 
         <section className="note-index">
 
-            <NoteAdd onSaveNote={onSaveNote}/>
+            <NoteAdd onSaveNote={onSaveNote} />
             {notes.filter(note => note.isPinned).length && (
                 <section>
                     <hr />
                     <h2>Pinned</h2>
-                    <NoteList 
-                    notes={notes.filter(note => note.isPinned)} 
-                    onRemoveNote={onRemoveNote} 
-                    onTodoInputChange={onTodoInputChange} 
-                    onDoneToggle={onDoneToggle} 
-                    onRemoveTodo={onRemoveTodo} 
-                    onPinNote={onPinNote}  
-                    onContentChange={onContentChange}
-                    onSetBgColor={onSetBgColor} />
+                    <NoteList
+                        notes={notes.filter(note => note.isPinned)}
+                        onRemoveNote={onRemoveNote}
+                        onTodoInputChange={onTodoInputChange}
+                        onDoneToggle={onDoneToggle}
+                        onRemoveTodo={onRemoveTodo}
+                        onPinNote={onPinNote}
+                        onContentChange={onContentChange}
+                        onSetBgColor={onSetBgColor}
+                        onDuplicate={onDuplicate}
+                        onTypeChange={onTypeChange} />
                 </section>
             )}
             {notes.filter(note => !note.isPinned).length && (
                 <section>
                     <hr />
                     <h2>Others</h2>
-                    <NoteList 
-                    notes={notes.filter(note => !note.isPinned)} 
-                    onRemoveNote={onRemoveNote} 
-                    onTodoInputChange={onTodoInputChange} 
-                    onDoneToggle={onDoneToggle} 
-                    onRemoveTodo={onRemoveTodo} 
-                    onPinNote={onPinNote}  
-                    onContentChange={onContentChange}
-                    onSetBgColor={onSetBgColor} />
+                    <NoteList
+                        notes={notes.filter(note => !note.isPinned)}
+                        onRemoveNote={onRemoveNote}
+                        onTodoInputChange={onTodoInputChange}
+                        onDoneToggle={onDoneToggle}
+                        onRemoveTodo={onRemoveTodo}
+                        onPinNote={onPinNote}
+                        onContentChange={onContentChange}
+                        onSetBgColor={onSetBgColor}
+                        onDuplicate={onDuplicate}
+                        onTypeChange={onTypeChange}
+                    />
                 </section>
 
             )}

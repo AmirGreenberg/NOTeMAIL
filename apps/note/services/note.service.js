@@ -40,7 +40,7 @@ function save(note) {
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {
-        return storageService.post(NOTE_KEY, note)
+        return storageService.postUnshift(NOTE_KEY, note)
     }
 }
 
@@ -50,17 +50,17 @@ function getDefaultFilter() {
 
 function getEmptyNote() {
     return {
-        id:'',
-        createdAt:'',
+        id: '',
+        createdAt: '',
         type: 'NoteTxt',
         isPinned: false,
-        
+
         style: {
             backgroundColor: 'var(--clrBase)'
         },
         info: {
             txt: '',
-            title:''
+            title: ''
         }
 
     }
@@ -81,7 +81,12 @@ function _createNotes() {
                 },
                 info: {
                     title: 'Bobi and Me',
-                    txt: utilService.makeLorem(4)
+                    txt: utilService.makeLorem(4),
+                    url: '../../assets/img/OMG.jpg',
+                    todos: [
+                        { id: utilService.makeId(), txt: 'Driving license', isDone: false },
+                        { id: utilService.makeId(), txt: 'Coding power', isDone: true },
+                    ]
                 }
             },
             {
@@ -93,9 +98,14 @@ function _createNotes() {
                     backgroundColor: `var(--clrSecondery1)`
                 },
                 info: {
+                    title: 'Bobi and Me',
+                    txt: utilService.makeLorem(4),
                     url: '../../assets/img/OMG.jpg',
-                    title: 'Bobi and Me'
-                }
+                    todos: [
+                        { id: utilService.makeId(), txt: 'Driving license', isDone: false },
+                        { id: utilService.makeId(), txt: 'Coding power', isDone: true },
+                    ]
+                },
             },
             {
                 id: utilService.makeId(5),
@@ -106,10 +116,12 @@ function _createNotes() {
                     backgroundColor: `var(--clrSecondery3)`
                 },
                 info: {
-                    title: 'Get my stuff together',
+                    title: 'Bobi and Me',
+                    txt: utilService.makeLorem(4),
+                    url: '../../assets/img/OMG.jpg',
                     todos: [
-                        { id: utilService.makeId(), txt: 'Driving license', isDone:false },
-                        { id: utilService.makeId(), txt: 'Coding power', isDone:true },
+                        { id: utilService.makeId(), txt: 'Driving license', isDone: false },
+                        { id: utilService.makeId(), txt: 'Coding power', isDone: true },
                     ]
                 }
             },
