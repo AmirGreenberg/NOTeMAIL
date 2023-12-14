@@ -1,9 +1,6 @@
-
 const { useState, useEffect } = React
 
-
 export function MailFilter({ filterBy, onSetFilter }) {
-
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
     useEffect(() => {
@@ -17,35 +14,67 @@ export function MailFilter({ filterBy, onSetFilter }) {
 
     function handleChange({ target }) {
         const field = target.name
+        console.log('🚀  field:', field)
         let value = target.value
+        console.log('🚀  value:', value)
 
         switch (target.type) {
             case 'number':
             case 'range':
                 value = +value
-                break;
+                break
 
             case 'checkbox':
                 value = target.checked
                 break
 
             default:
-                break;
+                break
         }
 
-        setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-    const { txt, body } = filterByToEdit
+    const { from, to, subject, body } = filterByToEdit
     return (
         <section className="mail-filter main-layout full">
             <h2>Filter Our Mails</h2>
-            <form onSubmit={onSetFilterBy} >
-                <label htmlFor="txt">From: </label>
-                <input value={txt} onChange={handleChange} type="text" id="txt" name="txt" />
+            <form onSubmit={onSetFilterBy}>
+                <label htmlFor="from">From: </label>
+                <input
+                    value={from}
+                    onChange={handleChange}
+                    type="text"
+                    id="from"
+                    name="from"
+                />
 
-                <label htmlFor="body">body: </label>
-                <input value={body || ''} onChange={handleChange} type="number" id="body" name="body" />
+                <label htmlFor="to">To: </label>
+                <input
+                    value={to}
+                    onChange={handleChange}
+                    type="text"
+                    id="to"
+                    name="to"
+                />
+
+                <label htmlFor="subject">Subject: </label>
+                <input
+                    value={subject}
+                    onChange={handleChange}
+                    type="text"
+                    id="subject"
+                    name="subject"
+                />
+
+                <label htmlFor="body">Body: </label>
+                <input
+                    value={body}
+                    onChange={handleChange}
+                    type="text"
+                    id="body"
+                    name="body"
+                />
 
                 <button>Submit</button>
             </form>
