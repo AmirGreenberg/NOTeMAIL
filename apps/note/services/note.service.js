@@ -75,7 +75,7 @@ function _createNotes() {
                 id: utilService.makeId(5),
                 createdAt: Date.now(),
                 type: 'NoteTxt',
-                isPinned: Math.random() > 0.7,
+                isPinned: false,
                 style: {
                     backgroundColor: `var(--clrSecondery2)`
                 },
@@ -88,7 +88,7 @@ function _createNotes() {
                 id: utilService.makeId(5),
                 createdAt: Date.now(),
                 type: 'NoteImg',
-                isPinned: Math.random() > 0.7,
+                isPinned: true,
                 style: {
                     backgroundColor: `var(--clrSecondery1)`
                 },
@@ -101,8 +101,7 @@ function _createNotes() {
                 id: utilService.makeId(5),
                 createdAt: Date.now(),
                 type: 'NoteTodos',
-                
-                isPinned: Math.random() > 0.7,
+                isPinned: true,
                 style: {
                     backgroundColor: `var(--clrSecondery3)`
                 },

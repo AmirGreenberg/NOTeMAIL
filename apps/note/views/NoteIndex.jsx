@@ -53,30 +53,37 @@ export function NoteIndex() {
             .then()
     }
 
+    function onPinNote(noteId) {
+        const noteIdx = notes.findIndex(note => note.id === noteId)
+        notes[noteIdx].isPinned = !notes[noteIdx].isPinned
+        noteService.save(notes[noteIdx])
+            .then(() => loadNotes())
+    }
+
     function onInputChange(newTodoTxt, noteId) {
         const noteIdx = notes.findIndex(note => note.id === noteId)
-        const newTodo = {id: utilService.makeId(), txt:newTodoTxt, isDone:false }
+        const newTodo = { id: utilService.makeId(), txt: newTodoTxt, isDone: false }
         notes[noteIdx].info.todos.push(newTodo)
-       
+
         noteService.save(notes[noteIdx])
-        .then(() => loadNotes())
+            .then(() => loadNotes())
 
     }
 
-    function onDoneToggle(noteId,todoId) {
-        const noteIdx = notes.findIndex(note => note.id === noteId)     
-        const todoIdx =  notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
+    function onDoneToggle(noteId, todoId) {
+        const noteIdx = notes.findIndex(note => note.id === noteId)
+        const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
         notes[noteIdx].info.todos[todoIdx].isDone = !notes[noteIdx].info.todos[todoIdx].isDone
 
         noteService.save(notes[noteIdx])
-        .then(() => loadNotes())
+            .then(() => loadNotes())
     }
 
-    function onRemoveTodo(noteId,todoId) {
+    function onRemoveTodo(noteId, todoId) {
         const noteIdx = notes.findIndex(note => note.id === noteId)
-        const todoIdx =  notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
-        notes[noteIdx].info.todos.splice(todoIdx,1)
-        
+        const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
+        notes[noteIdx].info.todos.splice(todoIdx, 1)
+
         noteService.save(notes[noteIdx])
             .then(() => loadNotes())
     }
@@ -88,8 +95,21 @@ export function NoteIndex() {
         <section className="note-index">
 
             <NoteAdd onSaveNote={onSaveNote} />
+            {notes.filter(note => note.isPinned).length && (
+                <section>
+                    <hr />
+                    <h2>Pinned</h2>
+                    < NoteList notes={notes.filter(note => note.isPinned)} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote} onInputChange={onInputChange} onDoneToggle={onDoneToggle} onRemoveTodo={onRemoveTodo} onPinNote={onPinNote} />
+                </section>
+            )}
+            {notes.filter(note => !note.isPinned).length && (
+                <section>
+                    <hr />
+                    <h2>Others</h2>
+                    <NoteList notes={notes.filter(note => !note.isPinned)} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote} onInputChange={onInputChange} onDoneToggle={onDoneToggle} onRemoveTodo={onRemoveTodo} onPinNote={onPinNote} />
+                </section>
 
-            <NoteList notes={notes} onRemoveNote={onRemoveNote} onUpdateNote={onUpdateNote} onInputChange={onInputChange} onDoneToggle={onDoneToggle} onRemoveTodo={onRemoveTodo} />
+            )}
 
         </section>
 

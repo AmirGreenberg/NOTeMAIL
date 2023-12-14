@@ -2,7 +2,7 @@ import { NotePreview } from "./NotePreview.jsx";
 
 const { Link } = ReactRouterDOM
 
-export function NoteList({ notes, onRemoveNote, onUpdateNote, onInputChange, onDoneToggle, onRemoveTodo }) {
+export function NoteList({ notes, onRemoveNote, onUpdateNote, onInputChange, onDoneToggle, onRemoveTodo, onPinNote}) {
     if (!notes) return <section>Loading...</section>
     return (
         <ul className="note-list">
@@ -11,7 +11,7 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote, onInputChange, onD
                     <div className="note"
                         style={{ backgroundColor: note.style.backgroundColor }}
                     >
-                        <NotePreview note={note} onUpdateNote={onUpdateNote} onInputChange={onInputChange} onDoneToggle={onDoneToggle} onRemoveTodo={onRemoveTodo} />
+                        <NotePreview note={note} onUpdateNote={onUpdateNote} onInputChange={onInputChange} onDoneToggle={onDoneToggle} onRemoveTodo={onRemoveTodo} onPinNote={onPinNote} />
                         <section>
                             <button onClick={() => onRemoveNote(note.id)}>Remove Note</button>
                         </section>

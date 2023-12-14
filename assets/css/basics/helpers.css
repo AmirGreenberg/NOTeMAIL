@@ -29,3 +29,24 @@
     list-style-type: none;
     
 }
+
+
+/*BUTTONS HELPERS*/
+
+.clean-btn {
+    outline: none;
+    border: none;
+    background: none;
+    font-family: unset;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+
+.btn:hover {
+    filter: brightness(75%);
+}
+
+
