@@ -29,7 +29,7 @@ export function EditMail() {
     }
 
     function onBack() {
-        navigate('/mail')
+        navigate('/mail/inbox')
     }
 
     function handleInputChange({ target }) {
