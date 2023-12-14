@@ -7,12 +7,10 @@ import { busService } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 
-export function MailIndex() {
+export function Inbox() {
     const [mails, setMails] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
-    const [filterBy, setFilterBy] = useState(
-        mailService.getFilterFromQueryString(searchParams)
-    )
+    const [filterBy, setFilterBy] = useState(mailService.getInboxFilter())
 
     useEffect(() => {
         loadMails()
@@ -40,20 +38,14 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index main-layout full">
-            {/* <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
-            <button>
-                <Link className="add-mail-btn" to="/mail/edit">
-                    Compose
-                </Link>
-            </button>
             <nav>
-                <Link to="/mail/inbox"><button>Inbox</button></Link>
-                <Link to="/mail/sent"><button>Sent</button></Link>
+                {/* <Link to="/mail/inbox">Inbox</Link>
+                <Link to="/mail/sent">Sent</Link> */}
                 {/* <Link to="/mail/trash">trash</Link> */}
                 {/* <Link to="/mail/draft">draft</Link> */}
             </nav>
             <Outlet />
-
+            <DataTable mails={mails} onRemoveMail={onRemoveMail} />
         </section>
     )
 }

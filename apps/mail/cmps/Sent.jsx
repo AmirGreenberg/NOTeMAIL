@@ -1,18 +1,16 @@
 const { Outlet, Link, useSearchParams } = ReactRouterDOM
 
-import { MailFilter } from '../cmps/MailFilter.jsx'
-import { DataTable } from '../cmps/data-table/DataTable.jsx'
+import { MailFilter } from './MailFilter.jsx'
+import { DataTableSent } from './data-table/DataTableSent.jsx'
 import { mailService } from '../services/mail.service.js'
 import { busService } from '../../../services/event-bus.service.js'
 
 const { useState, useEffect } = React
 
-export function MailIndex() {
+export function Sent() {
     const [mails, setMails] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
-    const [filterBy, setFilterBy] = useState(
-        mailService.getFilterFromQueryString(searchParams)
-    )
+    const [filterBy, setFilterBy] = useState(mailService.getSentFilter())
 
     useEffect(() => {
         loadMails()
@@ -40,20 +38,16 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index main-layout full">
-            {/* <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
-            <button>
-                <Link className="add-mail-btn" to="/mail/edit">
-                    Compose
-                </Link>
-            </button>
+           
             <nav>
-                <Link to="/mail/inbox"><button>Inbox</button></Link>
-                <Link to="/mail/sent"><button>Sent</button></Link>
+                {/* <Link to="/mail/inbox">Inbox</Link>
+                <Link to="/mail/sent">Sent</Link> */}
                 {/* <Link to="/mail/trash">trash</Link> */}
                 {/* <Link to="/mail/draft">draft</Link> */}
             </nav>
             <Outlet />
 
+            <DataTableSent mails={mails} onRemoveMail={onRemoveMail} />
         </section>
     )
 }

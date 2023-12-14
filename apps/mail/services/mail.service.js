@@ -17,6 +17,8 @@ export const mailService = {
     getEmptyMail,
     getDefaultFilter,
     getFilterFromQueryString,
+    getInboxFilter,
+    getSentFilter,
 }
 
 function query(filterBy) {
@@ -74,6 +76,24 @@ function getEmptyMail(
 function getDefaultFilter(
     from = '',
     to = loggedinUser.email,
+    subject = '',
+    body = ''
+) {
+    return { from, to, subject, body }
+}
+
+function getInboxFilter(
+    from = '',
+    to = loggedinUser.email,
+    subject = '',
+    body = ''
+) {
+    return { from, to, subject, body }
+}
+
+function getSentFilter(
+    from = loggedinUser.email,
+    to = '',
     subject = '',
     body = ''
 ) {
