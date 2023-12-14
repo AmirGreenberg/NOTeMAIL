@@ -93,7 +93,7 @@ function _createNotes() {
                     backgroundColor: `var(--clrSecondery1)`
                 },
                 info: {
-                    url: 'http://some-img/me',
+                    url: '../../assets/img/OMG.jpg',
                     title: 'Bobi and Me'
                 }
             },

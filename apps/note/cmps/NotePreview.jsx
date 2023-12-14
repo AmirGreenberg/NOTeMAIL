@@ -1,4 +1,5 @@
 import { noteService } from "../services/note.service.js"
+import { DynamicCmp } from "./DynamicCmp.jsx"
 
 const { useState } = React
 
@@ -17,8 +18,10 @@ export function NotePreview({ note, onUpdateNote }) {
 
     return (
         <article className="note-preview">
-            <h2 id="title" contentEditable="true" style={{ outline: "none" }} onBlur={onContentChange}>{note.info.title}</h2>
-            <h4 id="txt" contentEditable="true" style={{ outline: "none" }} onBlur={onContentChange}>{note.info.txt}</h4>
+           
+           <DynamicCmp cmpType={note.type} info={note.info} onContentChange={onContentChange} />
+            {/* <h2 id="title" contentEditable="true" style={{ outline: "none" }} onBlur={onContentChange}>{note.info.title}</h2>
+            <h4 id="txt" contentEditable="true" style={{ outline: "none" }} onBlur={onContentChange}>{note.info.txt}</h4> */}
 
         </article>
     )

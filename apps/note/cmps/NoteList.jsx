@@ -22,11 +22,3 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote }) {
     )
 }
 
-function DynamicCmp(props) {
-    switch (props.cmpType) {
-        case 'color':
-            return <ColorInput {...props} />
-        case 'fontSize':
-            return <FontsizeInput {...props} />
-    }
-}

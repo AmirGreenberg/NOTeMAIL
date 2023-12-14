@@ -5,10 +5,7 @@ const { useState, useEffect } = React
 export function NoteAdd({ onSaveNote }) {
 
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
-
-    // useEffect(() => { 
-
-    // }, [])
+    const [isOpen, setIsOpen] = useState(false)
 
 
     function handleChange({ target }) {
@@ -49,11 +46,13 @@ export function NoteAdd({ onSaveNote }) {
     return (
         <section className="note-add">
             <h1>Add Note</h1>
-            <form onSubmit={onSubmit}>
-
-                <input onChange={handleChange} value={title} type="text" name="title" placeholder="Title..." />
-                <input onChange={handleChange} value={txt} type="text" name="txt" placeholder="Take a note..." />
-                <button type="submit">Add</button>
+            <form style={{border: 1+'px solid black' , padding: 10 + 'px'}} onClick={() => setIsOpen(isOpen => !isOpen)} onSubmit={onSubmit}>
+                <section  >
+                    <input onChange={handleChange} value={title} type="text" name="title" placeholder="Title..." />
+                    <button type="submit">Add</button>
+                </section>
+                {isOpen && <input onChange={handleChange} value={txt} type="text" name="txt" placeholder="Take a note..." />}
+                
             </form>
 
         </section>
