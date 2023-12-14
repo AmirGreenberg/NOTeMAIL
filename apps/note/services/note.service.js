@@ -109,8 +109,8 @@ function _createNotes() {
                 info: {
                     title: 'Get my stuff together',
                     todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 },
+                        { id: utilService.makeId(), txt: 'Driving license', isDone:false },
+                        { id: utilService.makeId(), txt: 'Coding power', isDone:true },
                     ]
                 }
             },

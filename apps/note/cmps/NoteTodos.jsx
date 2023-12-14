@@ -1,41 +1,30 @@
-export function NoteTodos({ cmpType, info }) {
+export function NoteTodos({ cmpType, info, noteId, onInputChange, onDoneToggle, onRemoveTodo }) {
 
-console.log('inside todos')
+
+    function onInput(ev) {
+        onInputChange(ev.target.value, noteId)
+        ev.target.value = ''
+    }
 
     if (!info.todos) return <section>Loading...</section>
-    return (
+    return (<React.Fragment>
         <ul className="note-todos">
-           {info.todos.map((todo,idx) => 
-            <React.Fragment>
-            <li key={idx} className = "todo">
-            <input onClick={()=>onMarkDone(todo.id)}type="checkbox" />
-             {todo.txt}
-            <button onClick={()=>onRemoveTodo(todo.id)}>remove</button>
-            </li>
-            </React.Fragment>
+            {info.todos.map((todo, idx) => {
+                return (
+                    <li key={idx} className="todo clean-list">
+                        <input defaultChecked={todo.isDone} onClick={() => onDoneToggle(noteId, todo.id)} type="checkbox" name="todoItem" />
+                        <label style={{ textDecorationLine: todo.isDone ? 'line-through' : 'none' }} htmlFor="todoItem" contentEditable="true" suppressContentEditableWarning={true}>{todo.txt}</label>
+                        <button onClick={() => onRemoveTodo(noteId, todo.id)}>remove</button>
+                    </li>
+                )
+            }
             )}
         </ul>
+
+        <input onBlur={(event) => onInput(event)} type="text" name="title" placeholder="To Do..." />
+    </React.Fragment>
     )
+
+
 }
 
-
-
-
-// <ul className="note-list">
-//     {notes.map(note =>
-//         <li className="clean-list" key={note.id}>
-//             <div className="note"
-//                 style={{ backgroundColor: note.style.backgroundColor }}
-//             >
-//                 <NotePreview note={note} onUpdateNote={onUpdateNote} />
-//                 <section>
-//                     <button onClick={() => onRemoveNote(note.id)}>Remove Note</button>
-//                 </section>
-//             </div>
-//         </li>
-//     )}
-// </ul>
-
-
-
-// }
