@@ -54,7 +54,6 @@ export function NoteAdd({ onSaveNote }) {
                 {isOpen && <input onChange={handleChange} value={txt} type="text" name="txt" placeholder="Take a note..." />}
                 
             </form>
-
         </section>
     )
 }
