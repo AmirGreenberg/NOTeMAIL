@@ -2,8 +2,7 @@ import { NoteImg } from "./NoteImg.jsx"
 import { NoteTodos } from "./NoteTodos.jsx"
 import { NoteTxt } from "./NoteTxt.jsx"
 
-export function DynamicCmp(props,onContentChange) {
-    console.log('props.cmpType', props.cmpType)
+export function DynamicCmp(props) {
     switch (props.cmpType) {
         case 'NoteTxt':
             return <NoteTxt {...props} />
