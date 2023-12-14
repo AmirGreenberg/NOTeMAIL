@@ -12,7 +12,7 @@ export function NoteTodos({ cmpType, info, noteId, onInputChange, onDoneToggle, 
             {info.todos.map((todo, idx) => {
                 return (
                     <li key={idx} className="todo clean-list">
-                        <input checked={todo.isDone} onClick={() => onDoneToggle(noteId, todo.id)} type="checkbox" name="todoItem" />
+                        <input defaultChecked={todo.isDone} onClick={() => onDoneToggle(noteId, todo.id)} type="checkbox" name="todoItem" />
                         <label style={{ textDecorationLine: todo.isDone ? 'line-through' : 'none' }} htmlFor="todoItem" contentEditable="true" suppressContentEditableWarning={true}>{todo.txt}</label>
                         <button onClick={() => onRemoveTodo(noteId, todo.id)}>remove</button>
                     </li>
