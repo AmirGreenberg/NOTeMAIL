@@ -86,6 +86,13 @@ export function NoteIndex() {
         _updateNote(noteIdx)
     }
 
+    function onSetBgColor(selectedColor,noteId){
+        console.log('noteId', noteId)
+        const noteIdx = notes.findIndex(note => note.id === noteId)
+        notes[noteIdx].style.backgroundColor = selectedColor
+
+        _updateNote(noteIdx)
+    }
     function _updateNote(noteIdx) {
         noteService.save(notes[noteIdx])
             .then(() => loadNotes())
@@ -108,7 +115,8 @@ export function NoteIndex() {
                     onDoneToggle={onDoneToggle} 
                     onRemoveTodo={onRemoveTodo} 
                     onPinNote={onPinNote}  
-                    onContentChange={onContentChange} />
+                    onContentChange={onContentChange}
+                    onSetBgColor={onSetBgColor} />
                 </section>
             )}
             {notes.filter(note => !note.isPinned).length && (
@@ -122,7 +130,8 @@ export function NoteIndex() {
                     onDoneToggle={onDoneToggle} 
                     onRemoveTodo={onRemoveTodo} 
                     onPinNote={onPinNote}  
-                    onContentChange={onContentChange} />
+                    onContentChange={onContentChange}
+                    onSetBgColor={onSetBgColor} />
                 </section>
 
             )}

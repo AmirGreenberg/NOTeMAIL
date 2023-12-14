@@ -1,7 +1,8 @@
-export function ColorPicker({noteId,SetBgColor,toggleClrPicker}) {
+export function ColorPicker({noteId,onSetBgColor,toggleClrPicker}) {
 
 
     const colors = [
+        'var(--clrBase)',
         'var(--clrSecondery1)',
         'var(--clrSecondery2)',
         'var(--clrSecondery3)',
@@ -11,9 +12,8 @@ export function ColorPicker({noteId,SetBgColor,toggleClrPicker}) {
 
 
 function onColorSelect(selectedColor){
-
-    SetBgColor(selectedColor,noteId)
-    toggleClrPicker(noteId)
+    onSetBgColor(selectedColor,noteId)
+    toggleClrPicker()
 }
 
     return (

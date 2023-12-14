@@ -1,7 +1,7 @@
 import { DynamicCmp } from "./DynamicCmp.jsx"
 import { EditorPanel } from "./EditorPanel.jsx"
 
-export function NotePreview({note, onRemoveNote, onTodoInputChange, onDoneToggle, onRemoveTodo, onPinNote, onContentChange}) {
+export function NotePreview({note,onSetBgColor ,onRemoveNote, onTodoInputChange, onDoneToggle, onRemoveTodo, onPinNote, onContentChange}) {
 
     return (
         <article className="note-preview">
@@ -21,6 +21,7 @@ export function NotePreview({note, onRemoveNote, onTodoInputChange, onDoneToggle
            <EditorPanel
            noteId = {note.id}
            onRemoveNote={onRemoveNote}
+           onSetBgColor={onSetBgColor}
            />
 
         </article>

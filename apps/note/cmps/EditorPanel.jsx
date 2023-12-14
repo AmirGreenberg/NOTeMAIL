@@ -3,19 +3,19 @@ const { useState} = React
 
 
 
-export function EditorPanel({ noteId, onRemoveNote}) {
+export function EditorPanel({ noteId, onRemoveNote,onSetBgColor }) {
     
     const [isColorPicker, setIsColorPicker] = useState(false)
     
 
-    function togglePicker(){
+    function toggleClrPicker(){
         setIsColorPicker(prevState => !prevState)
     }
 
     return (
         <section className="editor-panel">
-            {isColorPicker &&  <ColorPicker/>}
-            <button onClick={() => togglePicker()}>color</button>
+            {isColorPicker &&  <ColorPicker noteId={noteId} toggleClrPicker={toggleClrPicker} onSetBgColor={onSetBgColor}/>}
+            <button onClick={() => toggleClrPicker()}>color</button>
             <button>duplicate</button>
             <button>to image</button>
             <button>to txt</button>

@@ -1,6 +1,6 @@
 import { NotePreview } from "./NotePreview.jsx";
 
-export function NoteList({ notes, onRemoveNote, onTodoInputChange, onDoneToggle, onRemoveTodo, onPinNote, onContentChange}) {
+export function NoteList({ notes, onSetBgColor, onRemoveNote, onTodoInputChange, onDoneToggle, onRemoveTodo, onPinNote, onContentChange}) {
     if (!notes) return <section>Loading...</section>
     return (
         <ul className="note-list">
@@ -9,7 +9,7 @@ export function NoteList({ notes, onRemoveNote, onTodoInputChange, onDoneToggle,
                     <div className="note"
                         style={{ backgroundColor: note.style.backgroundColor }}
                     >
-                        
+
                     <NotePreview 
                     note={note} 
                     onRemoveNote={onRemoveNote} 
@@ -17,7 +17,8 @@ export function NoteList({ notes, onRemoveNote, onTodoInputChange, onDoneToggle,
                     onDoneToggle={onDoneToggle} 
                     onRemoveTodo={onRemoveTodo} 
                     onPinNote={onPinNote} 
-                    onContentChange={onContentChange}/>
+                    onContentChange={onContentChange}
+                    onSetBgColor={onSetBgColor}/>
                     </div>
                 </li>
             )}
