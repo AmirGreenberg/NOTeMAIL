@@ -12,6 +12,7 @@ export const noteService = {
     save,
     getEmptyNote,
     getDefaultFilter,
+    getFilterFromQueryString
 }
 
 function query(filterBy) {
@@ -19,10 +20,10 @@ function query(filterBy) {
         .then(notes => {
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => regex.test(note.title))
+                notes = notes.filter(note => regex.test(note.info.title || note.info.txt))
             }
-            if (filterBy.price) {
-                notes = notes.filter(note => note.listPrice.amount <= filterBy.price)
+            if (filterBy.type) {
+                notes = notes.filter(note => note.type === filterBy.type)
             }
             return notes
         })
@@ -45,7 +46,17 @@ function save(note) {
 }
 
 function getDefaultFilter() {
-    return { txt: '', price: '' }
+    return { txt: '', type: '' }
+}
+
+function getFilterFromQueryString(searchParams) {
+    const txt = searchParams.get('txt') || ''
+    const type = searchParams.get('type') || ''
+    
+    return {
+        txt,
+        type  
+    }
 }
 
 function getEmptyNote() {
@@ -126,7 +137,7 @@ function _createNotes() {
                     txt: 'A stroy about QA',
                     url: '../../assets/img/OMG.jpg',
                     todos: [
-                        { id: utilService.makeId(), txt: 'did you know Tiger likes Debounce? ', isDone: false },
+                        { id: utilService.makeId(), txt: 'Tiger likes Debounce!! ', isDone: false },
                         { id: utilService.makeId(), txt: '🐜🐜', isDone: true },
                         
                     ]

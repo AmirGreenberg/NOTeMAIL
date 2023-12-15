@@ -1,7 +1,11 @@
 export function NoteTxt({cmpType, info, noteId, onContentChange}) {
+    // const [title,setTitle] = useState('')
+    // const [txt,setTitle] = useState('')
+
 
     return (
         <section>
+   
             <h2 
             id="title" 
             className="content-editable-placeholder"
