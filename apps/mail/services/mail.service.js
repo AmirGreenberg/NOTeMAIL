@@ -146,7 +146,7 @@ function getFilterFromQueryString(searchParams) {
     const subject = searchParams.get('subject') || ''
     const body = searchParams.get('body') || ''
     const isTrash = searchParams.get('isTrash') || false
-    const isStar = searchParams.get('isStar') || false
+    const isStar = searchParams.get('isStar') || ''
     if (!from || !subject || !body || !isTrash || !isStar) to = loggedinUser.email
     return {
         from,
