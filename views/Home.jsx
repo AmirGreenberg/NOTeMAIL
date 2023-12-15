@@ -16,12 +16,12 @@ export function Home() {
             <span className="heading-primary-sub">Note your Mail!</span>
           </h1>
 
-          <a href="#" className="btn-hero btn-white btn-animated" onClick={() => onLoadGallery()}><img src="images/note.png"
+          <a href="/#/note/" className="btn-hero btn-white btn-animated"><img src="images/note.png"
             className="btn-homepage" /></a>
-          <a href="#" className="btn-hero btn-white btn-animated" onClick={() => onLoadGallery()}><img src="images/email.png"
+          <a href="/#/mail/" className="btn-hero btn-white btn-animated"><img src="images/email.png"
             className="btn-homepage" /></a>
         </div>
-        
+
       </div>
     </section>
   )
