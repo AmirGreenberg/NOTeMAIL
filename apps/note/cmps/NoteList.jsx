@@ -16,10 +16,10 @@ export function NoteList({
 }) {
     if (!notes) return <section>Loading...</section>
     return (
-        <ul className="note-list">
+        <ul className="note-list width100">
             {notes.map(note =>
-                <li className="clean-list" key={note.id}>
-                    <div className="note"
+                <li className="clean-list width100 " key={note.id}>
+                    <div className="note note-size"
                         style={{ backgroundColor: note.style.backgroundColor }}
                     >
 

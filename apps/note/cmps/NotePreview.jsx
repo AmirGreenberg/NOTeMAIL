@@ -20,10 +20,10 @@ export function NotePreview({
     return (
         <article className="note-preview">
            <button className=" clean-btn btn" onClick={() => onPinNote(note.id)}>
-            <img className="pin-img" src={(note.isPinned) ? './assets/icons/pin-full-colors.png' : './assets/icons/pin-empty.png'} alt="" className ="notes-imgs" />
+            <img className="pin-img" src={(note.isPinned) ? './assets/icons/pin-full-colors.png' : './assets/icons/pin-empty.png'} alt=""  />
             </button>
 
-           <DynamicCmp 
+           <DynamicCmp className="width100"
            cmpType={note.type}
            info={note.info}
            noteId={note.id}
