@@ -4,7 +4,9 @@ export function NoteImg({cmpType, info, noteId, onContentChange}) {
        <section className="note-img">
         <h2 
         id="title" 
+        className="content-editable-placeholder"
         contentEditable="true" 
+        data-placeholder="Enter your title here..."
         suppressContentEditableWarning={true} 
         style={{ outline: "none" }} 
         onBlur={(event) => onContentChange(event, noteId)}

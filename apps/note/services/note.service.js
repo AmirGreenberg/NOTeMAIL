@@ -40,7 +40,7 @@ function save(note) {
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {
-        return storageService.post(NOTE_KEY, note)
+        return storageService.postUnshift(NOTE_KEY, note)
     }
 }
 
@@ -50,19 +50,23 @@ function getDefaultFilter() {
 
 function getEmptyNote() {
     return {
-        id:'',
-        createdAt:'',
+        id: '',
+        createdAt: '',
         type: 'NoteTxt',
         isPinned: false,
-        
         style: {
-            backgroundColor: 'var(--clrBase)'
+            backgroundColor: 'var(--clrSecondery3)'
         },
         info: {
             txt: '',
-            title:''
-        }
+            title: '',
+            url: './assets/img/you-can.png',
+            todos: [
+                { id: utilService.makeId(), txt: 'do this', isDone: false },
+                { id: utilService.makeId(), txt: 'do that', isDone: false },
 
+            ]
+        }
     }
 }
 
@@ -80,8 +84,14 @@ function _createNotes() {
                     backgroundColor: `var(--clrSecondery2)`
                 },
                 info: {
-                    title: 'Bobi and Me',
-                    txt: utilService.makeLorem(4)
+                    title: 'Wow it\'s working!!!',
+                    txt: 'I supprised myself',
+                    url: '../../assets/img/OMG.jpg',
+                    todos: [
+                        { id: utilService.makeId(), txt: 'the return of muki', isDone: false },
+                        { id: utilService.makeId(), txt: 'the pooks of puki', isDone: true },
+                        { id: utilService.makeId(), txt: 'the shook of shuki', isDone: true },
+                    ]
                 }
             },
             {
@@ -93,23 +103,54 @@ function _createNotes() {
                     backgroundColor: `var(--clrSecondery1)`
                 },
                 info: {
+                    title: 'Ima-le ve Aba-le be-yachad',
+                    txt: 'Child is not allowed to change the parent',
                     url: '../../assets/img/OMG.jpg',
-                    title: 'Bobi and Me'
+                    todos: [
+                        { id: utilService.makeId(), txt: '', isDone: false },
+                        { id: utilService.makeId(), txt: 'Coding power', isDone: true },
+                        { id: utilService.makeId(), txt: 'Coding power', isDone: true },
+                    ]
+                },
+            },
+            {
+                id: utilService.makeId(5),
+                createdAt: Date.now(),
+                type: 'NoteTodos',
+                isPinned: false,
+                style: {
+                    backgroundColor: `var(--clrSecondery3)`
+                },
+                info: {
+                    title: 'Bugs Life',
+                    txt: 'A stroy about QA',
+                    url: '../../assets/img/OMG.jpg',
+                    todos: [
+                        { id: utilService.makeId(), txt: 'did you know Tiger likes Debounce? ', isDone: false },
+                        { id: utilService.makeId(), txt: '🐜🐜', isDone: true },
+                        
+                    ]
                 }
             },
             {
                 id: utilService.makeId(5),
                 createdAt: Date.now(),
                 type: 'NoteTodos',
-                isPinned: true,
+                isPinned: false,
                 style: {
-                    backgroundColor: `var(--clrSecondery3)`
+                    backgroundColor: `var(--clrSecondery4)`
                 },
                 info: {
-                    title: 'Get my stuff together',
+                    title: 'Things I Hate:',
+                    txt: 'wanna see? turn me into a list!',
+                    url: '../../assets/img/OMG.jpg',
                     todos: [
-                        { id: utilService.makeId(), txt: 'Driving license', isDone:false },
-                        { id: utilService.makeId(), txt: 'Coding power', isDone:true },
+                        { id: utilService.makeId(), txt: 'strikethroughs', isDone: true },
+                        { id: utilService.makeId(), txt: 'Lists', isDone: false },
+                        { id: utilService.makeId(), txt: 'Irony', isDone: false },
+                        { id: utilService.makeId(), txt: 'Lists', isDone: false },
+                        { id: utilService.makeId(), txt: 'Repetition', isDone: false },
+                        { id: utilService.makeId(), txt: 'Inconsistency', isDone: false },
                     ]
                 }
             },
