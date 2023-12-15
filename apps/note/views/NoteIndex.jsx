@@ -1,20 +1,22 @@
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { utilService } from "../../../services/util.service.js"
-import { NoteAdd } from "../cmps/NoteAdd.jsx"
 import { NoteList } from "../cmps/NoteList.jsx"
-import { NotePreview } from "../cmps/NotePreview.jsx"
+import { NoteFilter } from "../cmps/NoteFilter.jsx"
 import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
+const { useSearchParams } = ReactRouterDOM
 
 export function NoteIndex() {
-
     const [notes, setNotes] = useState(null)
-    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
+
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [filterBy, setFilterBy] = useState(noteService.getFilterFromQueryString(searchParams))
 
     useEffect(() => {
         loadNotes()
+        setSearchParams(filterBy)
     }, [filterBy])
 
     function loadNotes() {
@@ -35,11 +37,22 @@ export function NoteIndex() {
             })
     }
 
+    function checkIsEmpty() {
+        return (newNote.type === 'NoteTxt' && (!newNote.info.title && !newNote.info.txt)) ||
+            (newNote.type === 'NoteImg' && (!newNote.info.title && !newNote.info.url)) ||
+            (newNote.type === 'NoteTodos' && (!newNote.info.title && !newNote.info.todos.length))
+
+    }
+
     function onSaveNote() {
+        if (checkIsEmpty()) {
+            console.log('empty')
+            return
+        }
         noteService.save(newNote)
             .then(newNote => {
-                setNotes((prevNotes) => [newNote, ...prevNotes])
-                onTypeChange('NoteTxt')
+                onTypeChange('NoteImg')
+
                 const colors = [
                     'var(--clrBase)',
                     'var(--clrSecondery1)',
@@ -48,9 +61,16 @@ export function NoteIndex() {
                     'var(--clrSecondery4)',
                     'var(--clrSecondery5)',
                     'var(--clrSecondery6)']
-                onSetBgColor(colors[utilService.getRandomIntInclusive(1, 7)]) 
-
-
+                console.log('setting');
+                // setNewNote(null)
+                const newData = noteService.getEmptyNote()
+                console.log(newData);
+                setNewNote(newData)
+                console.log(newNote);
+                console.log(newNote);
+                onSetBgColor(colors[utilService.getRandomIntInclusive(1, 7)])
+                // onTypeChange('NoteTxt')
+                loadNotes()
             })
             .catch(err => console.log('err:', err))
     }
@@ -58,10 +78,9 @@ export function NoteIndex() {
     function onPinNote(noteId) {
 
         if (!noteId) {
-            const reNewNote = ({ ...newNote })
-
-            reNewNote.isPinned = !reNewNote.isPinned
-            setNewNote(reNewNote)
+            const createdNewNote = ({ ...newNote })
+            createdNewNote.isPinned = !createdNewNote.isPinned
+            setNewNote(createdNewNote)
         } else {
             const noteIdx = _getNoteIdx(noteId)
             notes[noteIdx].isPinned = !notes[noteIdx].isPinned
@@ -71,37 +90,67 @@ export function NoteIndex() {
     }
 
     function onDoneToggle(noteId, todoId) {
-        const noteIdx = _getNoteIdx(noteId)
-        const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
-        notes[noteIdx].info.todos[todoIdx].isDone = !notes[noteIdx].info.todos[todoIdx].isDone
+        if (!noteId) {
+            const createdNewNote = ({ ...newNote })
+            const todoIdx = createdNewNote.info.todos.findIndex(todo => todo.id === todoId)
+            createdNewNote.info.todos[todoIdx].isDone = !createdNewNote.info.todos[todoIdx].isDone
+            setNewNote(createdNewNote)
 
-        _updateNote(noteIdx)
+        } else {
+
+            const noteIdx = _getNoteIdx(noteId)
+            const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
+            notes[noteIdx].info.todos[todoIdx].isDone = !notes[noteIdx].info.todos[todoIdx].isDone
+
+            _updateNote(noteIdx)
+        }
     }
 
     function onRemoveTodo(noteId, todoId) {
-        const noteIdx = _getNoteIdx(noteId)
-        const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
-        notes[noteIdx].info.todos.splice(todoIdx, 1)
+        if (!noteId) {
+            const createdNewNote = ({ ...newNote })
+            const todoIdx = createdNewNote.info.todos.findIndex(todo => todo.id === todoId)
+            createdNewNote.info.todos.splice(todoIdx, 1)
+            setNewNote(createdNewNote)
 
-        _updateNote(noteIdx)
+        } else {
+
+            const noteIdx = _getNoteIdx(noteId)
+            const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
+            notes[noteIdx].info.todos.splice(todoIdx, 1)
+            _updateNote(noteIdx)
+        }
     }
 
     function onTodoInputChange(newTodoTxt, noteId) {
-        if (!newTodoTxt) return
-        const noteIdx = _getNoteIdx(noteId)
-        const newTodo = { id: utilService.makeId(), txt: newTodoTxt, isDone: false }
-        notes[noteIdx].info.todos.push(newTodo)
+        if (!noteId) {
+            const createdNewNote = ({ ...newNote })
+            const newTodo = { id: utilService.makeId(), txt: newTodoTxt, isDone: false }
+            createdNewNote.info.todos.push(newTodo)
+            setNewNote(createdNewNote)
+        } else {
 
-        _updateNote(noteIdx)
+            const noteIdx = _getNoteIdx(noteId)
+            const newTodo = { id: utilService.makeId(), txt: newTodoTxt, isDone: false }
+            notes[noteIdx].info.todos.push(newTodo)
+
+            _updateNote(noteIdx)
+        }
     }
 
     function onContentChange(ev, noteId) {
         const field = ev.target.id
         const value = ev.target.innerText
-        const noteIdx = _getNoteIdx(noteId)
-        notes[noteIdx].info[field] = value
+        if (!noteId) {
+            // const createdNewNote = {...newNote}
+            // createdNewNote.info[field] = value
+            setNewNote(prevState => ({...prevState, info: {...prevState.info,[field]: value}}))
+        } else {
+            const noteIdx = _getNoteIdx(noteId)
+            notes[noteIdx].info[field] = value
 
-        _updateNote(noteIdx)
+            _updateNote(noteIdx)
+        }
     }
 
     function onSetBgColor(selectedColor, noteId) {
@@ -124,17 +173,21 @@ export function NoteIndex() {
 
     function onTypeChange(type, noteId) {
 
-
         if (!noteId) {
-            const reNewNote = ({ ...newNote })
-            reNewNote.type = type
-            setNewNote(reNewNote)
+            const createdNewNote = ({ ...newNote })
+            createdNewNote.type = type
+            setNewNote(createdNewNote)
         } else {
             const noteIdx = _getNoteIdx(noteId)
             notes[noteIdx].type = type
             _updateNote(noteIdx)
         }
     }
+
+    function onSetFilter(filterBy) {
+        setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
+    }
+
     function _updateNote(noteIdx) {
         noteService.save(notes[noteIdx])
             .then(() => loadNotes())
@@ -145,14 +198,24 @@ export function NoteIndex() {
         return notes.findIndex(note => note.id === noteId)
     }
 
+    function handleClean() {
+
+    }
+
+
+
+
+
     if (!notes) return <div>Loading...</div>
     return (
 
         <section className="note-index">
+            <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter} />
 
             <NoteList
                 notes={[newNote]}
                 isNewNote={true}
+
                 onSaveNote={onSaveNote}
                 onRemoveNote={onRemoveNote}
                 onTodoInputChange={onTodoInputChange}
@@ -165,7 +228,6 @@ export function NoteIndex() {
                 onTypeChange={onTypeChange} />
 
 
-            {/* <NoteAdd onSaveNote={onSaveNote} /> */}
             {notes.filter(note => note.isPinned).length > 0 && (
                 <section>
                     <hr />
