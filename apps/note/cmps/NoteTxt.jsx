@@ -6,7 +6,7 @@ export function NoteTxt({cmpType, info, noteId, onContentChange}) {
             id="title" 
             className="content-editable-placeholder"
             contentEditable="true" 
-            data-placeholder="title here..."
+            data-placeholder="I'm all new..."
             suppressContentEditableWarning={true} 
             
             style={{ outline: "none"}} 

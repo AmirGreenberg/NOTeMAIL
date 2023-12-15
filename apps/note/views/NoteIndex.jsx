@@ -36,10 +36,20 @@ export function NoteIndex() {
     }
 
     function onSaveNote() {
-            noteService.save(newNote)
+        noteService.save(newNote)
             .then(newNote => {
                 setNotes((prevNotes) => [newNote, ...prevNotes])
                 onTypeChange('NoteTxt')
+                const colors = [
+                    'var(--clrBase)',
+                    'var(--clrSecondery1)',
+                    'var(--clrSecondery2)',
+                    'var(--clrSecondery3)',
+                    'var(--clrSecondery4)',
+                    'var(--clrSecondery5)',
+                    'var(--clrSecondery6)']
+                onSetBgColor(colors[utilService.getRandomIntInclusive(1, 7)]) 
+
 
             })
             .catch(err => console.log('err:', err))
@@ -49,7 +59,7 @@ export function NoteIndex() {
 
         if (!noteId) {
             const reNewNote = ({ ...newNote })
-            
+
             reNewNote.isPinned = !reNewNote.isPinned
             setNewNote(reNewNote)
         } else {
@@ -140,19 +150,19 @@ export function NoteIndex() {
 
         <section className="note-index">
 
-<NoteList
-                        notes={[newNote]}
-                        isNewNote={true}
-                        onSaveNote={onSaveNote}
-                        onRemoveNote={onRemoveNote}
-                        onTodoInputChange={onTodoInputChange}
-                        onDoneToggle={onDoneToggle}
-                        onRemoveTodo={onRemoveTodo}
-                        onPinNote={onPinNote}
-                        onContentChange={onContentChange}
-                        onSetBgColor={onSetBgColor}
-                        onDuplicate={onDuplicate}
-                        onTypeChange={onTypeChange} />
+            <NoteList
+                notes={[newNote]}
+                isNewNote={true}
+                onSaveNote={onSaveNote}
+                onRemoveNote={onRemoveNote}
+                onTodoInputChange={onTodoInputChange}
+                onDoneToggle={onDoneToggle}
+                onRemoveTodo={onRemoveTodo}
+                onPinNote={onPinNote}
+                onContentChange={onContentChange}
+                onSetBgColor={onSetBgColor}
+                onDuplicate={onDuplicate}
+                onTypeChange={onTypeChange} />
 
 
             {/* <NoteAdd onSaveNote={onSaveNote} /> */}
