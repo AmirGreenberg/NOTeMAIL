@@ -26,7 +26,7 @@ export function MailDetails() {
     }
     if (!mail) return <section>Loading...</section>
     return (
-        <section className="mail-details main-layout full">
+        <section className="mail-details main-layout">
             <h1>From: {mail.from}</h1>
             <h2>Subject: {mail.subject}</h2>
 

@@ -49,79 +49,85 @@ export function MailIndex() {
 
     if (!mails) return <div>Loading...</div>
     return (
-        <section className="mail-index main-layout full">
+        <section className="mail-index main-layout">
+
+
+
+
             {/* <MailFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
-            <button>
-                <Link className="add-mail-btn" to="/mail/edit">
-                    Compose
-                </Link>
-            </button>
-            <nav>
-                <button
-                    onClick={() => {
-                        setFilterBy(mailService.getInboxFilter())
-                        return (
-                            <DataTable
-                                mails={mails}
-                                onRemoveMail={onRemoveMail}
-                                onStarMail={onStarMail}
-                            />
-                        )
-                    }}
-                >
-                    Inbox
+            <div>
+                <button>
+                    <Link className="add-mail-btn" to="/mail/edit">
+                        Compose
+                    </Link>
                 </button>
+                <nav>
+                    <button
+                        onClick={() => {
+                            setFilterBy(mailService.getInboxFilter())
+                            return (
+                                <DataTable
+                                    mails={mails}
+                                    onRemoveMail={onRemoveMail}
+                                    onStarMail={onStarMail}
+                                />
+                            )
+                        }}
+                    >
+                        Inbox
+                    </button>
 
-                <button
-                    onClick={() => {
-                        setFilterBy(mailService.getSentFilter())
-                        return (
-                            <DataTable
-                                mails={mails}
-                                onRemoveMail={onRemoveMail}
-                                onStarMail={onStarMail}
-                            />
-                        )
-                    }}
-                >
-                    Sent
-                </button>
+                    <button
+                        onClick={() => {
+                            setFilterBy(mailService.getSentFilter())
+                            return (
+                                <DataTable
+                                    mails={mails}
+                                    onRemoveMail={onRemoveMail}
+                                    onStarMail={onStarMail}
+                                />
+                            )
+                        }}
+                    >
+                        Sent
+                    </button>
 
-                <button
-                    onClick={() => {
-                        setFilterBy(mailService.getTrashFilter())
-                        return (
-                            <DataTable
-                                mails={mails}
-                                onRemoveMail={onRemoveMail}
-                                onStarMail={onStarMail}
-                            />
-                        )
-                    }}
-                >
-                    Trash
-                </button>
+                    <button
+                        onClick={() => {
+                            setFilterBy(mailService.getTrashFilter())
+                            return (
+                                <DataTable
+                                    mails={mails}
+                                    onRemoveMail={onRemoveMail}
+                                    onStarMail={onStarMail}
+                                />
+                            )
+                        }}
+                    >
+                        Trash
+                    </button>
 
-                <button
-                    onClick={() => {
-                        setFilterBy(mailService.getStarFilter())
-                        return (
-                            <DataTable
-                                mails={mails}
-                                onRemoveMail={onRemoveMail}
-                                onStarMail={onStarMail}
-                            />
-                        )
-                    }}
-                >
-                    Starred
-                </button>
-            </nav>
-            <DataTable
-                mails={mails}
-                onRemoveMail={onRemoveMail}
-                onStarMail={onStarMail}
-            />
+                    <button
+                        onClick={() => {
+                            setFilterBy(mailService.getStarFilter())
+                            return (
+                                <DataTable
+                                    mails={mails}
+                                    onRemoveMail={onRemoveMail}
+                                    onStarMail={onStarMail}
+                                />
+                            )
+                        }}
+                    >
+                        Starred
+                    </button>
+                </nav>
+                <DataTable
+                    mails={mails}
+                    onRemoveMail={onRemoveMail}
+                    onStarMail={onStarMail}
+                />
+            </div>
         </section>
     )
 }

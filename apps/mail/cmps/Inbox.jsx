@@ -37,7 +37,7 @@ export function Inbox() {
 
     if (!mails) return <div>Loading...</div>
     return (
-        <section className="mail-index main-layout full">
+        <section className="mail-index main-layout">
             <DataTable mails={mails} onRemoveMail={onRemoveMail} />
         </section>
     )

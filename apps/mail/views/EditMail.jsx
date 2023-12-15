@@ -93,7 +93,7 @@ export function EditMail() {
     ]
 
     return (
-        <section className="edit-mail main-layout full">
+        <section className="edit-mail main-layout">
             <div className="edit-mail-container">
                 <h2>Add a Mail</h2>
                 <form onSubmit={onSaveMail}>
