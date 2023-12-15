@@ -2,7 +2,6 @@
     --main-bg-color: lightblue;
 
 
-
     /*Base colors*/
     --clrBase: #ffffff; /*background */
    
@@ -13,12 +12,17 @@
     --clrGrey3: #595959; 
     --clrGrey4: #3c4043; 
     --clrGrey5: #202124; 
+    --clrGrey6: #444746; 
+    --clrGrey7: #f2f6fc;
  
+
     /* gmail */
-    --clrMail0: #f6f8fc; /*backGround*/
+    --clrMail: #ffffff; /*backGround site*/
+    --clrMail0: #f6f8fc; /*backGround header*/
     --clrMail1: #d3e3fd;
     --clrMail2: #eaf1fb;
     --clrMail3: #eceff1;
+    --clrMail4: #eaebef;
     
     
     /*notes colors pallet */
