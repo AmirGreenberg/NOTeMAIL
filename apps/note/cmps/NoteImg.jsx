@@ -1,7 +1,7 @@
 export function NoteImg({cmpType, info, noteId, onContentChange}) {
 
     return(
-       <section className="note-img">
+       <section className="note-img width100" >
         <h2 
         id="title" 
         className="content-editable-placeholder"
@@ -13,7 +13,7 @@ export function NoteImg({cmpType, info, noteId, onContentChange}) {
         >
             {info.title}
             </h2>
-        <img className="img-fit" src={info.url} alt=""  />
+        <img className="width100" src={info.url} alt=""  />
        
         <h3 
             id="url" 

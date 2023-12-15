@@ -65,6 +65,11 @@
 
   /* IMAGE HELPERS */
   
-  .img-fit  {
-    witdh: 100%
+ 
+  .width100{
+    width: 100%;
+  }
+
+  .note-size{
+    width:100px
   }
