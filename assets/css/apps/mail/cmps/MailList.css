@@ -12,7 +12,7 @@ td {
 
 tr {
     display: grid;
-    grid-template-columns: 60px 90px 1fr 90px ;
+    grid-template-columns: 60px 90px 1fr 90px;
     white-space: nowrap;
     grid-auto-flow: column;
     align-items: center;
@@ -21,8 +21,7 @@ tr {
     border-block: 1px solid var(--clrMail3);
     border-collapse: collapse;
     padding-block: 0.25em;
-    gap: 7em ;
-    
+    gap: 7em;
 }
 
 p {
@@ -30,12 +29,11 @@ p {
     margin-block: 0.5em;
 }
 
-
 .fromName {
     text-transform: capitalize;
     width: 10vw;
-    overflow:hidden;
-    display:inline-block;
+    overflow: hidden;
+    display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -43,8 +41,8 @@ p {
 .subject {
     text-transform: capitalize;
     width: 15vw;
-    overflow:hidden;
-    display:inline-block;
+    overflow: hidden;
+    display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -52,8 +50,8 @@ p {
 .body {
     text-transform: capitalize;
     width: 50vw;
-    overflow:hidden;
-    display:inline-block;
+    overflow: hidden;
+    display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
 }

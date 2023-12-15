@@ -45,7 +45,7 @@ export function MailIndex() {
             }
         })
         mailService.save(mailToStar).then(() => {
-            setMails((prevMails) => {
+            loadMails((prevMails) => {
                 return prevMails.filter((mail) => mail.id !== mailToStar)
             })
             busService.showSuccessMsg(`Mail successfully starred! ${mailToStar}`)
