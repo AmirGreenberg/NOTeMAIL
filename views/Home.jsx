@@ -30,12 +30,10 @@ export function Home() {
                         href="/#/mail/"
                         className="btn-hero btn-white btn-animated"
                     >
-                        <img src="images/email.png" className="btn-homepage" />
+                        <img src="./images/email.png" className="btn-homepage" />
                     </a>
                 </div>
             </div>
-
-
 
             
         </section>
