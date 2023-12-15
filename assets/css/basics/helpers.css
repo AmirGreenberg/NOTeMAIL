@@ -49,4 +49,8 @@
     filter: brightness(75%);
 }
 
+.content-editable-placeholder:empty::before {
+    content: attr(data-placeholder);
 
+        color: gray;
+}

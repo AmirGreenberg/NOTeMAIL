@@ -10,7 +10,9 @@ export function NoteTodos({ cmpType, info, noteId, onTodoInputChange, onDoneTogg
     return (<React.Fragment>
         <h2
             id="title"
-            contentEditable="true"
+            className="content-editable-placeholder"
+            contentEditable="true" 
+            data-placeholder="Enter your title here..."
             suppressContentEditableWarning={true}
             style={{ outline: "none" }}
             onBlur={(event) => onContentChange(event, noteId)}
