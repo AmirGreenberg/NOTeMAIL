@@ -23,7 +23,7 @@
 }
 
 
-/* flex helper */
+/* FLEX HELPERS */
 
 .flex {
     display: flex;
@@ -51,7 +51,7 @@
     list-style-type: none;
   }
   
-  /* grid */
+  /* GRID HELPERS */
   
   .grid {
     display: grid;
@@ -61,3 +61,10 @@
     position: relative;
   }
   
+
+
+  /* IMAGE HELPERS */
+  
+  .img-fit  {
+    witdh: 100%
+  }

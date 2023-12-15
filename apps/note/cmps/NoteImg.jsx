@@ -13,7 +13,20 @@ export function NoteImg({cmpType, info, noteId, onContentChange}) {
         >
             {info.title}
             </h2>
-        <img src={info.url} alt=""  />
+        <img className="img-fit" src={info.url} alt=""  />
+       
+        <h3 
+            id="url" 
+            className="content-editable-placeholder"
+            contentEditable="true" 
+            data-placeholder="URL here..."
+            suppressContentEditableWarning={true}
+            style={{ outline: "none" }} 
+            onBlur={(event) => onContentChange(event, noteId)}
+            >
+                {info.url}
+                </h3>
+       
        </section>
     )
 }
