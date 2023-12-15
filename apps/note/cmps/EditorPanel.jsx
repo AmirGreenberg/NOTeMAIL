@@ -14,9 +14,9 @@ export function EditorPanel({ noteId, onSaveNote, isNewNote, onRemoveNote,onSetB
 
     return (
         <section className="editor-panel">
-            {isNewNote && <button className="clean-btn" onClick={onSaveNote}>Add</button>}
+            {isNewNote && <button className="clean-btn" onClick={onSaveNote}><img src="./assets/icons/43.svg" alt=""/></button>}
             {isColorPicker &&  <ColorPicker noteId={noteId} toggleClrPicker={toggleClrPicker} onSetBgColor={onSetBgColor}/>}
-            <button className="clean-btn" onClick={() => toggleClrPicker()}> color <img src="./assets/icons/pallet.svg" alt=""/></button>
+            <button className="clean-btn" onClick={() => toggleClrPicker()}> <img src="./assets/icons/pallet.svg" alt=""/></button>
             <button className="clean-btn"onClick={() => onTypeChange('NoteImg',noteId)}>to image</button>
             <button className="clean-btn"onClick={() => onTypeChange('NoteTxt',noteId)}>to txt</button>
             <button className="clean-btn"onClick={() => onTypeChange('NoteTodos',noteId)}>to list</button>
