@@ -18,6 +18,8 @@
         font-family: Google;
         color: var(--clrGrey5);
         background-color: var(--clrMail);
+        margin: 0px;
+        padding: 0px;
     }
     
     select {
@@ -50,11 +52,6 @@
         border-radius: 0.56rem;
     }
     
-    body {
-        margin: 0px;
-        padding: 0px;
-    }
-    
     @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
     
     @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
@@ -64,7 +61,6 @@
     
     .settings {
         float: left;
-        background: url(https://s3.postimg.org/bqfooag4z/startific.jpg);
         background-repeat: no-repeat;
         width: 250px;
         margin: 0px;
