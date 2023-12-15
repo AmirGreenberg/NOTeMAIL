@@ -132,6 +132,7 @@
     }
     
     .main-menu {
+        display: block;
         margin-top: 4.5em;
     
         background: var(--clrMail0);

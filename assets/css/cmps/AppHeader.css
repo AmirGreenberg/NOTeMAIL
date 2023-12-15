@@ -44,7 +44,6 @@ nav a.active {
     width: 100%;
   
     color: var(--clrGrey6);
-    opacity: 0;
     padding: 0.5rem;
   
     transition: opacity 1s;
