@@ -1,4 +1,4 @@
-header {
+/* header {
 
     background: lightcyan;
     border-bottom: 2px solid white;
@@ -28,4 +28,30 @@ nav a.active {
     max-width: 10em;
     height: unset;
     margin-left: 1em;
-}
+} */
+
+
+
+
+.header-container {
+    position: relative;
+  }
+  
+  .header {
+    height: 4.5rem;
+    position: relative;
+    background-color: var(--clrMail0);
+    width: 100%;
+  
+    color: var(--clrGrey6);
+    opacity: 0;
+    padding: 0.5rem;
+  
+    transition: opacity 1s;
+  }
+  
+  .header .logo-header {
+    height: 2.2rem;
+    cursor: pointer;
+  }
+  

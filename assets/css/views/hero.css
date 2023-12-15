@@ -1,0 +1,74 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(230, 219, 225, 0.486),
+      rgba(252, 254, 255, 0.507)
+    ),
+    url(../../images/hero.png);
+  background-size: cover;
+  background-position: center;
+
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 75% 100%, 25% 100%, 0 60%);
+
+  position: absolute;
+
+  transition: transform 0.4s;
+}
+
+.hero .logo-box {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero .logo {
+  height: 8rem;
+}
+
+.hero .text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 80%;
+  text-align: center;
+}
+
+.hero .heading-primary {
+  color: var(--clrGrey5);
+  text-transform: uppercase;
+
+  backface-visibility: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.hero .heading-primary-main {
+  display: block;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 0.02rem;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.hero .heading-primary-sub {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  animation: moveInRight 1s ease-out;
+}
+
+.hero-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+
+  animation: moveUpFadeOut 1s ease-out;
+}

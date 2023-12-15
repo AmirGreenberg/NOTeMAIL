@@ -1,0 +1,17 @@
+.header button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 60px;
+  height: 60px;
+
+  border: none;
+
+  font-size: 1.6rem;
+  color:var(--clrGrey6);
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
