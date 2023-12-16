@@ -1,12 +1,12 @@
 .todo-li-row {
-    display: flex;
+    display: grid;
     justify-content: space-between;
     width: 100%;
 }
 
 .to-do-txt{   
-    margin-left: 15px;
-    flex: 1;
+    margin-left: 10px;
+    flex: 0.8;
 }
 
 
@@ -22,7 +22,7 @@
 
 .todo-inpt-section{
     position: relative;
-    margin-left: 20px;
+    margin-left: 1.5em;
 }
 
 
@@ -31,5 +31,13 @@
     margin-top: 1em;
     position: absolute;
     translate: bottom 80px;
+}
+
+.todo-list-btn{
+    margin-right: 0.5em;
+}
+
+.to-do-label{
+    justify-content: start;
 }
 

@@ -137,8 +137,8 @@ function _createNotes() {
                     txt: 'A stroy about QA',
                     url: 'https://cdn.geektime.co.il/wp-content/uploads/2022/04/Asi-And-Guri-1649742937-768x477.png',
                     todos: [
-                        { id: utilService.makeId(), txt: 'Tiger likes Debounce!! ', isDone: false },
-                        { id: utilService.makeId(), txt: '🐜🐜', isDone: true },
+                        { id: utilService.makeId(), txt: 'Don\'t mark me!', isDone: false },
+                        { id: utilService.makeId(), txt: 'Don\t check me!', isDone: true },
                         
                     ]
                 }
@@ -216,8 +216,9 @@ function _createNotes() {
                     txt: 'A stroy about QA',
                     url: 'https://i.pinimg.com/originals/66/8f/da/668fda297fab8383e139ff145426057c.jpg',
                     todos: [
-                        { id: utilService.makeId(), txt: 'Tiger likes Debounce!! ', isDone: false },
-                        { id: utilService.makeId(), txt: '🐜🐜', isDone: true },
+                        { id: utilService.makeId(), txt: 'eat', isDone: false },
+                        { id: utilService.makeId(), txt: 'code', isDone: true },
+                        { id: utilService.makeId(), txt: 'repeat', isDone: true },
                         
                     ]
                 }
@@ -295,8 +296,9 @@ function _createNotes() {
                     txt: 'A stroy about QA',
                     url: 'https://cdn.vox-cdn.com/thumbor/Yt1avchDkHqEqJuhYZ3YjKF3kFc=/0x0:1700x960/1200x675/filters:focal(714x344:986x616)/cdn.vox-cdn.com/uploads/chorus_image/image/57514059/mario.0.jpg',
                     todos: [
-                        { id: utilService.makeId(), txt: 'Tiger likes Debounce!! ', isDone: false },
-                        { id: utilService.makeId(), txt: '🐜🐜', isDone: true },
+                        { id: utilService.makeId(), txt: 'WTF ', isDone: false },
+                        { id: utilService.makeId(), txt: 'OMG', isDone: true },
+                        { id: utilService.makeId(), txt: 'LOL', isDone: true },
                         
                     ]
                 }
@@ -351,7 +353,7 @@ function _createNotes() {
                     backgroundColor: `var(--clrSecondery1)`
                 },
                 info: {
-                    title: 'There only 2 options:',
+                    title: 'There are only 2 options:',
                     txt: 'Child is not allowed to change the parent',
                     url: './assets/img/puki.png',
                     todos: [
@@ -374,8 +376,12 @@ function _createNotes() {
                     txt: 'A stroy about QA',
                     url: 'https://www.theminifigurestore.uk/wp-content/uploads/2020/03/Peapod-Costume-Girl-Series-20-LEGO-Minifigures-71027-510x510.png.jpg',
                     todos: [
-                        { id: utilService.makeId(), txt: 'Tiger likes Debounce!! ', isDone: false },
-                        { id: utilService.makeId(), txt: '🐜🐜', isDone: true },
+                        { id: utilService.makeId(), txt: 'Zebra', isDone: false },
+                        { id: utilService.makeId(), txt: 'it\'s', isDone: true },
+                        { id: utilService.makeId(), txt: 'a horse', isDone: true },
+                        { id: utilService.makeId(), txt: 'that', isDone: true },
+                        { id: utilService.makeId(), txt: 'was', isDone: true },
+                        { id: utilService.makeId(), txt: 'strikethrough to many times', isDone: true },
                         
                     ]
                 }
@@ -525,13 +531,12 @@ function _createNotes() {
                     backgroundColor: `var(--clrSecondery3)`
                 },
                 info: {
-                    title: 'To-do list for becoming a superhero',
+                    title: 'you better not forget',
                     txt: 'With great power comes great responsibility',
                     url: 'https://www.theminifigurestore.uk/wp-content/uploads/2022/06/Popcorn-Costume-LEGO-Minifigures-Series-23-71034-510x287.jpg',
                     todos: [
-                        { id: utilService.makeId(), txt: 'Get bitten by a radioactive spider', isDone: false },
-                        { id: utilService.makeId(), txt: 'Train with a wise old mentor', isDone: false },
-                        { id: utilService.makeId(), txt: 'Save the world from certain doom', isDone: false },
+                        { id: utilService.makeId(), txt: 'your wife always right', isDone: false },
+                        { id: utilService.makeId(), txt: 'happy wife is happy life', isDone: false },
                     ]
                 },
             },

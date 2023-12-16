@@ -39,19 +39,27 @@ export function NoteFilter({ filterBy, onSetFilter }) {
 
     const { txt, type } = filterByToEdit
     return (
-        <section className="note-filter">
-            <h2>Filter Notes</h2>
-            <form onSubmit={onSetFilterBy} >
-                <input value={txt} onChange={handleChange} type="text" id="txt" name="txt" placeholder="Search" />
+        <section className="search-note ">
+            <i className="icon-note fa-solid fa-magnifying-glass"></i>
+            
+                <input
+                    className="input-note filter-txt-input"
+                    value={txt}
+                    onChange={handleChange}
+                    type="text"
+                    id="txt"
+                    name="txt"
+                    placeholder="Search"
+                />
 
-                <select name="type" id="type" onChange={handleChange} >
+                <select className="header-select-note" name="type" id="type" onChange={handleChange} >
                     <option value="">All</option>
                     <option value="NoteTxt">Text Notes</option>
                     <option value="NoteImg">Img Notes</option>
                     <option value="NoteTodos">Todo Notes</option>
                 </select>
-                <button>Submit</button>
-            </form>
+
+            
         </section>
     )
 }

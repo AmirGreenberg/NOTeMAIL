@@ -14,7 +14,7 @@ export function NoteImg({ cmpType, info, noteId, onContentChange }) {
             </h3>
             <img className="width100 note-img notes-inner-txt" src={info.url} alt="" />
 
-            <div className="url-txt flex  align-baseline">
+            <div className="url-txt flex align-baseline">
                                 
                 {/* <img className="icon-link" src="./assets/icons/icon-link.png" alt="" /> */}
                 <i className="icon-link fa-solid fa-link"> </i>

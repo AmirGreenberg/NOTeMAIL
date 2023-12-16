@@ -42,7 +42,7 @@ export function AppHeader() {
                                 className="logo-header"
                             />
                             <img
-                                src="./assets/img/amirpicgoogle.jpg"
+                                src="./assets/img/amir.png"
                                 alt="logo"
                                 className="logo-header"
                             />

@@ -14,6 +14,7 @@
 }
 
 .content-editable-placeholder {
-    word-break: break-all;
+    overflow-wrap: anywhere;
+    word-break: normal;
     outline: none;
 }

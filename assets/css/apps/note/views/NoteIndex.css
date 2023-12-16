@@ -16,7 +16,7 @@
 
  .main-columns-note {
      column-count: 4;
-     column-width: 220px;
+     column-width: 260px;
      column-gap: 1.5em;
      display: block;
  }
@@ -43,10 +43,11 @@
  }
 
  .new-note-area{
+    margin-top: 1em;
     width: max-content;
     min-width: 400px;
     justify-self: center;
-    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3);
     border-radius: .5em;
 
  }

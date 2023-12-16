@@ -1,0 +1,55 @@
+.search-note {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-inline-end: 1.5rem;
+    width: 60%;
+    min-height: 3rem;
+    /* padding: 1rem; */
+    padding-inline-start: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 24px;
+    outline: none;
+    background-color: var( --clrMail2);
+    color: #0d0c22;
+    transition: 0.3s ease;
+  }
+
+  
+.input-note {
+    flex-grow: 1;
+    outline: none;
+    background-color: var( --clrMail2);
+    border: 2px solid transparent;
+  }
+  
+  .input-note::placeholder {
+    color:var(--clrGrey3);
+  }
+  
+  .input-note:focus,
+  .input-note:hover {
+    outline: none;
+    /* border-color: #1098ad86; */
+    /* background-color: #fff; */
+    /* box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.247); */
+  }
+  
+select {
+    background-color:  var(--clrMail2);
+    /* border: none; */
+    outline: none;
+    border: 1px solid var(--clrGrey2);
+    border-radius: 1em;
+    margin-right: 1em;
+    padding: 0.25em;
+}
+
+  .icon-note {
+    position: absolute;
+    left: 0.5rem;
+    top: 1rem;
+    color: #9e9ea7;
+    width: 1rem;
+    height: 1.5rem;
+  }

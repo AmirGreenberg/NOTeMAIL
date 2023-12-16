@@ -9,6 +9,7 @@ export function NoteHeader({filterBy, onSetFilter}) {
             
             <div>
                 <header className="header-container">
+ 
                     <div className="header flex space-between align-center">
                         <div className="flex space-between align-center">
                             <button>☰</button>
@@ -20,24 +21,9 @@ export function NoteHeader({filterBy, onSetFilter}) {
                                 />
                             </Link>
                         </div>
-                        {/* <div className="search">
-                            
-                            <i className="icon fa-solid fa-magnifying-glass"></i>
-                            <datalist
-                                id="keywords-list"
-                                className="keywords"
-                            ></datalist>
-                            <input
-                                list="keywords-list"
-                                className="input filter-txt-input"
-                                type="text"
-                                name="filter-txt"
-                                placeholder="Search mail..."
-                                onInput={() => onSetFilterText(this.value)}
-                                
-                            />
-                        </div> */}
+
                         <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+   
                         <div>
                             <img
                                 src="./assets/icons/hamburger.svg"
@@ -45,11 +31,12 @@ export function NoteHeader({filterBy, onSetFilter}) {
                                 className="logo-header"
                             />
                             <img
-                                src="./assets/img/amirpicgoogle.jpg"
+                                src="./assets/img/David.png"
                                 alt="logo"
                                 className="logo-header"
                             />
                         </div>
+
                     </div>
                 </header>
             </div>
