@@ -1,4 +1,4 @@
-export function NoteTxt({ cmpType, info, noteId, onContentChange }) {
+export function NoteTxt({ info, noteId, onContentChange }) {
 
     return (
         <React.Fragment>

@@ -3,7 +3,7 @@
  .note-container{
     border: 1px solid var(--clrGrey2) ;
     border-radius: .5em;
-    padding: 0.5em;
+    padding: 0.8em;
     height: max-content;
     transition: all 0.2s ease-in-out;
 

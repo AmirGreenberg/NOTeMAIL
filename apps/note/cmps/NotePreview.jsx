@@ -13,7 +13,8 @@ export function NotePreview({
     onDoneToggle,
     onRemoveTodo,
     onPinNote,
-    onContentChange
+    onContentChange,
+    onTodoContentChange
 }) 
 {
 
@@ -30,7 +31,8 @@ export function NotePreview({
            onContentChange={onContentChange}
            onTodoInputChange={onTodoInputChange}
            onDoneToggle={onDoneToggle} 
-           onRemoveTodo={onRemoveTodo} />
+           onRemoveTodo={onRemoveTodo} 
+           onTodoContentChange={onTodoContentChange}/>
 
            <EditorPanel
            cmpType={note.type}

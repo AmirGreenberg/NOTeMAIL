@@ -12,7 +12,8 @@ export function NoteList({
     onDoneToggle,
     onRemoveTodo,
     onPinNote,
-    onContentChange
+    onContentChange,
+    onTodoContentChange
 }) {
     if (!notes) return <section>Loading...</section>
     return (
@@ -32,6 +33,7 @@ export function NoteList({
                         onSetBgColor={onSetBgColor}
                         onDuplicate={onDuplicate}
                         onTypeChange={onTypeChange}
+                        onTodoContentChange={onTodoContentChange}
                     />
 
                 </li>

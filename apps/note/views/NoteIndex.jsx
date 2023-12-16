@@ -97,7 +97,6 @@ export function NoteIndex() {
             setNewNote(createdNewNote)
 
         } else {
-
             const noteIdx = _getNoteIdx(noteId)
             const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
             notes[noteIdx].info.todos[todoIdx].isDone = !notes[noteIdx].info.todos[todoIdx].isDone
@@ -112,12 +111,27 @@ export function NoteIndex() {
             const todoIdx = createdNewNote.info.todos.findIndex(todo => todo.id === todoId)
             createdNewNote.info.todos.splice(todoIdx, 1)
             setNewNote(createdNewNote)
-
         } else {
-
             const noteIdx = _getNoteIdx(noteId)
             const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
             notes[noteIdx].info.todos.splice(todoIdx, 1)
+
+            _updateNote(noteIdx)
+        }
+    }
+
+    function onTodoContentChange(ev, noteId, todoId) {
+        const value = ev.target.innerText
+        if (!noteId) {
+            const createdNewNote = ({ ...newNote })
+            const todoIdx = createdNewNote.info.todos.findIndex(todo => todo.id === todoId)
+            createdNewNote.info.todos[todoIdx].txt = value
+            setNewNote(createdNewNote)
+        } else {
+            const noteIdx = _getNoteIdx(noteId)
+            const todoIdx = notes[noteIdx].info.todos.findIndex(todo => todo.id === todoId)
+            notes[noteIdx].info.todos[todoIdx].txt = value
+
             _updateNote(noteIdx)
         }
     }
@@ -178,7 +192,6 @@ export function NoteIndex() {
     }
 
     function onTypeChange(type, noteId) {
-
         if (!noteId) {
             const createdNewNote = ({ ...newNote })
             createdNewNote.type = type
@@ -220,7 +233,6 @@ export function NoteIndex() {
                 <NoteList 
                     notes={[newNote]}
                     isNewNote={true}
-
                     onSaveNote={onSaveNote}
                     onRemoveNote={onRemoveNote}
                     onTodoInputChange={onTodoInputChange}
@@ -230,7 +242,8 @@ export function NoteIndex() {
                     onContentChange={onContentChange}
                     onSetBgColor={onSetBgColor}
                     onDuplicate={onDuplicate}
-                    onTypeChange={onTypeChange} />
+                    onTypeChange={onTypeChange}
+                    onTodoContentChange={onTodoContentChange} />
             </section>
             <section className="main-content-note">
 
@@ -249,7 +262,8 @@ export function NoteIndex() {
                             onContentChange={onContentChange}
                             onSetBgColor={onSetBgColor}
                             onDuplicate={onDuplicate}
-                            onTypeChange={onTypeChange} />
+                            onTypeChange={onTypeChange}
+                            onTodoContentChange={onTodoContentChange} />
                     </section>
                 )}
                 {notes.filter(note => !note.isPinned).length > 0 && (
@@ -268,6 +282,7 @@ export function NoteIndex() {
                             onSetBgColor={onSetBgColor}
                             onDuplicate={onDuplicate}
                             onTypeChange={onTypeChange}
+                            onTodoContentChange={onTodoContentChange}
                         />
                     </section>
 

@@ -1,10 +1,11 @@
 .editor-panel{
     position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
 .icon-add {
     width: 1.7em;
-    margin-right: 1em;
 }
 
 .icon-pallet {
