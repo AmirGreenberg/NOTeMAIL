@@ -1,14 +1,21 @@
-const { Fragment, useState } = React
+const { Fragment } = React
 const { Link } = ReactRouterDOM
 
-export function DataTableRow({ mail, onRemoveMail, onStarMail, onReadMail }) {
+export function DataTableRow({
+    mail,
+    onRemoveMail,
+    onStarMail,
+    filterBy,
+    onSetFilter,
+    onReadMail,
+}) {
     return (
         <Fragment>
-            <tr onClick={() => onReadMail(mail)} className={`read-${mail.isRead}`}>
-                <td
-                    className=" clean-btn btn"
-                    onClick={() => onStarMail(mail)}
-                >
+            <tr
+                onClick={() => onReadMail(mail)}
+                className={`read-${mail.isRead}`}
+            >
+                <td className=" clean-btn btn" onClick={() => onStarMail(mail)}>
                     <img
                         className="star-img"
                         src={
@@ -22,6 +29,8 @@ export function DataTableRow({ mail, onRemoveMail, onStarMail, onReadMail }) {
 
                 <td className="fromName">
                     <Link
+                        filterBy={filterBy}
+                        onSetFilter={onSetFilter}
                         style={{ color: 'inherit', textDecoration: 'inherit' }}
                         to={`/mail/${mail.id}`}
                     >
@@ -30,6 +39,8 @@ export function DataTableRow({ mail, onRemoveMail, onStarMail, onReadMail }) {
                 </td>
                 <td className="subject">
                     <Link
+                        filterBy={filterBy}
+                        onSetFilter={onSetFilter}
                         style={{ color: 'inherit', textDecoration: 'inherit' }}
                         to={`/mail/${mail.id}`}
                     >
@@ -38,6 +49,8 @@ export function DataTableRow({ mail, onRemoveMail, onStarMail, onReadMail }) {
                 </td>
                 <td className="body">
                     <Link
+                        filterBy={filterBy}
+                        onSetFilter={onSetFilter}
                         style={{ color: 'inherit', textDecoration: 'inherit' }}
                         to={`/mail/${mail.id}`}
                     >

@@ -1,6 +1,6 @@
 import { DataTableRow } from './DataTableRow.jsx'
 
-export function DataTable({ mails, onRemoveMail, onStarMail, onReadMail }) {
+export function DataTable({ mails, onRemoveMail, onStarMail, onReadMail, filterBy, onSetFilter }) {
     return (
         <table border="1">
             <tbody>
@@ -11,6 +11,9 @@ export function DataTable({ mails, onRemoveMail, onStarMail, onReadMail }) {
                         onRemoveMail={onRemoveMail}
                         onStarMail={onStarMail}
                         onReadMail={onReadMail}
+                        filterBy={filterBy}
+                        onSetFilter={onSetFilter}
+                        
                     />
                 ))}
             </tbody>

@@ -168,7 +168,7 @@ function getFilterFromQueryString(searchParams) {
 }
 
 function _getLoggedinUserMail() {
-    console.log("🚀  loggedinUser.email:", loggedinUser.email)
+    console.log('🚀  loggedinUser.email:', loggedinUser.email)
     return loggedinUser.email
 }
 
@@ -193,7 +193,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: true,
             isStar: false,
@@ -213,7 +213,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: true,
             isStar: false,
@@ -233,7 +233,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: false,
             isStar: true,

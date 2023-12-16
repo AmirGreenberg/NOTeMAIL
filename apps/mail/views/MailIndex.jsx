@@ -1,14 +1,11 @@
-const { Outlet, Link, useSearchParams } = ReactRouterDOM
+const { useSearchParams } = ReactRouterDOM
 
 import { MailModal } from './../../mail/cmps/MailModal.jsx'
-
 import { DataTable } from '../cmps/data-table/DataTable.jsx'
 import { DataTableSent } from '../cmps/data-table/DataTableSent.jsx'
-
 import { mailService } from '../services/mail.service.js'
 import { busService } from '../../../services/event-bus.service.js'
 import { AppHeader } from '../../../cmps/AppHeader.jsx'
-import { NavBar } from '../cmps/NavBar.jsx'
 
 const { useState, useEffect } = React
 
@@ -51,11 +48,13 @@ export function MailIndex() {
     }
 
     function onReadMail(mail) {
-        if(!mail.isRead) mail.isRead=!mail.isRead
-        mailService
-            .save(mail)
-            .then(() => loadMails())
-            .catch((err) => console.error(err))
+        if (!mail.isRead) {
+            mail.isRead = !mail.isRead
+            mailService
+                .save(mail)
+                .then(() => loadMails())
+                .catch((err) => console.error(err))
+        }
     }
 
     function onSetFilter(filterBy) {
@@ -114,11 +113,10 @@ export function MailIndex() {
 
     return (
         <div>
-            <AppHeader />
+            <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} />
 
             <section className="mail-index main-layout">
                 <div>
-                    return (
                     <nav className="main-menu">
                         <div>
                             <a className="logo"></a>
@@ -126,17 +124,13 @@ export function MailIndex() {
                         <div className="settings"></div>
                         <div className="scrollbar" id="style-1">
                             <ul>
-                                <li className="compose">
-                                    <MailModal />
-
-                                    {/* <Link to="/mail/edit">
-                                        <span>
-                                            <i className="fa fa-pen fa-lg"></i>
-                                        </span>
+                                <li>
+                                    <a>
+                                        <MailModal />
                                         <span className="nav-text">
                                             Compose
                                         </span>
-                                    </Link> */}
+                                    </a>
                                 </li>
 
                                 <li>
@@ -329,7 +323,6 @@ export function MailIndex() {
                             </ul>
                         </div>
                     </nav>
-                    )
                 </div>
 
                 <div>
@@ -338,6 +331,8 @@ export function MailIndex() {
                         onRemoveMail={onRemoveMail}
                         onStarMail={onStarMail}
                         onReadMail={onReadMail}
+                        filterBy={filterBy}
+                        onSetFilter={onSetFilter}
                     />
                 </div>
             </section>

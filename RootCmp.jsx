@@ -1,7 +1,6 @@
-const { Route, Routes, } = ReactRouterDOM
+const { Route, Routes } = ReactRouterDOM
 const Router = ReactRouterDOM.HashRouter
 
-import { AppHeader } from './cmps/AppHeader.jsx'
 import { About } from './views/About.jsx'
 import { Home } from './views/Home.jsx'
 import { MailIndex } from './apps/mail/views/MailIndex.jsx'
@@ -9,8 +8,6 @@ import { MailDetails } from './apps/mail/views/MailDetails.jsx'
 import { EditMail } from './apps/mail/views/EditMail.jsx'
 import { NoteIndex } from './apps/note/views/NoteIndex.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
-import { Inbox } from './apps/mail/cmps/Inbox.jsx'
-import { Sent } from './apps/mail/cmps/Sent.jsx'
 
 export function App() {
     return (
@@ -27,7 +24,6 @@ export function App() {
                 </Routes>
             </section>
             <UserMsg />
-            
         </Router>
     )
 }

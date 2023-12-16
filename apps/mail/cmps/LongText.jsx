@@ -1,4 +1,4 @@
-const { useState, useEffect } = React
+const { useState } = React
 
 export function LongTxt({ txt, length = 100 }) {
     const [isShowAll, setIsShowAll] = useState(false)

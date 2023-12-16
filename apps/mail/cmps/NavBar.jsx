@@ -1,6 +1,6 @@
-const { useParams, useNavigate, Link } = ReactRouterDOM
+const { useNavigate, Link } = ReactRouterDOM
 
-export function NavBar({ loadMails }) {
+export function NavBar() {
     const navigate = useNavigate()
 
     return (
@@ -12,37 +12,8 @@ export function NavBar({ loadMails }) {
             <div className="scrollbar" id="style-1">
                 <ul>
                     <li className="compose">
-                        <nav role="navigation">
-                            <div id="menuToggle">
-                                <input type="checkbox" />
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <ul id="menu">
-                                    <a href="#">
-                                        <li>Home</li>
-                                    </a>
-                                    <a href="#">
-                                        <li>About</li>
-                                    </a>
-                                    <a href="#">
-                                        <li>Info</li>
-                                    </a>
-                                    <a href="#">
-                                        <li>Contact</li>
-                                    </a>
-                                    <a
-                                        href="https://erikterwan.com/"
-                                        target="_blank"
-                                    >
-                                        <li>Show me more</li>
-                                    </a>
-                                </ul>
-                            </div>
-                        </nav>
-
                         <Link to="/mail/edit">
-                                <i className="fa fa-pen fa-lg"></i>
+                            <i className="fa fa-pen fa-lg"></i>
                             <span className="nav-text">Compose</span>
                         </Link>
                     </li>
