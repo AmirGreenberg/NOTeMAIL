@@ -1,7 +1,7 @@
 const { Fragment, useState } = React
 const { Link } = ReactRouterDOM
 
-export function DataTableSentRow({ mail, onRemoveMail }) {
+export function DataTableSentRow({ mail, onRemoveMail, onStarMail, onReadMail }) {
     return (
         <Fragment>
             <tr>

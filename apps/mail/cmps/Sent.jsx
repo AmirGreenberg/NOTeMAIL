@@ -27,7 +27,7 @@ export function Sent() {
             setMails((prevMails) => {
                 return prevMails.filter((mail) => mail.id !== mailId)
             })
-            busService.showSuccessMsg(`Mail successfully removed! ${mailId}`)
+            busService.showSuccessMsg(`Conversation moved to Trash.`)
         })
     }
 

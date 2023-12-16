@@ -24,7 +24,7 @@ export function EditMail() {
         ev.preventDefault()
         mailService.save(mailToEdit).then((mail) => {
             onBack()
-            showSuccessMsg(`Mail successfully saved! ${mail.id}`)
+            showSuccessMsg(` Message sent `)
         })
     }
 
@@ -124,7 +124,7 @@ export function EditMail() {
                             )
                         })}
 
-                        <button className='compose-mail'>Compose</button>
+                        <button className='compose-mail'>Send</button>
                     </form>
                     <a onClick={onBack} className="back-img">
                         Back

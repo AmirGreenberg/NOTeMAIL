@@ -34,12 +34,24 @@ export function MailIndex() {
             setMails((prevMails) => {
                 return prevMails.filter((mail) => mail.id !== mailId)
             })
-            busService.showSuccessMsg(`Mail successfully removed! ${mailId}`)
+            busService.showSuccessMsg(`Conversation moved to Trash.`)
         })
     }
 
     function onStarMail(mail) {
         mail.isStar = !mail.isStar
+        var msg = mail.isStar
+            ? 'Conversation Starred.'
+            : 'Conversation Un-Starred.'
+        mailService
+            .save(mail)
+            .then(() => loadMails())
+            .catch((err) => console.error(err))
+        busService.showSuccessMsg(msg)
+    }
+
+    function onReadMail(mail) {
+        if(!mail.isRead) mail.isRead=!mail.isRead
         mailService
             .save(mail)
             .then(() => loadMails())
@@ -57,6 +69,7 @@ export function MailIndex() {
                 mails={mails}
                 onRemoveMail={onRemoveMail}
                 onStarMail={onStarMail}
+                onReadMail={onReadMail}
             />
         )
     }
@@ -68,6 +81,7 @@ export function MailIndex() {
                 mails={mails}
                 onRemoveMail={onRemoveMail}
                 onStarMail={onStarMail}
+                onReadMail={onReadMail}
             />
         )
     }
@@ -79,6 +93,7 @@ export function MailIndex() {
                 mails={mails}
                 onRemoveMail={onRemoveMail}
                 onStarMail={onStarMail}
+                onReadMail={onReadMail}
             />
         )
     }
@@ -90,6 +105,7 @@ export function MailIndex() {
                 mails={mails}
                 onRemoveMail={onRemoveMail}
                 onStarMail={onStarMail}
+                onReadMail={onReadMail}
             />
         )
     }
@@ -121,7 +137,6 @@ export function MailIndex() {
                                             Compose
                                         </span>
                                     </Link> */}
-                                    
                                 </li>
 
                                 <li>
@@ -322,11 +337,10 @@ export function MailIndex() {
                         mails={mails}
                         onRemoveMail={onRemoveMail}
                         onStarMail={onStarMail}
+                        onReadMail={onReadMail}
                     />
                 </div>
             </section>
-            
         </div>
-        
     )
 }

@@ -3,8 +3,8 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
 export const loggedinUser = {
-    email: 'user@appsus.com',
-    fullname: 'Mahatma Appsus',
+    email: 'amir@not-sleeping.com',
+    fullname: 'Amir Greenberg',
 }
 
 _initMails()
@@ -56,6 +56,10 @@ function query(filterBy) {
             const regExp = new RegExp(filterBy.isStar, 'i')
             mails = mails.filter((mail) => regExp.test(mail.isStar))
         }
+        mails.sort((a, b) =>
+            a.isRead > b.isRead ? 1 : b.isRead > a.isRead ? -1 : 0
+        )
+
         return mails
     })
 }
