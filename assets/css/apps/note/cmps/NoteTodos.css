@@ -1,3 +1,35 @@
-.add-todo-icon{
-    width: 1.5em
+.todo-li-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.to-do-txt{   
+    margin-left: 15px;
+    flex: 1;
+}
+
+
+.icon-remove-todo {
+    width: 1em;  
+}
+
+.to-do-input{
+    font-size: 1.2em;
+    padding: .7em;
+    margin-left: 1em;
+}
+
+.todo-inpt-section{
+    position: relative;
+    margin-left: 20px;
+}
+
+
+.icon-plus {
+    width: 1.2em;
+    margin-top: 1em;
+    position: absolute;
+    translate: bottom 80px;
+
 }
