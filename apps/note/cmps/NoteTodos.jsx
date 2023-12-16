@@ -6,10 +6,6 @@ export function NoteTodos({ cmpType, info, noteId, onTodoInputChange, onDoneTogg
         ev.target.value = ''
     }
 
-    
-    
-
-    
     if (!info.todos) return <section>Loading...</section>
     return (
         <React.Fragment>
@@ -31,10 +27,11 @@ export function NoteTodos({ cmpType, info, noteId, onTodoInputChange, onDoneTogg
                     <li key={idx} className="todo-li-row clean-list grid grid-auto-column ">
                         <div>
                         <input defaultChecked={todo.isDone} onClick={() => onDoneToggle(noteId, todo.id)} 
+                        
                         type="checkbox" name="todoItem" />
 
                         <label className="to-do-label to-do-txt content-editable-placeholder notes-inner-txt"
-                            
+                            style={{textDecorationLine: todo.isDone ? 'line-through' : 'none' }}
                             htmlFor="todoItem"
                             contentEditable="true"
                             suppressContentEditableWarning={true}>

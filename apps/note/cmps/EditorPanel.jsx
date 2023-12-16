@@ -8,15 +8,11 @@ export function EditorPanel({ noteId, onSaveNote, isNewNote, onRemoveNote, onSet
     function toggleClrPicker() {
         setIsColorPicker(prevState => !prevState)
     }
-    
-    // function closeClrPicker() {
-    //     setIsColorPicker(false)
-    // }
 
     return (
         <section className="editor-panel">
             {/* add */}
-            {isNewNote && <button className="clean-btn btn" onClick={onSaveNote} title="Add">
+            {isNewNote && <button className="clean-btn btn" onClick={onSaveNote} title="Add the Note">
                 <img className="icon-add" src="./assets/icons/icon-add.png" alt="" />
                 </button>}
 
@@ -33,27 +29,27 @@ export function EditorPanel({ noteId, onSaveNote, isNewNote, onRemoveNote, onSet
                   </button>
 
             {/* img */}
-            <button className="clean-btn btn" onClick={() => onTypeChange('NoteImg', noteId)} title="New image note">
+            <button className="clean-btn btn" onClick={() => onTypeChange('NoteImg', noteId)} title="Image Note">
                 <img className="icon-img" src="./assets/icons/icon-img.png" alt="" />
                </button>
 
             {/* txt */}
-            <button className="clean-btn btn" onClick={() => onTypeChange('NoteTxt', noteId)} title="New text note">
+            <button className="clean-btn btn" onClick={() => onTypeChange('NoteTxt', noteId)} title="Text Note">
                 <img className="icon-txt" src="./assets/icons/icon-txt.png" alt="" />
                 </button>
 
             {/* list */}
-            <button className="clean-btn btn" onClick={() => onTypeChange('NoteTodos', noteId)} title="New list note">
+            <button className="clean-btn btn" onClick={() => onTypeChange('NoteTodos', noteId)} title="List Note">
                 <img className="icon-list" src="./assets/icons/icon-list.png" alt="" />
                 </button>
 
             {/* duplicate */}
-            {!isNewNote && <button className="clean-btn btn" onClick={() => onDuplicate(noteId)} title="Duplicate note">
+            {!isNewNote && <button className="clean-btn btn" onClick={() => onDuplicate(noteId)} title="Duplicate Note">
                 <img className="icon-duplicate" src="./assets/icons/icon-duplicate.png" alt="" />
                 </button>}
 
             {/* remove */}
-            {!isNewNote && <button className="clean-btn btn" onClick={() => onRemoveNote(noteId)} title="Remove note">
+            {!isNewNote && <button className="clean-btn btn" onClick={() => onRemoveNote(noteId)} title="Remove Note">
                 <img className="icon-remove" src="./assets/icons/icon-remove.png" alt="" />
                 </button>}
 
