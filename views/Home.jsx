@@ -1,3 +1,5 @@
+const { useParams, useNavigate, Link } = ReactRouterDOM
+
 export function Home() {
     return (
         <section>
@@ -20,22 +22,27 @@ export function Home() {
                         </span>
                     </h1>
 
-                    <a
-                        href="/#/note/"
+                    <Link
+                        to="/note/"
                         className="btn-hero btn-white btn-animated"
                     >
-                        <img src="./assets/img/note.png" className="btn-homepage" />
-                    </a>
-                    <a
-                        href="/#/mail/"
+                        <img
+                            src="./assets/img/note.png"
+                            className="btn-homepage"
+                        />
+                    </Link>
+
+                    <Link
+                        to="/mail/"
                         className="btn-hero btn-white btn-animated"
                     >
-                        <img src="./assets/img/email.png" className="btn-homepage" />
-                    </a>
+                        <img
+                            src="./assets/img/email.png"
+                            className="btn-homepage"
+                        />
+                    </Link>
                 </div>
             </div>
-
-            
         </section>
     )
 }

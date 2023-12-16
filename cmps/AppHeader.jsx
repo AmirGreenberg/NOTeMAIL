@@ -1,8 +1,11 @@
+import { MailFilter } from "../apps/mail/cmps/MailFilter"
+
 const { Link, NavLink } = ReactRouterDOM
 
 export function AppHeader() {
     if (window.location.pathname !== '/index.html') {
         return (
+            
             <div>
                 <header className="header-container">
                     <div className="header flex space-between align-center">
@@ -17,6 +20,7 @@ export function AppHeader() {
                             </Link>
                         </div>
                         <div className="search">
+                            
                             <i className="icon fa-solid fa-magnifying-glass"></i>
                             <datalist
                                 id="keywords-list"

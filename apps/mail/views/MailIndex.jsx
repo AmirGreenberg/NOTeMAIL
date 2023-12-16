@@ -1,5 +1,7 @@
 const { Outlet, Link, useSearchParams } = ReactRouterDOM
 
+import { MailModal } from './../../mail/cmps/MailModal.jsx'
+
 import { DataTable } from '../cmps/data-table/DataTable.jsx'
 import { DataTableSent } from '../cmps/data-table/DataTableSent.jsx'
 
@@ -109,14 +111,17 @@ export function MailIndex() {
                         <div className="scrollbar" id="style-1">
                             <ul>
                                 <li className="compose">
-                                    <Link to="/mail/edit">
+                                    <MailModal />
+
+                                    {/* <Link to="/mail/edit">
                                         <span>
                                             <i className="fa fa-pen fa-lg"></i>
                                         </span>
                                         <span className="nav-text">
                                             Compose
                                         </span>
-                                    </Link>
+                                    </Link> */}
+                                    
                                 </li>
 
                                 <li>
@@ -140,7 +145,7 @@ export function MailIndex() {
                                             )
                                         }}
                                     >
-                                        <i className="fa fa-inbox fa-lg"></i>
+                                        <i className="fa fa-star-o fa-lg"></i>
                                         <span className="nav-text">
                                             Starred
                                         </span>
@@ -155,7 +160,7 @@ export function MailIndex() {
                                             )
                                         }}
                                     >
-                                        <i className="fa fa-inbox fa-lg"></i>
+                                        <i className="fa fa-paper-plane fa-lg"></i>{' '}
                                         <span className="nav-text">Sent</span>
                                     </a>
                                 </li>
@@ -168,7 +173,7 @@ export function MailIndex() {
                                             )
                                         }}
                                     >
-                                        <i className="fa fa-inbox fa-lg"></i>
+                                        <i className="fa fa-trash-can fa-lg"></i>
                                         <span className="nav-text">Trash</span>
                                     </a>
                                 </li>
@@ -176,7 +181,12 @@ export function MailIndex() {
                                 <li>
                                     <a>
                                         <i className="fa fa-plane fa-lg"></i>
-                                        <span className="nav-text">Travel</span>
+                                        <span className="nav-text">
+                                            Travel
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
+                                        </span>
                                     </a>
                                 </li>
 
@@ -185,6 +195,9 @@ export function MailIndex() {
                                         <i className="fa fa-shopping-cart"></i>
                                         <span className="nav-text">
                                             Shopping
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
                                         </span>
                                     </a>
                                 </li>
@@ -194,6 +207,9 @@ export function MailIndex() {
                                         <i className="fa fa-microphone fa-lg"></i>
                                         <span className="nav-text">
                                             Film & Music
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
                                         </span>
                                     </a>
                                 </li>
@@ -203,6 +219,9 @@ export function MailIndex() {
                                         <i className="fa fa-flask fa-lg"></i>
                                         <span className="nav-text">
                                             Web Tools
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
                                         </span>
                                     </a>
                                 </li>
@@ -212,6 +231,9 @@ export function MailIndex() {
                                         <i className="fa fa-picture-o fa-lg"></i>
                                         <span className="nav-text">
                                             Art & Design
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
                                         </span>
                                     </a>
                                 </li>
@@ -221,6 +243,9 @@ export function MailIndex() {
                                         <i className="fa fa-align-left fa-lg"></i>
                                         <span className="nav-text">
                                             Magazines
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
                                         </span>
                                     </a>
                                 </li>
@@ -228,7 +253,12 @@ export function MailIndex() {
                                 <li>
                                     <a>
                                         <i className="fa fa-gamepad fa-lg"></i>
-                                        <span className="nav-text">Games</span>
+                                        <span className="nav-text">
+                                            Games
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
+                                        </span>
                                     </a>
                                 </li>
 
@@ -237,6 +267,9 @@ export function MailIndex() {
                                         <i className="fa fa-glass fa-lg"></i>
                                         <span className="nav-text">
                                             Life & Style
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
                                         </span>
                                     </a>
                                 </li>
@@ -244,7 +277,12 @@ export function MailIndex() {
                                 <li className="darkerlishadowdown">
                                     <a>
                                         <i className="fa fa-rocket fa-lg"></i>
-                                        <span className="nav-text">Fun</span>
+                                        <span className="nav-text">
+                                            Fun
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
+                                        </span>
                                     </a>
                                 </li>
                             </ul>
@@ -252,7 +290,12 @@ export function MailIndex() {
                             <li>
                                 <a>
                                     <i className="fa fa-question-circle fa-lg"></i>
-                                    <span className="nav-text">Help</span>
+                                    <span className="nav-text">
+                                        Help
+                                        <span className="coming-soon">
+                                            Coming soon...
+                                        </span>
+                                    </span>
                                 </a>
                             </li>
 
@@ -260,7 +303,12 @@ export function MailIndex() {
                                 <li>
                                     <a>
                                         <i className="fa fa-lightbulb-o fa-lg"></i>
-                                        <span className="nav-text">BLOG</span>
+                                        <span className="nav-text">
+                                            BLOG
+                                            <span className="coming-soon">
+                                                Coming soon...
+                                            </span>
+                                        </span>
                                     </a>
                                 </li>
                             </ul>
@@ -268,6 +316,7 @@ export function MailIndex() {
                     </nav>
                     )
                 </div>
+
                 <div>
                     <DataTable
                         mails={mails}
@@ -276,6 +325,8 @@ export function MailIndex() {
                     />
                 </div>
             </section>
+            
         </div>
+        
     )
 }

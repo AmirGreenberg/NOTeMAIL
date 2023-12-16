@@ -409,7 +409,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: false,
             isStar: false,
@@ -429,7 +429,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: false,
             isStar: false,
@@ -509,7 +509,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: false,
             isStar: false,
@@ -529,7 +529,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: false,
             isStar: false,
@@ -549,7 +549,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: false,
             isStar: false,

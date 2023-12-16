@@ -170,6 +170,7 @@
         -webkit-transition: all 0.14s linear;
         transition: all 0.14s linear;
         font-family: Google, sans-serif;
+        cursor: pointer;
     }
     
     .main-menu .nav-icon {
@@ -189,6 +190,22 @@
         width: 190px;
         font-family: Google, sans-serif;
     }
+   
+    .main-menu .coming-soon {
+        /* position: relative; */
+        /* display: table-cell; */
+        display: inline;
+        margin-inline-start: 1em ;
+        vertical-align: middle;
+        width: fit-content;
+        font-family: Google, sans-serif;
+        font-size: 0.8em;
+        font-style: italic;
+        color: var(--clrGrey4);
+    }
+
+
+
     
     
     

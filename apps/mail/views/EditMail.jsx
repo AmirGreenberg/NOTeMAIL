@@ -5,7 +5,6 @@ import { showSuccessMsg } from '../../../services/event-bus.service.js'
 import { AppHeader } from '../../../cmps/AppHeader.jsx'
 import { NavBar } from '../cmps/NavBar.jsx'
 
-
 const { useState, useEffect } = React
 
 export function EditMail() {
@@ -97,41 +96,43 @@ export function EditMail() {
 
     return (
         <div>
-            <AppHeader />
-            <NavBar />
-        <section className="edit-mail main-layout">
-            <div className="edit-mail-container">
-                <h2>Add a Mail</h2>
-                <form onSubmit={onSaveMail}>
-                    {inputs.map((input) => {
-                        return (
-                            <React.Fragment key={input.id}>
-                                <label htmlFor={input.htmlFor}>
-                                    {input.label}
-                                </label>
-                                <input
-                                    required
-                                    type={input.type}
-                                    value={input.value || ''}
-                                    name={input.name}
-                                    id={input.id}
-                                    onChange={handleInputChange}
-                                />
-                            </React.Fragment>
-                        )
-                    })}
+            {/* <AppHeader /> */}
+            {/* <NavBar /> */}
+            <section>
+                <div>
+                    <h2 className="new-message">New Message</h2>
+                    <form onSubmit={onSaveMail}>
+                        {inputs.map((input) => {
+                            return (
+                                <React.Fragment key={input.id}>
+                                    <label
+                                        className="fields"
+                                        htmlFor={input.htmlFor}
+                                    >
+                                        {input.label}
+                                    </label>
+                                    <input
+                                        className="mail-input"
+                                        required
+                                        type={input.type}
+                                        value={input.value || ''}
+                                        name={input.name}
+                                        id={input.id}
+                                        onChange={handleInputChange}
+                                    />
+                                </React.Fragment>
+                            )
+                        })}
 
-                    <button>Compose</button>
-                </form>
-            </div>
-            <img
-                onClick={onBack}
-                className="back-img"
-                src="./assets/icons/back.svg"
-            />
-        </section>
+                        <button className='compose-mail'>Compose</button>
+                    </form>
+                    <a onClick={onBack} className="back-img">
+                        Back
+                    </a>
+                </div>
+            </section>
         </div>
     )
 }
 
-// 
+//
