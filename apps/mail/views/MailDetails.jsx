@@ -1,5 +1,4 @@
 import { mailService } from '../services/mail.service.js'
-import { AppHeader } from '../../../cmps/AppHeader.jsx'
 import { NavBar } from '../cmps/NavBar.jsx'
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -30,16 +29,70 @@ export function MailDetails() {
     if (!mail) return <section>Loading...</section>
     return (
         <div>
-            <AppHeader />
-            <NavBar />
-        <section className="mail-details main-layout">
-            <h1>From: {mail.from}</h1>
-            <h2>Subject: {mail.subject}</h2>
+            <div>
+                <header className="header-container">
+                    <div className="header flex space-between align-center">
+                        <div className="flex space-between align-center">
+                            <button>☰</button>
+                            <Link to="/">
+                                <img
+                                    src="./assets/img/email.png"
+                                    alt="logo"
+                                    className="logo-header"
+                                />
+                            </Link>
+                        </div>
 
-            <p>{mail.body}</p>
+                        <div className="search">
+                            <i className="icon fa-solid fa-magnifying-glass"></i>
+                            <datalist
+                                id="keywords-list"
+                                className="keywords"
+                            ></datalist>
+                            <input
+                                list="keywords-list"
+                                className="input filter-txt-input"
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                placeholder="Search mail..."
+                            />
+                        </div>
 
-            <button onClick={onBack}>←</button>
-        </section>
+                        <div>
+                            <img
+                                src="./assets/icons/hamburger.svg"
+                                alt="logo"
+                                className="logo-header"
+                            />
+                            <img
+                                src="./assets/img/amirpicgoogle.jpg"
+                                alt="logo"
+                                className="logo-header"
+                            />
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <section className="mail-index main-layout">
+                <NavBar />
+                <div></div>
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>{mail.subject}</td>
+                            </tr>
+                            <tr>
+                                <td>From: {mail.from}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>{mail.body}</p>
+                    <button onClick={onBack}>Back</button>
+                </div>
+            </section>
         </div>
     )
 }

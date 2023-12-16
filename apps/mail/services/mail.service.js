@@ -3,8 +3,8 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
 export const loggedinUser = {
-    email: 'user@appsus.com',
-    fullname: 'Mahatma Appsus',
+    email: 'amir@not-sleeping.com',
+    fullname: 'Amir Greenberg',
 }
 
 _initMails()
@@ -56,6 +56,10 @@ function query(filterBy) {
             const regExp = new RegExp(filterBy.isStar, 'i')
             mails = mails.filter((mail) => regExp.test(mail.isStar))
         }
+        mails.sort((a, b) =>
+            a.isRead > b.isRead ? 1 : b.isRead > a.isRead ? -1 : 0
+        )
+
         return mails
     })
 }
@@ -164,7 +168,7 @@ function getFilterFromQueryString(searchParams) {
 }
 
 function _getLoggedinUserMail() {
-    console.log("🚀  loggedinUser.email:", loggedinUser.email)
+    console.log('🚀  loggedinUser.email:', loggedinUser.email)
     return loggedinUser.email
 }
 
@@ -189,7 +193,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: true,
             isStar: false,
@@ -209,7 +213,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: true,
             isStar: false,
@@ -229,7 +233,7 @@ function _createMails() {
             body: utilService.makeLorem(
                 utilService.getRandomIntInclusive(0, 200)
             ),
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930594,
             isTrash: false,
             isStar: true,

@@ -35,7 +35,7 @@ export function MailFilter({ filterBy, onSetFilter }) {
     const { from, to, subject, body } = filterByToEdit
     return (
         <section className="mail-filter main-layout">
-            <h2>Filter Our Mails</h2>
+            <div></div>
             <form onSubmit={onSetFilterBy}>
                 <label htmlFor="from">From: </label>
                 <input

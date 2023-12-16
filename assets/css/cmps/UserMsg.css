@@ -1,27 +1,37 @@
 .user-msg {
-    background-color: lightgray;
+    background-color: #202124;
     padding: 10px;
     position: fixed;
-    bottom: 0;
-    right: 0;
+    bottom: 20px;
+    left: 50px;
     color: var(--off-white);
     font-weight: bold;
     border-radius: 2px;
+    color: #cbcccc;
 }
 
 .user-msg p {
-    margin: 0;
+    margin: 5px;
+
 }
 
 .user-msg.success {
-    background-color: lightgreen;
 }
 
 .user-msg.error {
-    background-color: lightpink;
+    background-color: #202124;
+    color: #cbcccc;
 }
 
 .user-msg button {
     float: right;
     margin: 1em;
+    padding: 5px;
+    color: #cbcccc;
+}
+
+.close-modal-btn{
+    cursor: pointer;
+    font-size: large;
+    padding-inline-start: 20px;
 }

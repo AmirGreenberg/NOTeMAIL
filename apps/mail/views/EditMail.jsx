@@ -2,8 +2,6 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 
 import { mailService } from '../services/mail.service.js'
 import { showSuccessMsg } from '../../../services/event-bus.service.js'
-import { AppHeader } from '../../../cmps/AppHeader.jsx'
-import { NavBar } from '../cmps/NavBar.jsx'
 
 const { useState, useEffect } = React
 
@@ -24,7 +22,7 @@ export function EditMail() {
         ev.preventDefault()
         mailService.save(mailToEdit).then((mail) => {
             onBack()
-            showSuccessMsg(`Mail successfully saved! ${mail.id}`)
+            showSuccessMsg(` Message sent `)
         })
     }
 
@@ -96,8 +94,6 @@ export function EditMail() {
 
     return (
         <div>
-            {/* <AppHeader /> */}
-            {/* <NavBar /> */}
             <section>
                 <div>
                     <h2 className="new-message">New Message</h2>
@@ -123,8 +119,9 @@ export function EditMail() {
                                 </React.Fragment>
                             )
                         })}
-
-                        <button className='compose-mail'>Compose</button>
+                        <Link to="/mail/">
+                            <button className="compose-mail">Send</button>
+                        </Link>
                     </form>
                     <a onClick={onBack} className="back-img">
                         Back
@@ -134,5 +131,3 @@ export function EditMail() {
         </div>
     )
 }
-
-//
