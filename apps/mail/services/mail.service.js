@@ -21,10 +21,11 @@ export const mailService = {
     getSentFilter,
     getTrashFilter,
     getStarFilter,
+    _getLoggedinUserMail,
+    _getLoggedinUserName,
 }
 
 function query(filterBy) {
-    console.log('🚀  filterBy:', filterBy)
     return storageService.query(MAIL_KEY).then((mails) => {
         if (filterBy.from) {
             const regExp = new RegExp(filterBy.from, 'i')
@@ -47,13 +48,14 @@ function query(filterBy) {
         }
 
         if (filterBy.isTrash) {
-            mails = mails.filter((mail) => mail.isTrash === filterBy.isTrash)
-        }
-        
-        if (filterBy.isStar) {
-            mails = mails.filter((mail) => mail.isStar === filterBy.isStar)
+            const regExp = new RegExp(filterBy.isTrash, 'i')
+            mails = mails.filter((mail) => regExp.test(mail.isTrash))
         }
 
+        if (filterBy.isStar) {
+            const regExp = new RegExp(filterBy.isStar, 'i')
+            mails = mails.filter((mail) => regExp.test(mail.isStar))
+        }
         return mails
     })
 }
@@ -90,7 +92,7 @@ function getDefaultFilter(
     to = loggedinUser.email,
     subject = '',
     body = '',
-    isTrash = '',
+    isTrash = false,
     isStar = ''
 ) {
     return { from, to, subject, body, isTrash, isStar }
@@ -101,7 +103,7 @@ function getInboxFilter(
     to = loggedinUser.email,
     subject = '',
     body = '',
-    isTrash = '',
+    isTrash = false,
     isStar = ''
 ) {
     return { from, to, subject, body, isTrash, isStar }
@@ -112,7 +114,7 @@ function getSentFilter(
     to = '',
     subject = '',
     body = '',
-    isTrash = '',
+    isTrash = false,
     isStar = ''
 ) {
     return { from, to, subject, body, isTrash, isStar }
@@ -134,7 +136,7 @@ function getStarFilter(
     to = '',
     subject = '',
     body = '',
-    isTrash = '',
+    isTrash = false,
     isStar = true
 ) {
     return { from, to, subject, body, isTrash, isStar }
@@ -145,9 +147,12 @@ function getFilterFromQueryString(searchParams) {
     let to = searchParams.get('to') || ''
     const subject = searchParams.get('subject') || ''
     const body = searchParams.get('body') || ''
-    const isTrash = searchParams.get('isTrash') || false
+    let isTrash = searchParams.get('isTrash') || false
     const isStar = searchParams.get('isStar') || ''
-    if (!from || !subject || !body || !isTrash || !isStar) to = loggedinUser.email
+    if (!from && !subject && !body && !isStar) {
+        to = loggedinUser.email
+    }
+
     return {
         from,
         to,
@@ -156,6 +161,15 @@ function getFilterFromQueryString(searchParams) {
         isTrash,
         isStar,
     }
+}
+
+function _getLoggedinUserMail() {
+    console.log("🚀  loggedinUser.email:", loggedinUser.email)
+    return loggedinUser.email
+}
+
+function _getLoggedinUserName() {
+    return loggedinUser.fullname
 }
 
 function _initMails() {

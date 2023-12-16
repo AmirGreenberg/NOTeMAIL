@@ -2,6 +2,7 @@
 table {
     /* padding-inline-start: clamp(70px, 5vw, 5vw); */
     /* padding-inline-end: clamp(10px, 1vw, 2vw); */
+    display: grid;
     font-family: Google;
     border: 0px solid #31304d;
     color: var(--clrGrey5);
@@ -26,7 +27,7 @@ tr {
     white-space: nowrap;
     grid-auto-flow: column;
     align-items: center;
-    width: 90vw;
+    /* width: 70vw; */
     border-block: 1px solid var(--clrMail3);
     border-collapse: collapse;
     padding-block: 0.5em;

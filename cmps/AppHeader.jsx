@@ -1,8 +1,6 @@
 const { Link, NavLink } = ReactRouterDOM
 
 export function AppHeader() {
-    console.log(window.location)
-
     if (window.location.pathname !== '/index.html') {
         return (
             <div>
@@ -12,7 +10,7 @@ export function AppHeader() {
                             <button>☰</button>
                             <Link to="/">
                                 <img
-                                    src="images/email.png"
+                                    src="./assets/img/email.png"
                                     alt="logo"
                                     className="logo-header"
                                 />
@@ -35,26 +33,22 @@ export function AppHeader() {
                         </div>
                         <div>
                             <img
-                                src="icons/hamburger.svg"
+                                src="./assets/icons/hamburger.svg"
                                 alt="logo"
                                 className="logo-header"
                             />
                             <img
-                                src="/images/amirpicgoogle.jpg"
+                                src="./assets/img/amirpicgoogle.jpg"
                                 alt="logo"
                                 className="logo-header"
                             />
                         </div>
                     </div>
                 </header>
-
-                
             </div>
 
             // <header classNameName="app-header">
-            // <Link to="/">
-            //     <img classNameName="logo" src="./assets/img/logo.png" alt="" />
-            // </Link>
+
             //     <nav>
             //         <NavLink to="/">Home</NavLink>
             //         <NavLink to="/about">About</NavLink>

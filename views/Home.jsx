@@ -4,7 +4,7 @@ export function Home() {
             <div className="hero">
                 <div className="logo-box">
                     <img
-                        src="../images/logo-white.png"
+                        src="./assets/img/logo-white.png"
                         alt="logo"
                         className="logo"
                     />
@@ -24,13 +24,13 @@ export function Home() {
                         href="/#/note/"
                         className="btn-hero btn-white btn-animated"
                     >
-                        <img src="images/note.png" className="btn-homepage" />
+                        <img src="./assets/img/note.png" className="btn-homepage" />
                     </a>
                     <a
                         href="/#/mail/"
                         className="btn-hero btn-white btn-animated"
                     >
-                        <img src="./images/email.png" className="btn-homepage" />
+                        <img src="./assets/img/email.png" className="btn-homepage" />
                     </a>
                 </div>
             </div>

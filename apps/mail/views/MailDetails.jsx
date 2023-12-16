@@ -1,4 +1,7 @@
 import { mailService } from '../services/mail.service.js'
+import { AppHeader } from '../../../cmps/AppHeader.jsx'
+import { NavBar } from '../cmps/NavBar.jsx'
+
 const { useParams, useNavigate, Link } = ReactRouterDOM
 
 const { useState, useEffect } = React
@@ -26,6 +29,9 @@ export function MailDetails() {
     }
     if (!mail) return <section>Loading...</section>
     return (
+        <div>
+            <AppHeader />
+            <NavBar />
         <section className="mail-details main-layout">
             <h1>From: {mail.from}</h1>
             <h2>Subject: {mail.subject}</h2>
@@ -34,5 +40,6 @@ export function MailDetails() {
 
             <button onClick={onBack}>←</button>
         </section>
+        </div>
     )
 }

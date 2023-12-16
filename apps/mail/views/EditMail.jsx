@@ -2,6 +2,9 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 
 import { mailService } from '../services/mail.service.js'
 import { showSuccessMsg } from '../../../services/event-bus.service.js'
+import { AppHeader } from '../../../cmps/AppHeader.jsx'
+import { NavBar } from '../cmps/NavBar.jsx'
+
 
 const { useState, useEffect } = React
 
@@ -93,6 +96,9 @@ export function EditMail() {
     ]
 
     return (
+        <div>
+            <AppHeader />
+            <NavBar />
         <section className="edit-mail main-layout">
             <div className="edit-mail-container">
                 <h2>Add a Mail</h2>
@@ -124,6 +130,7 @@ export function EditMail() {
                 src="./assets/icons/back.svg"
             />
         </section>
+        </div>
     )
 }
 
