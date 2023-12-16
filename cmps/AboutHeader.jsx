@@ -1,8 +1,6 @@
-import { NoteFilter } from "./NoteFilter.jsx"
+const { Link } = ReactRouterDOM
 
-const { Link, NavLink } = ReactRouterDOM
-
-export function NoteHeader({filterBy, onSetFilter}) {
+export function AboutHeader() {
     if (window.location.pathname !== '/index.html') {
         return (
             
@@ -14,14 +12,13 @@ export function NoteHeader({filterBy, onSetFilter}) {
                             <button>☰</button>
                             <Link to="/">
                                 <img
-                                    src="./assets/img/note.png"
+                                    src="./assets/img/logo.png"
                                     alt="logo"
                                     className="logo-header"
                                 />
                             </Link>
                         </div>
 
-                        <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter} />
    
                         <div>
                             <img

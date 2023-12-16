@@ -76,11 +76,14 @@ export function AppHeader({ filterBy, onSetFilter }) {
                                 alt="logo"
                                 className="logo-header"
                             />
+
+                            <Link to="/about">
                             <img
                                 src="./assets/img/amir.png"
                                 alt="logo"
                                 className="logo-header"
                             />
+                            </Link>
                         </div>
                     </div>
                 </header>
