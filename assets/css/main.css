@@ -19,7 +19,8 @@
 
 
 /* Main -  Views */
-@import './views/home.css';
+@import './views/Home.css';
+@import './views/About.css';
 
 
 /* Main - mq */

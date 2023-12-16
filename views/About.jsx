@@ -1,15 +1,10 @@
 
 export function About() {
     return <section className="about">
-        
-        We are ABOUT to do this page.........
-
-        <img src="./assets/img/david.png" alt="" />
-        <img src="./assets/img/amir.png" alt="" />
-
-
-
-
-
+        <h2 className="about-sentance">We are ABOUT to do this page.........</h2>
+        <div className="about-imgs">
+            <img src="./assets/img/david.png" alt="" />
+            <img src="./assets/img/amir.png" alt="" />
+        </div>
     </section>
 }

@@ -7,7 +7,7 @@ export function NoteTxt({ cmpType, info, noteId, onContentChange }) {
                 id="title"
                 className="content-editable-placeholder notes-inner-txt"
                 contentEditable="true"
-                    spellcheck="false"
+                    spellCheck="false"
                 data-placeholder="I'm all new..."
                 suppressContentEditableWarning={true}
 
@@ -20,7 +20,7 @@ export function NoteTxt({ cmpType, info, noteId, onContentChange }) {
                 id="txt"
                 className="content-editable-placeholder notes-inner-txt"
                 contentEditable="true"
-                    spellcheck="false"
+                    spellCheck="false"
                 data-placeholder="txt here..."
                 suppressContentEditableWarning={true}
                 style={{ outline: "none" }}
