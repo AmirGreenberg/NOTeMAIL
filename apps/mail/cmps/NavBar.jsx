@@ -1,7 +1,6 @@
 const { useParams, useNavigate, Link } = ReactRouterDOM
 
 export function NavBar({ loadMails }) {
-    console.log("🚀  loadMails:", loadMails)
     const navigate = useNavigate()
 
     return (
@@ -22,15 +21,10 @@ export function NavBar({ loadMails }) {
                     </li>
 
                     <li>
-                        <a
-                            onClick={() => {
-                                navigate('/mail')
-                                loadMails()
-                            }}
-                        >
+                        <Link to="/mail/">
                             <i className="fa fa-inbox fa-lg"></i>
                             <span className="nav-text">Inbox</span>
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
