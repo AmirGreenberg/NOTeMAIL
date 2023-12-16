@@ -18,8 +18,8 @@ export function NotePreview({
 {
 
     return (
-        <article className="note-preview">
-           <button className=" clean-btn btn" onClick={() => onPinNote(note.id)}>
+        <article className="note-preview grid">
+           <button className="pin-btn clean-btn btn" onClick={() => onPinNote(note.id)}>
             <img className="pin-img" src={(note.isPinned) ? './assets/icons/pin-full-colors.png' : './assets/icons/pin-empty.png'} alt=""  />
             </button>
 

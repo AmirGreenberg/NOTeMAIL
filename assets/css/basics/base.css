@@ -22,7 +22,7 @@
         padding: 0px;
     }
     
-    select {
+    /* select {
         background-color: #1098ad;
         background-position: right 10px center;
         background-size: auto 50%;
@@ -30,7 +30,7 @@
         border: none;
         color: #ffffff;
         padding: 10px 30px 10px 10px;
-    }
+    } */
     
     input[type='color'] {
         --webkit-appearance: none;

@@ -18,7 +18,7 @@ export function Home() {
                             e-mail and notes
                         </span>
                         <span className="heading-primary-sub">
-                            Note your Mail!
+                            Note your Mail
                         </span>
                     </h1>
 

@@ -37,6 +37,9 @@
 .flex.align-center {
   align-items: center;
 }
+.flex.align-baseline{
+  align-items: baseline;
+}
 
 .flex.space-between {
   justify-content: space-between;
@@ -89,11 +92,6 @@
 .width100 {
   width: 100%;
 }
-
-.note-size {
-  width: 100px
-}
-
 
 /* HIDE ITEMS */
 .hidden {

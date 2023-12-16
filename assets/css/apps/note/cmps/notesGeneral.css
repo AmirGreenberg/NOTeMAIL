@@ -1,0 +1,19 @@
+.notes-inner-txt{
+    padding: 0.5em 0;
+}
+
+.note-inner-content{
+    display: grid;
+    padding: 1em 0 ;
+    width: 100%;
+
+}
+
+.pin-btn{
+    margin-right: auto;
+}
+
+.content-editable-placeholder {
+    word-break: break-all;
+    outline: none;
+}
