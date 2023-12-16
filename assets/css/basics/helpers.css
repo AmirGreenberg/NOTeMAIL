@@ -1,75 +1,121 @@
 /*BUTTONS HELPERS*/
 
 .clean-btn {
-    outline: none;
-    border: none;
-    background: none;
-    font-family: unset;
+  outline: none;
+  border: none;
+  background: none;
+  font-family: unset;
 }
 
 .btn {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 
 .btn:hover {
-    filter: brightness(75%);
+  filter: brightness(50%);
+  scale: 1.15;
 }
 
 .content-editable-placeholder:empty::before {
-    content: attr(data-placeholder);
+  content: attr(data-placeholder);
 
-        color: gray;
+  color: gray;
 }
 
 
 /* FLEX HELPERS */
 
 .flex {
-    display: flex;
-  }
-  
-  .flex.justify-center {
-    justify-content: center;
-  }
-  
-  .flex.align-center {
-    align-items: center;
-  }
-  
-  .flex.space-between {
-    justify-content: space-between;
-  }
-  
-  .flex.flex-column {
-    flex-direction: column;
-  }
-  
-  .clean-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  /* GRID HELPERS */
-  
-  .grid {
-    display: grid;
-  }
-  
-  .relative {
-    position: relative;
-  }
-  
+  display: flex;
+}
+
+.flex.justify-center {
+  justify-content: center;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.flex.flex-column {
+  flex-direction: column;
+}
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* GRID HELPERS */
+
+.grid {
+  display: grid;
+}
+
+.relative {
+  position: relative;
+}
 
 
-  /* IMAGE HELPERS */
-  
- 
-  .width100{
-    width: 100%;
-  }
+.grid.align-center {
+  align-items: center;
+}
 
-  .note-size{
-    width:100px
-  }
+
+.grid.justify-content-center {
+  justify-content: center;
+}
+
+
+.grid.space-between {
+  justify-content: space-between;
+}
+
+
+.grid.grid-auto-column {
+  grid-auto-flow: column;
+}
+
+
+/* IMAGE HELPERS */
+
+
+.width100 {
+  width: 100%;
+}
+
+.note-size {
+  width: 100px
+}
+
+
+/* HIDE ITEMS */
+.hidden {
+  display: none;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+
+
+/*A REF CLEANER */
+.clean-ref {
+  all: unset;
+}
+
+
+/* INPUT CLEANER */
+.input-cleaner {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: unset;
+}
