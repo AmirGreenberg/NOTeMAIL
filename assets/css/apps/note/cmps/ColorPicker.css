@@ -1,9 +1,12 @@
 .color-picker{
+    position: absolute;
+    bottom: 2em;
+    /* left: 1em; */
     display: grid;
     grid-auto-flow: column;
     background-color: var(--clrBase);
-    padding: 1em;
-    gap: 1em;
+    padding: 0.25em;
+    gap: 0.25em;
     width: min-content;
     border-radius: 1em;
     border: 2px solid var(--clrGrey2) ;
@@ -16,10 +19,11 @@
     height: 2em;
     border-radius: 1em;
     border: 2px solid var(--clrGrey2) ;
+    transition: all 0.2s;
 }
 
 .color-circle:hover{
-    
-    border: 3px solid var(--clrGrey3) ;
+    scale: 1.15;
+    border: 2px solid var(--clrGrey3) ;
     
 }

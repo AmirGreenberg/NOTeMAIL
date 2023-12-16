@@ -7,18 +7,18 @@ export function NoteTodos({ cmpType, info, noteId, onTodoInputChange, onDoneTogg
     }
 
     if (!info.todos) return <section>Loading...</section>
-    return (<React.Fragment>
-        <h2
+    return (
+        <React.Fragment>
+        <h3
             id="title"
             className="content-editable-placeholder"
-            contentEditable="true" 
+            contentEditable="true"
             data-placeholder="Enter your title here..."
             suppressContentEditableWarning={true}
-            style={{ outline: "none" }}
             onBlur={(event) => onContentChange(event, noteId)}
         >
             {info.title}
-        </h2>
+        </h3>
 
         <ul className="note-todos-ul">
             {info.todos.map((todo, idx) => {
@@ -26,34 +26,34 @@ export function NoteTodos({ cmpType, info, noteId, onTodoInputChange, onDoneTogg
 
                     <li key={idx} className="todo-li-row clean-list ">
                         <input defaultChecked={todo.isDone} onClick={() => onDoneToggle(noteId, todo.id)} type="checkbox" name="todoItem" />
-                        <label className="to-do-txt"
-                            style={{ outline: "none", textDecorationLine: todo.isDone ? 'line-through' : 'none' }}
+                        <label className="to-do-txt content-editable-placeholder"
+                            style={{textDecorationLine: todo.isDone ? 'line-through' : 'none' }}
                             htmlFor="todoItem"
                             contentEditable="true"
                             suppressContentEditableWarning={true}>
                             {todo.txt}
                         </label>
-                        <button className="todo-list-btn btn clean-btn" 
-                        onClick={() => onRemoveTodo(noteId, todo.id)}>
-                             <img className="icon-remove-todo" src="./assets/icons/icon-remove.png" alt="" />
-                             </button>
+                        <button className="todo-list-btn btn clean-btn"
+                            onClick={() => onRemoveTodo(noteId, todo.id)}>
+                            <img className="icon-remove-todo" src="./assets/icons/icon-remove.png" alt="" />
+                        </button>
                     </li>
                 )
             }
             )}
         </ul>
 
-        <section classname="todo-input-section">
-        <img className="icon-plus btn" src="./assets/icons/icon-plus.png" alt="" />
+        <section className="todo-input-section flex align-center">
+            <img className="icon-plus btn" src="./assets/icons/icon-plus.png" alt="" />
 
-        <input className="to-do-input input-cleaner"
-            onBlur={(event) => onTodoInput(event)}
-            type="text"
-            name="title"
-            placeholder="To Do..."
-            style={{ outline: "none" }} />
+            <input className="to-do-input input-cleaner"
+                onBlur={(event) => onTodoInput(event)}
+                type="text"
+                name="title"
+                placeholder="To Do..."
+                style={{ outline: "none" }} />
         </section>
-    </React.Fragment>
+        </React.Fragment>
     )
 
 

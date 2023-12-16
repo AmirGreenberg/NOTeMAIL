@@ -1,35 +1,42 @@
+.editor-panel{
+    position: relative;
+}
+
 .icon-add {
     width: 1.6em;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .icon-pallet {
     width: 1.4em;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .icon-img {
     width: 1.4em;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .icon-txt {
     width: 1.8em;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .icon-list {
     width: 1.2em;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .icon-duplicate {
     width: 1.5em;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .icon-remove {
     width: 1.4em;
-    margin-left: 1em;
+    margin-right: 1em;
 }
 
+.editor-panel{
+ padding-top: 0.5em; 
+}

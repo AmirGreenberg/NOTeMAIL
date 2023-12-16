@@ -1,4 +1,9 @@
+import { useRef, useEffect } from 'react';
+
 export function ColorPicker({noteId,onSetBgColor,toggleClrPicker}) {
+
+
+
 
 
     const colors = [
@@ -17,7 +22,10 @@ function onColorSelect(selectedColor){
 }
 
     return (
-        <div className="color-picker">
+        <div 
+        className="color-picker"
+        // onBlur={() => closeClrPicker}
+        >
             {colors.map(color => {
                 return <div
                     key={color}

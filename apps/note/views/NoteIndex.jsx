@@ -3,6 +3,7 @@ import { utilService } from "../../../services/util.service.js"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteFilter } from "../cmps/NoteFilter.jsx"
 import { noteService } from "../services/note.service.js"
+import { NoteHeader } from "../cmps/NoteHeader.jsx"
 
 const { useState, useEffect } = React
 const { useSearchParams } = ReactRouterDOM
@@ -38,6 +39,7 @@ export function NoteIndex() {
     }
 
     function checkIsEmpty() {
+
         return (newNote.type === 'NoteTxt' && (!newNote.info.title && !newNote.info.txt)) ||
             (newNote.type === 'NoteImg' && (!newNote.info.title && !newNote.info.url)) ||
             (newNote.type === 'NoteTodos' && (!newNote.info.title && !newNote.info.todos.length))
@@ -62,14 +64,12 @@ export function NoteIndex() {
                     'var(--clrSecondery5)',
                     'var(--clrSecondery6)']
                 console.log('setting');
-                // setNewNote(null)
                 const newData = noteService.getEmptyNote()
                 console.log(newData);
                 setNewNote(newData)
                 console.log(newNote);
                 console.log(newNote);
                 onSetBgColor(colors[utilService.getRandomIntInclusive(1, 7)])
-                // onTypeChange('NoteTxt')
                 loadNotes()
             })
             .catch(err => console.log('err:', err))
@@ -142,9 +142,7 @@ export function NoteIndex() {
         const field = ev.target.id
         const value = ev.target.innerText
         if (!noteId) {
-            // const createdNewNote = {...newNote}
-            // createdNewNote.info[field] = value
-            setNewNote(prevState => ({...prevState, info: {...prevState.info,[field]: value}}))
+            setNewNote(prevState => ({ ...prevState, info: { ...prevState.info, [field]: value } }))
         } else {
             const noteIdx = _getNoteIdx(noteId)
             notes[noteIdx].info[field] = value
@@ -168,7 +166,15 @@ export function NoteIndex() {
         const duplicateNote = { ...notes[noteIdx] }
         duplicateNote.id = ''
 
-        onSaveNote(duplicateNote)
+        noteService.save(duplicateNote)
+            .then(() => {
+                loadNotes()
+                showSuccessMsg(`Note successfully Duplicated!`)
+            })
+            .catch(err => {
+                console.log('err:', err)
+                showErrorMsg(`Houston we have a problem!`)
+            })
     }
 
     function onTypeChange(type, noteId) {
@@ -198,77 +204,79 @@ export function NoteIndex() {
         return notes.findIndex(note => note.id === noteId)
     }
 
-    function handleClean() {
-
-    }
-
-
-
 
 
     if (!notes) return <div>Loading...</div>
     return (
 
-        <section className="note-index">
-            <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+        <section className="note-index main-layout-note">
 
-            <NoteList
-                notes={[newNote]}
-                isNewNote={true}
+            <NoteHeader className="main-layout-note full" filterBy={filterBy} onSetFilter={onSetFilter} />
 
-                onSaveNote={onSaveNote}
-                onRemoveNote={onRemoveNote}
-                onTodoInputChange={onTodoInputChange}
-                onDoneToggle={onDoneToggle}
-                onRemoveTodo={onRemoveTodo}
-                onPinNote={onPinNote}
-                onContentChange={onContentChange}
-                onSetBgColor={onSetBgColor}
-                onDuplicate={onDuplicate}
-                onTypeChange={onTypeChange} />
+            {/* <NoteFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
 
+            <section className="new-note-area flex justify-center align-center">
+                
+                <NoteList 
+                    notes={[newNote]}
+                    isNewNote={true}
 
-            {notes.filter(note => note.isPinned).length > 0 && (
-                <section>
-                    <hr />
-                    <h2>Pinned</h2>
-                    <NoteList
-                        notes={notes.filter(note => note.isPinned)}
-                        isNewNote={false}
-                        onRemoveNote={onRemoveNote}
-                        onTodoInputChange={onTodoInputChange}
-                        onDoneToggle={onDoneToggle}
-                        onRemoveTodo={onRemoveTodo}
-                        onPinNote={onPinNote}
-                        onContentChange={onContentChange}
-                        onSetBgColor={onSetBgColor}
-                        onDuplicate={onDuplicate}
-                        onTypeChange={onTypeChange} />
-                </section>
-            )}
-            {notes.filter(note => !note.isPinned).length > 0 && (
-                <section>
-                    <hr />
-                    <h2>Others</h2>
-                    <NoteList
-                        notes={notes.filter(note => !note.isPinned)}
-                        isNewNote={false}
-                        onRemoveNote={onRemoveNote}
-                        onTodoInputChange={onTodoInputChange}
-                        onDoneToggle={onDoneToggle}
-                        onRemoveTodo={onRemoveTodo}
-                        onPinNote={onPinNote}
-                        onContentChange={onContentChange}
-                        onSetBgColor={onSetBgColor}
-                        onDuplicate={onDuplicate}
-                        onTypeChange={onTypeChange}
-                    />
-                </section>
+                    onSaveNote={onSaveNote}
+                    onRemoveNote={onRemoveNote}
+                    onTodoInputChange={onTodoInputChange}
+                    onDoneToggle={onDoneToggle}
+                    onRemoveTodo={onRemoveTodo}
+                    onPinNote={onPinNote}
+                    onContentChange={onContentChange}
+                    onSetBgColor={onSetBgColor}
+                    onDuplicate={onDuplicate}
+                    onTypeChange={onTypeChange} />
+            </section>
+            <section className="main-content-note">
 
-            )}
+                {notes.filter(note => note.isPinned).length > 0 && (
+                    <section className="sorted-notes-container">
+                        <h4 className="sorted-notes-container-title" >PINNED:</h4>
+                        <hr className="sorted-notes-container-hr" />
+                        <NoteList 
+                            notes={notes.filter(note => note.isPinned)}
+                            isNewNote={false}
+                            onRemoveNote={onRemoveNote}
+                            onTodoInputChange={onTodoInputChange}
+                            onDoneToggle={onDoneToggle}
+                            onRemoveTodo={onRemoveTodo}
+                            onPinNote={onPinNote}
+                            onContentChange={onContentChange}
+                            onSetBgColor={onSetBgColor}
+                            onDuplicate={onDuplicate}
+                            onTypeChange={onTypeChange} />
+                    </section>
+                )}
+                {notes.filter(note => !note.isPinned).length > 0 && (
+                    <section className="sorted-notes-container">
+                        <h4 className="sorted-notes-container-title">OTHERS</h4>
+                        <hr className="sorted-notes-container-hr" />
+                        <NoteList
+                            notes={notes.filter(note => !note.isPinned)}
+                            isNewNote={false}
+                            onRemoveNote={onRemoveNote}
+                            onTodoInputChange={onTodoInputChange}
+                            onDoneToggle={onDoneToggle}
+                            onRemoveTodo={onRemoveTodo}
+                            onPinNote={onPinNote}
+                            onContentChange={onContentChange}
+                            onSetBgColor={onSetBgColor}
+                            onDuplicate={onDuplicate}
+                            onTypeChange={onTypeChange}
+                        />
+                    </section>
+
+                )}
+                <hr className="sorted-notes-container-hr" />
+
+            </section>
 
         </section>
-
     )
 }
 

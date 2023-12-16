@@ -1,34 +1,32 @@
-export function NoteTxt({cmpType, info, noteId, onContentChange}) {
-    // const [title,setTitle] = useState('')
-    // const [txt,setTitle] = useState('')
-
+export function NoteTxt({ cmpType, info, noteId, onContentChange }) {
 
     return (
-        <section>
-   
-            <h2 
-            id="title" 
-            className="content-editable-placeholder"
-            contentEditable="true" 
-            data-placeholder="I'm all new..."
-            suppressContentEditableWarning={true} 
-            
-            style={{ outline: "none"}} 
-            onBlur={(event) => onContentChange(event, noteId)}>
-                {info.title}
-                </h2>
+        <React.Fragment>
 
-            <h3 
-            id="txt" 
-            className="content-editable-placeholder"
-            contentEditable="true" 
-            data-placeholder="txt here..."
-            suppressContentEditableWarning={true}
-            style={{ outline: "none" }} 
-            onBlur={(event) => onContentChange(event, noteId)}
+            <h3
+                id="title"
+                className="content-editable-placeholder notes-inner-txt"
+                contentEditable="true"
+                data-placeholder="I'm all new..."
+                suppressContentEditableWarning={true}
+
+                style={{ outline: "none" }}
+                onBlur={(event) => onContentChange(event, noteId)}>
+                {info.title}
+            </h3>
+
+            <h4
+                id="txt"
+                className="content-editable-placeholder notes-inner-txt"
+                contentEditable="true"
+                data-placeholder="txt here..."
+                suppressContentEditableWarning={true}
+                style={{ outline: "none" }}
+                onBlur={(event) => onContentChange(event, noteId)}
             >
                 {info.txt}
-                </h3>
-        </section>
+            </h4>
+
+        </React.Fragment>
     )
 }
