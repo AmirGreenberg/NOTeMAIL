@@ -6,6 +6,7 @@ export function NoteImg({ cmpType, info, noteId, onContentChange }) {
                 id="title"
                 className="content-editable-placeholder"
                 contentEditable="true"
+                spellcheck="false" 
                 data-placeholder="Enter your title here..."
                 suppressContentEditableWarning={true}
                 onBlur={(event) => onContentChange(event, noteId)}
@@ -22,6 +23,7 @@ export function NoteImg({ cmpType, info, noteId, onContentChange }) {
                     id="url"
                     className=" content-editable-placeholder notes-inner-txt "
                     contentEditable="true"
+                    spellcheck="false"
                     data-placeholder="URL here..."
                     suppressContentEditableWarning={true}
                     onBlur={(event) => onContentChange(event, noteId)}

@@ -33,6 +33,7 @@ export function NotePreview({
            onRemoveTodo={onRemoveTodo} />
 
            <EditorPanel
+           cmpType={note.type}
            noteId = {note.id}
            isNewNote={isNewNote}
            onSaveNote={onSaveNote}

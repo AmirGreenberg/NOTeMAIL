@@ -10,11 +10,12 @@
 }
 
 .pin-btn{
-    margin-right: auto;
+    margin-left: auto;
 }
 
 .content-editable-placeholder {
     overflow-wrap: anywhere;
     word-break: normal;
     outline: none;
+    
 }

@@ -13,6 +13,7 @@ export function NoteTodos({ cmpType, info, noteId, onTodoInputChange, onDoneTogg
             id="title"
             className="content-editable-placeholder notes-inner-txt"
             contentEditable="true"
+                    spellcheck="false"
             data-placeholder="Enter your title here..."
             suppressContentEditableWarning={true}
             onBlur={(event) => onContentChange(event, noteId)}
@@ -34,6 +35,7 @@ export function NoteTodos({ cmpType, info, noteId, onTodoInputChange, onDoneTogg
                             style={{textDecorationLine: todo.isDone ? 'line-through' : 'none' }}
                             htmlFor="todoItem"
                             contentEditable="true"
+                    spellcheck="false"
                             suppressContentEditableWarning={true}>
                             {todo.txt}
                         </label>
