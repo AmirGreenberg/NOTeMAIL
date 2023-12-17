@@ -25,19 +25,19 @@ export function EditorPanel({ noteId, cmpType, onSaveNote, isNewNote, onRemoveNo
                 </button>
 
                 {/* img */}
-                {cmpType !== 'NoteImg' &&
+                {cmpType !== 'NoteImg' && isNewNote &&
                     <button className="clean-btn btn" onClick={() => onTypeChange('NoteImg', noteId)} title="Image Note">
                         <img className="icon-img" src="./assets/icons/icon-img.png" alt="" />
                     </button>}
 
                 {/* txt */}
-                {cmpType !== 'NoteTxt' &&
+                {cmpType !== 'NoteTxt' && isNewNote &&
                     <button className="clean-btn btn" onClick={() => onTypeChange('NoteTxt', noteId)} title="Text Note">
                         <img className="icon-txt" src="./assets/icons/icon-txt.png" alt="" />
                     </button>}
 
                 {/* list */}
-                {cmpType !== 'NoteTodo' &&
+                {cmpType !== 'NoteTodo' && isNewNote &&
                     <button className="clean-btn btn" onClick={() => onTypeChange('NoteTodos', noteId)} title="List Note">
                         <img className="icon-list" src="./assets/icons/icon-list.png" alt="" />
                     </button>}
