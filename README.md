@@ -8,7 +8,7 @@ Built with :
 ![Tech](https://skillicons.dev/icons?i=js,html,css,sass,react,redux,babel,&perline=10)
 
 
-https://github.com/AmirGreenberg/tarello_front_amir_greenberg/assets/132469813/b965654f-2642-4c13-a611-7590fddeb752
+https://github.com/AmirGreenberg/tarello_front_amir_greenberg/assets/132469813/3fc2f80d-5fa3-4d41-8d13-f5870526116f
 
 <div>
 <img src="https://res.cloudinary.com/dqjddwtf4/image/upload/v1707034197/NoteMail_screenshot1_igiyul.png" width="1010px"  /> 
