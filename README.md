@@ -1,6 +1,8 @@
 # NoteMail - Gmail and Keep Clones
 A full-stack web application that replicates the core functionalities of Gmail and Keep apps, developed by Amir Greenberg and David Tal-Rivlin.
 
+[Link to website!](https://davidtalrivlin.github.io/NOTeMAIL/)
+
 Built with :
 
 ![Tech](https://skillicons.dev/icons?i=js,html,css,sass,react,redux,babel,&perline=10)
@@ -15,7 +17,6 @@ https://github.com/AmirGreenberg/tarello_front_amir_greenberg/assets/132469813/b
 </div>
 
 
-[Check it Out!](https://davidtalrivlin.github.io/NOTeMAIL/)
 
 ---
 
