@@ -16,8 +16,6 @@ https://github.com/AmirGreenberg/tarello_front_amir_greenberg/assets/132469813/3
 <img src="https://res.cloudinary.com/dqjddwtf4/image/upload/v1707034195/NoteMail_screenshot3_elqgmr.png" width="1010px"  /> 
 </div>
 
-
-
 ---
 
 Feel free to contact us for any questions ! 💻
